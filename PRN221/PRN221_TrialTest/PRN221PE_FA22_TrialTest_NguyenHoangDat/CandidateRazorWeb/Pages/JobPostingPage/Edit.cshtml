@@ -1,0 +1,50 @@
+﻿@page
+@model CandidateRazorWeb.Pages.JobPostingPage.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    int roleID = int.Parse(HttpContext.Session.GetString("RoleID"));
+    if (roleID != 1)
+    {
+        Response.Redirect("../Permission");
+    }
+}
+
+<h1>Edit</h1>
+
+<h4>JobPosting</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="JobPosting.PostingId" />
+            <div class="form-group">
+                <label asp-for="JobPosting.JobPostingTitle" class="control-label"></label>
+                <input asp-for="JobPosting.JobPostingTitle" class="form-control" />
+                <span asp-validation-for="JobPosting.JobPostingTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobPosting.Description" class="control-label"></label>
+                <input asp-for="JobPosting.Description" class="form-control" />
+                <span asp-validation-for="JobPosting.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobPosting.PostedDate" class="control-label"></label>
+                <input asp-for="JobPosting.PostedDate" class="form-control" />
+                <span asp-validation-for="JobPosting.PostedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

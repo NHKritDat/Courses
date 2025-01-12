@@ -1,0 +1,55 @@
+﻿@page
+@model CandidateRazorWeb.Pages.ProfilePage.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>CandidateProfile</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CandidateProfile.CandidateId" />
+            <div class="form-group">
+                <label asp-for="CandidateProfile.Fullname" class="control-label"></label>
+                <input asp-for="CandidateProfile.Fullname" class="form-control" />
+                <span asp-validation-for="CandidateProfile.Fullname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CandidateProfile.Birthday" class="control-label"></label>
+                <input asp-for="CandidateProfile.Birthday" class="form-control" />
+                <span asp-validation-for="CandidateProfile.Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CandidateProfile.ProfileShortDescription" class="control-label"></label>
+                <input asp-for="CandidateProfile.ProfileShortDescription" class="form-control" />
+                <span asp-validation-for="CandidateProfile.ProfileShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CandidateProfile.ProfileUrl" class="control-label"></label>
+                <input asp-for="CandidateProfile.ProfileUrl" class="form-control" />
+                <span asp-validation-for="CandidateProfile.ProfileUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CandidateProfile.PostingId" class="control-label"></label>
+                <select asp-for="CandidateProfile.PostingId" class="form-control" asp-items="ViewBag.PostingId"></select>
+                <span asp-validation-for="CandidateProfile.PostingId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

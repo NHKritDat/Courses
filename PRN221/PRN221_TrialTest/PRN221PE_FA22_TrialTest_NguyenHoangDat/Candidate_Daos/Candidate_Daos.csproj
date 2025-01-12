@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CandidateUtils\CandidateUtils.csproj" />
+    <ProjectReference Include="..\Candidate_BusinessObjects\Candidate_BusinessObjects.csproj">
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>

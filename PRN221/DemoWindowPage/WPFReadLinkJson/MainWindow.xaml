@@ -1,0 +1,13 @@
+﻿<Window x:Class="WPFReadLinkJson.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFReadLinkJson"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="dtgView" HorizontalAlignment="Center" Height="414" VerticalAlignment="Center" Width="780" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" Loaded="DataGrid_Loaded"/>
+
+    </Grid>
+</Window>

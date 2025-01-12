@@ -1,0 +1,16 @@
+[
+  {
+    "PostingId": "P0006",
+    "JobPostingTitle": "First Json",
+    "Description": "This is first field of json file",
+    "PostedDate": "2024-09-28T00:00:00",
+    "CandidateProfiles": []
+  },
+  {
+    "PostingId": "P0007",
+    "JobPostingTitle": "Second Json",
+    "Description": "This is second field of json file",
+    "PostedDate": "2024-09-28T00:00:00",
+    "CandidateProfiles": []
+  }
+]

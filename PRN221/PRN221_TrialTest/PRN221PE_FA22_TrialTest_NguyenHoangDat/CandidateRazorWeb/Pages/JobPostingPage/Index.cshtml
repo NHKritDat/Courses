@@ -1,0 +1,64 @@
+﻿@page
+@model CandidateRazorWeb.Pages.JobPostingPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    int roleID = int.Parse(HttpContext.Session.GetString("RoleID"));
+    if (roleID != 1 && roleID != 2)
+    {
+        Response.Redirect("../Permission");
+    }
+}
+
+<h1>Index</h1>
+
+@{
+    if (roleID == 1)
+    {
+        <p>
+            <a asp-page="Create" class="btn btn-primary">Create New</a>
+        </p>
+    }
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.JobPosting[0].JobPostingTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobPosting[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobPosting[0].PostedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.JobPosting)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobPostingTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostedDate)
+                </td>
+                <td>
+                    @{
+                        if (roleID == 1)
+                        {
+                            <a asp-page="./Edit" asp-route-id="@item.PostingId" class="btn btn-warning">Edit</a>
+                            <a asp-page="./Details" asp-route-id="@item.PostingId" class="btn btn-info"> Details </a>
+                            <a asp-page="./Delete" asp-route-id="@item.PostingId" class="btn btn-danger"> Delete </a>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

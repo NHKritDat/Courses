@@ -1,0 +1,52 @@
+﻿@page
+@model CandidateRazorWeb.Pages.ProfilePage.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CandidateProfile</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CandidateProfile.Fullname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CandidateProfile.Fullname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CandidateProfile.Birthday)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CandidateProfile.Birthday)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CandidateProfile.ProfileShortDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CandidateProfile.ProfileShortDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CandidateProfile.ProfileUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CandidateProfile.ProfileUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CandidateProfile.Posting)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CandidateProfile.Posting.PostingId)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="CandidateProfile.CandidateId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
