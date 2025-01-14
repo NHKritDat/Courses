@@ -263,3 +263,12 @@ public async Task<List<Schedule>> Search(Guid id, Guid userId, DateTime workDate
         .ToListAsync();
     return schedules;
 }
+
+- GetUserAccount trong UserAccountRepository
+        public async Task<UserAccount?> GetUserAccount(string userName, string password) => await _context.UserAccounts.FirstOrDefaultAsync(u => u.UserName == userName && u.Password == password && u.IsActive);
+* Check IsActive là gì? Đề có yêu cầu không? Query db để chắc ăn trả về gì
+* Login bằng cái gì? UserName Email Phone EmployeeCode...
+
+- Tạo lớp Services Prj.Services, xóa Class1.cs
+- References Repo
+- Tạo đủ các Service với xxxService	

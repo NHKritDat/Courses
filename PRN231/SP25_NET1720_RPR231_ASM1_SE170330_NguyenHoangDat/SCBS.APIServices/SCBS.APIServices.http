@@ -1,0 +1,6 @@
+@SCBS.APIServices_HostAddress = http://localhost:5204
+
+GET {{SCBS.APIServices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
