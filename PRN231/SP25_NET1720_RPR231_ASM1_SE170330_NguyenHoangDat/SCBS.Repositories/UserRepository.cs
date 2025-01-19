@@ -8,11 +8,13 @@ namespace SCBS.Repositories
     {
         public UserRepository() { }
 
-        public new async Task<List<User>> GetAll()
+        public new async Task<List<User>> GetAllAsync()
         {
             var users = await _context.Users.Include(u => u.Schedules).ToListAsync();
             return users;
         }
+
+        public new async Task<User?> GetByIdAsync(Guid id) => await _context.Users.Include(u => u.Schedules).FirstOrDefaultAsync(u => u.Id == id);
 
         public async Task<List<User>> Search(string username, string fullName, string email)
         {

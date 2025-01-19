@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SCBS.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0ff90ee09d94eb46bd6b9140c788df8aa776ce9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+725f1e200638bf5fca4f79f75d0bdbda6e52ddac")]
 [assembly: System.Reflection.AssemblyProductAttribute("SCBS.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SCBS.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

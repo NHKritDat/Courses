@@ -7,11 +7,13 @@ namespace SCBS.Repositories
     public class ScheduleRepository : GenericRepository<Schedule>
     {
         public ScheduleRepository() { }
-        public new async Task<List<Schedule>> GetAll()
+        public new async Task<List<Schedule>> GetAllAsync()
         {
             var schedules = await _context.Schedules.Include(s => s.User).ToListAsync();
             return schedules;
         }
+
+        public new async Task<Schedule?> GetByIdAsync(Guid id) => await _context.Schedules.Include(s => s.User).FirstOrDefaultAsync(s => s.Id == id);
 
         public async Task<List<Schedule>> Search(DateTime workDate, string status)
         {

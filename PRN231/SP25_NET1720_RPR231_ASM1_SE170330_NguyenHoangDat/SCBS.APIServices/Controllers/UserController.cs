@@ -10,8 +10,8 @@ namespace SCBS.APIServices.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUser2Service _userService;
-        public UserController(IUser2Service userService) => _userService = userService;
+        private readonly IUserService _userService;
+        public UserController(IUserService userService) => _userService = userService;
         // GET: api/<UserController>
         [HttpGet]
         public async Task<IEnumerable<User>> Get()
@@ -21,27 +21,36 @@ namespace SCBS.APIServices.Controllers
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<User?> Get(Guid id)
         {
-            return "value";
+            return await _userService.GetById(id);
+        }
+
+        [HttpGet("{username?}/{email?}/{fullName?}")]
+        public async Task<IEnumerable<User?>> Get(string username, string email, string fullName)
+        {
+            return await _userService.Search(username, email, fullName);
         }
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<int> Post(User user)
         {
+            return await _userService.Create(user);
         }
 
         // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public async Task<int> Put(User user)
         {
+            return await _userService.Update(user);
         }
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<bool> Delete(Guid id)
         {
+            return await _userService.Delete(id);
         }
     }
 }
