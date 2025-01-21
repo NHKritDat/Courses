@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "SCBS.APIServices\\SCBS.APIServices.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "SCBS.MVCWebApp\\SCBS.MVCWebApp.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

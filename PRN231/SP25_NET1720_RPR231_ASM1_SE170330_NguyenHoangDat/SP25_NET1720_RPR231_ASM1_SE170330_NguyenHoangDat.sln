@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.Services", "SCBS.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.APIServices", "SCBS.APIServices\SCBS.APIServices.csproj", "{9E25904C-6809-4983-B718-F43E2351EEBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.MVCWebApp", "SCBS.MVCWebApp\SCBS.MVCWebApp.csproj", "{AC76D486-4F71-4932-AF6D-A54A90DB999A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9E25904C-6809-4983-B718-F43E2351EEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E25904C-6809-4983-B718-F43E2351EEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E25904C-6809-4983-B718-F43E2351EEBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC76D486-4F71-4932-AF6D-A54A90DB999A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC76D486-4F71-4932-AF6D-A54A90DB999A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC76D486-4F71-4932-AF6D-A54A90DB999A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC76D486-4F71-4932-AF6D-A54A90DB999A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
