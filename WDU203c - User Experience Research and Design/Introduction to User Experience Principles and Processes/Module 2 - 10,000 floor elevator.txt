@@ -1,0 +1,28 @@
+1. First 10 Sketch Ideas
+- Fingerprint of the floor living
+- Floor Zone Keypads - Separates keypads for different floor ranges
+- Check the time the next elevator arrives at the floor
+- Divide 10 elevators per staff for easy to manage
+- Each of elevator have their own system
+- Emergency Rapid Exit Options - A shortcut button to lobby/emergency exit floors
+- The list of elevators that provide mandatory information such as current floor, current weight, direction,...
+- Detail information of each elevator such as list of upcoming floor, time to desired floor, total weight, awaiting request pick up,...
+- Notify the request of each floor and suggesting the suitable elevator to pickup
+- On/Off elevators
+
+2. Criteria/Constraint
+- Speed of Input: The interface should allow users to select their floor quickly and efficiently to avoid waiting times.
+- The notifications must be real-time communication
+- Ease of use: It must be intuitive enough for all age groups and accessibility-friendly for those with disabilities.
+
+3. Second 10 sketch ideas
+- Mobile App Control: Users can select which floor want to go and the time it arrive
+- Touchscreen Panel with Search Bar: A large screen that allows users to types or scroll through floor options.
+- Multi-panel System: Different panels for quick access
+- AI Suggestion: The AI suggest the most suitable elevator to travel
+- Priority Selection for Common Floors: The system suggest the common destinations like cafeterias, movie theaters,...
+- Smart Ticket Authentication: Employees or residents use tickets with pre-set permissions for designated floors
+- Circle keypads with zone: a list number in the circle separate with zones for quicky choose
+- Personal Integration: Provide personal customize floors
+- Pre-choose elevator and floor
+- AI Heatmap Display: A real-time display showing congestion levels across floors.
