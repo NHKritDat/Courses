@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:padding="10dp"
+        android:id="@+id/imagevienhinh"
+        android:layout_width="115dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_editor_absoluteY="8dp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/textvienten"
+        android:textColor="#ff00"
+        android:layout_margin="10dp"
+        android:layout_marginStart="16dp"
+        android:text="Name"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/imagevienhinh"
+        app:layout_editor_absoluteY="0dp"
+        android:layout_width="172dp"
+        android:layout_height="32dp"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/textviewmota"
+        android:layout_width="255dp"
+        android:layout_height="48dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="4dp"
+        android:text="Description"
+        android:textColor="#0A38E1"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textvienten" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

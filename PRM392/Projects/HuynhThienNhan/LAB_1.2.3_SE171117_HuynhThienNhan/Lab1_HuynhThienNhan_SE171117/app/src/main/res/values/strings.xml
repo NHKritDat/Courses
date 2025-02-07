@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lab1_HuynhThienNhan_SE171117</string>
+    <string name="android">Android</string>
+    <string name="php">PHP</string>
+    <string name="sql">SQL</string>
+    <string name="python">PYTHON</string>
+</resources>
+
+

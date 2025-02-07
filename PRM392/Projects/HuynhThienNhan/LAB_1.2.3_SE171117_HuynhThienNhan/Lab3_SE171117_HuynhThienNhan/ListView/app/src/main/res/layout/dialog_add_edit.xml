@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Nhập tên trái cây -->
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập tên" />
+
+    <!-- Nhập mô tả -->
+    <EditText
+        android:id="@+id/edtDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập mô tả" />
+
+    <!-- Ảnh xem trước -->
+    <ImageView
+        android:id="@+id/imgPreview"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background"
+        android:background="@android:color/darker_gray"
+        android:padding="4dp"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Nút chọn ảnh -->
+    <Button
+        android:id="@+id/btnChooseImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chọn ảnh từ thư viện"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>

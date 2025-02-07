@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Linear Layout A</string>
+    <string name="name">Linear Layout</string>
+    <string name="android">Android</string>
+    <string name="php">PHP</string>
+    <string name="sql">SQL</string>
+    <string name="python">PYTHON</string>
+</resources>

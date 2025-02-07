@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/sign_up"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<TextView
+    android:id="@+id/textViewTitle"
+    android:layout_width="281dp"
+    android:layout_height="38dp"
+    android:layout_marginStart="65dp"
+    android:layout_marginTop="103dp"
+    android:layout_marginEnd="65dp"
+    android:layout_marginBottom="590dp"
+    android:gravity="center"
+    android:text="Sign Up Form"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<EditText
+    android:id="@+id/editTextUsername"
+    android:layout_width="375dp"
+    android:layout_height="50dp"
+    android:layout_marginStart="18dp"
+    android:layout_marginTop="181dp"
+    android:layout_marginEnd="19dp"
+    android:layout_marginBottom="501dp"
+    android:ems="10"
+    android:inputType="text"
+    android:text="Username"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<EditText
+    android:id="@+id/editTextPassword"
+    android:layout_width="375dp"
+    android:layout_height="50dp"
+    android:layout_marginStart="18dp"
+    android:layout_marginTop="265dp"
+    android:layout_marginEnd="18dp"
+    android:layout_marginBottom="416dp"
+    android:ems="10"
+    android:inputType="text"
+    android:text="Password"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<EditText
+    android:id="@+id/editTextConfirmPassword"
+    android:layout_width="375dp"
+    android:layout_height="50dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="350dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="331dp"
+    android:ems="10"
+    android:inputType="text"
+    android:text="ConfirmPassword"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+
+<TextView
+    android:id="@+id/textViewAlreadyAccount"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Already Account ? Sign In"
+    android:textColor="#7D7D7D"
+    android:textSize="18sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.608" />
+
+<TextView
+    android:id="@+id/textViewOr"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="---Or---"
+    android:textColor="#7D7D7D"
+    android:textSize="18sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.498"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.673" />
+
+<Button
+    android:id="@+id/buttonSignUp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="SIGN UP"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.498"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.774" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Relative Layout</string>
+    <string name="title">Sign in Form</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="question">Not account yet? Create one</string>
+    <string name="or">----------Or----------</string>
+    <string name="button">SIGN IN</string>
+</resources>

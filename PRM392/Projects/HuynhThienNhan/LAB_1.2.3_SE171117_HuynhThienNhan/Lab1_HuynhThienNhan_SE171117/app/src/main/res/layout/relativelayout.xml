@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="281dp"
+        android:layout_height="38dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:gravity="center"
+        android:text="Sign In Form"
+        android:textSize="20sp"/>
+
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="375dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/textViewTitle"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:inputType="text"
+        android:text="Username"/>
+
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="375dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/editTextUsername"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:inputType="text"
+        android:text="Password"/>
+
+
+
+    <TextView
+        android:id="@+id/textViewNoAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPassword"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="No Account Yet ? Create one"
+        android:textColor="#7D7D7D"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/textViewOr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewNoAccount"
+        android:layout_marginTop="19dp"
+        android:gravity="center"
+        android:text="---Or---"
+        android:textColor="#7D7D7D"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/buttonSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewOr"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="SIGN IN"/>
+
+</RelativeLayout>
