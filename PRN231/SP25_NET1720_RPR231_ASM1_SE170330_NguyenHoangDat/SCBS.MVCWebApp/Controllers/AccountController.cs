@@ -53,6 +53,7 @@ namespace SCBS.MVCWebApp.Controllers
 
                                 Response.Cookies.Append("UserName", userName);
                                 Response.Cookies.Append("Role", role);
+                                Response.Cookies.Append("TokenString", tokenString);
 
                                 return RedirectToAction("Index", "Home");
                             }
@@ -72,7 +73,13 @@ namespace SCBS.MVCWebApp.Controllers
 
         public async Task<IActionResult> Logout()
         {
+            //Do log out
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            //Delete cookies
+            Response.Cookies.Delete("UserName");
+            Response.Cookies.Delete("Role");
+            Response.Cookies.Delete("TokenString");
+
             return RedirectToAction("Login", "Account");
         }
 
