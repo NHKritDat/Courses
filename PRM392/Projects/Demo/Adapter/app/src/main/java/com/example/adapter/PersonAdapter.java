@@ -24,7 +24,7 @@ public class PersonAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Person getItem(int position) {
         return list.get(position);
     }
 
@@ -41,7 +41,7 @@ public class PersonAdapter extends BaseAdapter {
         TextView name = convertView.findViewById(R.id.name);
         TextView age = convertView.findViewById(R.id.age);
 
-        Person person = list.get(position);
+        Person person = getItem(position);
         name.setText(person.getName());
         age.setText(String.valueOf(person.getAge()));
 
