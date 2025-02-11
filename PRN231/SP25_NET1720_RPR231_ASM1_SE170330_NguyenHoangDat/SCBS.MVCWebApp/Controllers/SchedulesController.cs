@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using SCBS.Repositories.Models;
 
 namespace SCBS.MVCWebApp.Controllers
 {
+    [Authorize]
     public class SchedulesController : Controller
     {
         private string APIEndPoint = "https://localhost:7023/api/";
@@ -46,6 +48,34 @@ namespace SCBS.MVCWebApp.Controllers
             }
             return View(new List<Schedule>());
         }
+
+        public async Task<IActionResult> Details(string id)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                #region Add Token to header of Request
+
+                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+                #endregion
+
+                using (var response = await httpClient.GetAsync(APIEndPoint + "Schedule/" + id))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = await response.Content.ReadAsStringAsync();
+                        var result = JsonConvert.DeserializeObject<Schedule>(content);
+                        if (result != null)
+                        {
+                            return View(result);
+                        }
+                    }
+                }
+            }
+            return View(new Schedule());
+        }
         //private readonly NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext _context;
 
         //public SchedulesController(NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext context)
@@ -79,83 +109,137 @@ namespace SCBS.MVCWebApp.Controllers
         //    return View(schedule);
         //}
 
-        //// GET: Schedules/Create
-        //public IActionResult Create()
-        //{
-        //    ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email");
-        //    return View();
-        //}
+        // GET: Schedules/Create
+        public async Task<IActionResult> Create()
+        {
+            ViewData["UserId"] = new SelectList(await GetUsers(), "Id", "Email");
+            return View();
+        }
 
-        //// POST: Schedules/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("Id,UserId,WorkDate,Status,CreatedAt,UpdatedAt")] Schedule schedule)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        schedule.Id = Guid.NewGuid();
-        //        _context.Add(schedule);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email", schedule.UserId);
-        //    return View(schedule);
-        //}
+        // POST: Schedules/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,UserId,WorkDate,Status,CreatedAt,UpdatedAt")] Schedule schedule)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+                    httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+                    using (var response = await httpClient.PostAsJsonAsync(APIEndPoint + "Schedule", schedule))
+                    {
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var content = await response.Content.ReadAsStringAsync();
+                            var result = JsonConvert.DeserializeObject<int>(content);
+                            if (result > 0)
+                            {
+                                return RedirectToAction(nameof(Index));
+                            }
+                        }
+                    }
+                }
+            }
+            ViewData["UserId"] = new SelectList(await GetUsers(), "Id", "Email", schedule.UserId);
+            return View(schedule);
+        }
 
-        //// GET: Schedules/Edit/5
-        //public async Task<IActionResult> Edit(Guid? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // GET: Schedules/Edit/5
+        public async Task<IActionResult> Edit(string id)
+        {
+            var users = await GetUsers();
 
-        //    var schedule = await _context.Schedules.FindAsync(id);
-        //    if (schedule == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email", schedule.UserId);
-        //    return View(schedule);
-        //}
+            using (var httpClient = new HttpClient())
+            {
+                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+                using (var response = await httpClient.GetAsync(APIEndPoint + "Schedule/" + id))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = await response.Content.ReadAsStringAsync();
+                        var result = JsonConvert.DeserializeObject<Schedule>(content);
+                        if (result != null)
+                        {
+                            ViewData["UserId"] = new SelectList(users, "Id", "Email", result.UserId);
+                            return View(result);
+                        }
+                    }
+                }
+            }
 
-        //// POST: Schedules/Edit/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(Guid id, [Bind("Id,UserId,WorkDate,Status,CreatedAt,UpdatedAt")] Schedule schedule)
-        //{
-        //    if (id != schedule.Id)
-        //    {
-        //        return NotFound();
-        //    }
+            ViewData["UserId"] = new SelectList(users, "Id", "Email");
+            return View(new Schedule());
+        }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(schedule);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!ScheduleExists(schedule.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email", schedule.UserId);
-        //    return View(schedule);
-        //}
+        // POST: Schedules/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Schedule schedule)
+        {
+            var saveStatus = false;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+
+                    using (var httpClient = new HttpClient())
+                    {
+                        var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+                        httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+                        using (var response = await httpClient.PutAsJsonAsync(APIEndPoint + "Schedule/" + schedule.Id, schedule))
+                        {
+                            if (response.IsSuccessStatusCode)
+                            {
+                                var content = await response.Content.ReadAsStringAsync();
+                                var result = JsonConvert.DeserializeObject<int>(content);
+                                if (result > 0)
+                                {
+                                    saveStatus = true;
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+            }
+            if (saveStatus)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                ViewData["UserId"] = new SelectList(await GetUsers(), "Id", "Email", schedule.UserId);
+                return View(schedule);
+            }
+        }
+
+        private async Task<List<User>> GetUsers()
+        {
+            var users = new List<User>();
+            using (var httpClient = new HttpClient())
+            {
+                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+                using (var response = await httpClient.GetAsync(APIEndPoint + "User"))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = await response.Content.ReadAsStringAsync();
+                        users = JsonConvert.DeserializeObject<List<User>>(content);
+                    }
+                }
+            }
+            return users;
+        }
 
         //// GET: Schedules/Delete/5
         //public async Task<IActionResult> Delete(Guid? id)
@@ -176,20 +260,25 @@ namespace SCBS.MVCWebApp.Controllers
         //    return View(schedule);
         //}
 
-        //// POST: Schedules/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(Guid id)
-        //{
-        //    var schedule = await _context.Schedules.FindAsync(id);
-        //    if (schedule != null)
-        //    {
-        //        _context.Schedules.Remove(schedule);
-        //    }
+        // POST: Schedules/Delete/5
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            bool deleteStatus = false;
+            using (var httpClient = new HttpClient())
+            {
+                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
 
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
+                using (var response = await httpClient.DeleteAsync(APIEndPoint + "Schedule/" + id))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        deleteStatus = true;
+                    }
+                }
+            }
+            return RedirectToAction(nameof(Index));
+        }
 
         //private bool ScheduleExists(Guid id)
         //{
