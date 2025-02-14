@@ -45,7 +45,7 @@ namespace SCBS.APIServices.Controllers
                 //new(ClaimTypes.Email, systemUserAccount.Email),
                 new(ClaimTypes.Role, systemUserAccount.RoleId.ToString()),
                     },
-                    expires: DateTime.Now.AddMinutes(1),
+                    expires: DateTime.Now.AddMinutes(120),
                     signingCredentials: credentials
                 );
 

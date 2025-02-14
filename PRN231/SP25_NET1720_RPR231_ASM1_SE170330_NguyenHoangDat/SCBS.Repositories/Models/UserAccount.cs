@@ -2,11 +2,13 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SCBS.Repositories.Models;
 
 public partial class UserAccount
 {
+    [Key]
     public int UserAccountId { get; set; }
 
     public string UserName { get; set; }

@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{AC76D486-4F71-4932-AF6D-A54A90DB999A}|SCBS.MVCWebApp\\SCBS.MVCWebApp.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm1_se170330_nguyenhoangdat\\scbs.mvcwebapp\\controllers\\schedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC76D486-4F71-4932-AF6D-A54A90DB999A}|SCBS.MVCWebApp\\SCBS.MVCWebApp.csproj|solutionrelative:scbs.mvcwebapp\\controllers\\schedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E25904C-6809-4983-B718-F43E2351EEBB}|SCBS.APIServices\\SCBS.APIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm1_se170330_nguyenhoangdat\\scbs.apiservices\\controllers\\schedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E25904C-6809-4983-B718-F43E2351EEBB}|SCBS.APIServices\\SCBS.APIServices.csproj|solutionrelative:scbs.apiservices\\controllers\\schedulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC76D486-4F71-4932-AF6D-A54A90DB999A}|SCBS.MVCWebApp\\SCBS.MVCWebApp.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm1_se170330_nguyenhoangdat\\scbs.mvcwebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC76D486-4F71-4932-AF6D-A54A90DB999A}|SCBS.MVCWebApp\\SCBS.MVCWebApp.csproj|solutionrelative:scbs.mvcwebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E25904C-6809-4983-B718-F43E2351EEBB}|SCBS.APIServices\\SCBS.APIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm1_se170330_nguyenhoangdat\\scbs.apiservices\\controllers\\useraccountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E25904C-6809-4983-B718-F43E2351EEBB}|SCBS.APIServices\\SCBS.APIServices.csproj|solutionrelative:scbs.apiservices\\controllers\\useraccountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC76D486-4F71-4932-AF6D-A54A90DB999A}|SCBS.MVCWebApp\\SCBS.MVCWebApp.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm1_se170330_nguyenhoangdat\\scbs.mvcwebapp\\views\\schedules\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AC76D486-4F71-4932-AF6D-A54A90DB999A}|SCBS.MVCWebApp\\SCBS.MVCWebApp.csproj|solutionrelative:scbs.mvcwebapp\\views\\schedules\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,72 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ScheduleController.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.APIServices\\Controllers\\ScheduleController.cs",
-              "RelativeDocumentMoniker": "SCBS.APIServices\\Controllers\\ScheduleController.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.APIServices\\Controllers\\ScheduleController.cs",
-              "RelativeToolTip": "SCBS.APIServices\\Controllers\\ScheduleController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T04:29:10.34Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.MVCWebApp\\Program.cs",
-              "RelativeDocumentMoniker": "SCBS.MVCWebApp\\Program.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.MVCWebApp\\Program.cs",
-              "RelativeToolTip": "SCBS.MVCWebApp\\Program.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAAoAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T03:56:26.331Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.MVCWebApp\\Views\\Schedules\\Delete.cshtml",
-              "RelativeDocumentMoniker": "SCBS.MVCWebApp\\Views\\Schedules\\Delete.cshtml",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.MVCWebApp\\Views\\Schedules\\Delete.cshtml",
-              "RelativeToolTip": "SCBS.MVCWebApp\\Views\\Schedules\\Delete.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAC8AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-11T03:14:13.127Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserAccountController.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.APIServices\\Controllers\\UserAccountController.cs",
-              "RelativeDocumentMoniker": "SCBS.APIServices\\Controllers\\UserAccountController.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.APIServices\\Controllers\\UserAccountController.cs",
-              "RelativeToolTip": "SCBS.APIServices\\Controllers\\UserAccountController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAqwC8AAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T03:12:44.691Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SchedulesController.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.MVCWebApp\\Controllers\\SchedulesController.cs",
-              "RelativeDocumentMoniker": "SCBS.MVCWebApp\\Controllers\\SchedulesController.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.MVCWebApp\\Controllers\\SchedulesController.cs",
-              "RelativeToolTip": "SCBS.MVCWebApp\\Controllers\\SchedulesController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwA4AAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T02:52:56.433Z",
-              "EditorCaption": ""
             }
           ]
         }

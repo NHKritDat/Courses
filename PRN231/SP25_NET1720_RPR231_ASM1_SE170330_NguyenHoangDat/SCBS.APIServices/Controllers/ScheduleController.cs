@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 using SCBS.Repositories.Models;
 using SCBS.Services;
 
@@ -10,6 +11,7 @@ namespace SCBS.APIServices.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [EnableQuery]
     public class ScheduleController : ControllerBase
     {
         private readonly IScheduleService _scheduleService;
