@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lab1.Lab1llaActivity">
+
+    <Button
+        android:id="@+id/btnBackLab1lla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="680dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBackLab1lla"
+        tools:layout_editor_absoluteX="-4dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#651FFF"
+            android:text="@string/linear"
+            android:textColor="#F8F5F5"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/android"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#FFEA00"
+                android:text="@string/android"
+                android:textColor="#FF1744"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/php"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="#00B0FF"
+                android:text="@string/php"
+                android:textColor="#FF9100"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sql"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:background="#1DE9B6"
+                android:text="@string/sql"
+                android:textColor="#FFEB3B"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/python"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#FFEB3B"
+                android:text="@string/python"
+                android:textColor="#03A9F4"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

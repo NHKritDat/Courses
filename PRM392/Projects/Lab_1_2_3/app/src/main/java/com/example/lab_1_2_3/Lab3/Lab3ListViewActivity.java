@@ -1,4 +1,4 @@
-package com.example.listview;
+package com.example.lab_1_2_3.Lab3;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -12,19 +12,26 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.lab_1_2_3.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class Lab3ListViewActivity extends AppCompatActivity {
 
     private ArrayAdapter<String> adapter;
     private List<String> listItems;
     private int selectedItemPosition = -1;
     private EditText editTextItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_lab3_list_view);
+
+        findViewById(R.id.btnBackLab3ListView).setOnClickListener(v -> finish());
+
         ListView listView = findViewById(R.id.listView);
         editTextItem = findViewById(R.id.editTextItem);
 
@@ -90,6 +97,12 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             selectedItemPosition = position;
             editTextItem.setText(listItems.get(position));
+        });
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
         });
     }
 }

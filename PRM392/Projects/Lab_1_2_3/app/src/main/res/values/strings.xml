@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Lab_1_2_3</string>
+    <string name="lab1lla">Lab 1 Linear Layout A</string>
+    <string name="lab1llb">Lab 1 Linear Layout B</string>
+    <string name="lab1rl">Lab 1 Relative Layout</string>
+    <string name="lab1cl">Lab 1 Constrain Layout</string>
+    <string name="back">Back button</string>
+    <string name="linear">Linear Layout</string>
+    <string name="android">Android</string>
+    <string name="php">PHP</string>
+    <string name="sql">SQL</string>
+    <string name="python">PYTHON</string>
+    <string name="num1">1</string>
+    <string name="num2">2</string>
+    <string name="num3">3</string>
+    <string name="num4">4</string>
+    <string name="num5">5</string>
+    <string name="num6">6</string>
+    <string name="num7">7</string>
+    <string name="title">Sign in Form</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="question">Not account yet? Create one</string>
+    <string name="or">----------Or----------</string>
+    <string name="signin">SIGN IN</string>
+    <string name="lab2cal">Lab 2 Calculator</string>
+    <string name="lab2ran">Lab 2 Random Number</string>
+    <string name="lab2sign">Lab 2 Sign In</string>
+    <string name="lab3listview">Lab 3 List View</string>
+    <string name="lab3customview">Lab 3 Custom List View</string>
+</resources>
