@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "SCBS.GrpcService.Protos";
+
+package schedule;
+
+// The greeting service definition.
+service ScheduleProto {
+  // Sends a greeting
+  rpc GetAll (GetAllRequest) returns (GetAllReply);
+}
+
+// The request message containing the user's name.
+message GetAllRequest {
+}
+
+// The response message containing the greetings.
+message GetAllReply {
+	repeated ScheduleItem items = 1;
+}
+
+message ScheduleItem {
+	string id = 1;
+	string userId = 2;
+	string workDate = 3;
+	string status = 4;
+	string createdAt = 5;
+	string updatedAt = 6;
+}
