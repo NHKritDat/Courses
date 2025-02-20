@@ -16,7 +16,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textvienten"
+        android:id="@+id/textviewten"
         android:layout_width="172dp"
         android:layout_height="32dp"
         android:layout_margin="10dp"
@@ -40,6 +40,6 @@
         android:textColor="#0A38E1"
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textvienten" />
+        app:layout_constraintTop_toBottomOf="@+id/textviewten" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

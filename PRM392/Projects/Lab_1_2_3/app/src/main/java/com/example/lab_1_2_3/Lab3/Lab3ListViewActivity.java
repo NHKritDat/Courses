@@ -36,7 +36,7 @@ public class Lab3ListViewActivity extends AppCompatActivity {
         editTextItem = findViewById(R.id.editTextItem);
 
         listItems = new ArrayList<>();
-        listItems.add("Android");
+        listItems.add("Android 2017");
         listItems.add("PHP");
         listItems.add("iOS");
         listItems.add("Unity");
@@ -54,6 +54,7 @@ public class Lab3ListViewActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please enter an item", Toast.LENGTH_SHORT).show();
             }
         });
+
         findViewById(R.id.editButton).setOnClickListener(view -> {
             if (selectedItemPosition >= 0) {
                 String updatedItem = editTextItem.getText().toString().trim();
@@ -82,7 +83,6 @@ public class Lab3ListViewActivity extends AppCompatActivity {
 
 
         findViewById(R.id.refreshButton).setOnClickListener(view -> {
-
             listItems.clear();
             listItems.add("Android");
             listItems.add("PHP");

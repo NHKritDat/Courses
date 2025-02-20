@@ -1,8 +1,7 @@
 package com.example.lab_1_2_3.Lab3;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +11,14 @@ import android.widget.TextView;
 
 import com.example.lab_1_2_3.R;
 
-import java.io.File;
 import java.util.List;
 
 public class FruitAdapter extends BaseAdapter {
     private final Context context;
     private final int layout;
-    private final List<Fruits> fruitList;
+    private final List<Fruit> fruitList;
 
-    public FruitAdapter(Context context, int layout, List<Fruits> fruitList) {
+    public FruitAdapter(Context context, int layout, List<Fruit> fruitList) {
         this.context = context;
         this.layout = layout;
         this.fruitList = fruitList;
@@ -32,7 +30,7 @@ public class FruitAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public Fruit getItem(int i) {
         return fruitList.get(i);
     }
 
@@ -42,48 +40,27 @@ public class FruitAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup parent) {
-        ViewHolder holder;
-
-        if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(layout, null);
-
-            // Ánh xạ view
-            holder = new ViewHolder();
-            holder.txtName = convertView.findViewById(R.id.textvienten);
-            holder.txtDes = convertView.findViewById(R.id.textviewmota);
-            holder.imageView = convertView.findViewById(R.id.imagevienhinh);
-
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
+    public View getView(int i, View view, ViewGroup parent) {
+        if (view == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            view = inflater.inflate(layout, parent, false);
         }
 
-        // Gán dữ liệu vào view
-        Fruits fruit = fruitList.get(i);
-        holder.txtName.setText(fruit.getName());
-        holder.txtDes.setText(fruit.getDescription());
+        TextView txtTen = view.findViewById(R.id.textviewten);
+        TextView txtDesc = view.findViewById(R.id.textviewmota);
+        ImageView image = view.findViewById(R.id.imagevienhinh);
 
-        // Kiểm tra nếu có ảnh từ bộ nhớ thì load ảnh từ file
-        if (fruit.getImagePath() != null) {
-            File imgFile = new File(fruit.getImagePath());
-            if (imgFile.exists()) {
-                Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                holder.imageView.setImageBitmap(bitmap);
-            } else {
-                holder.imageView.setImageResource(R.drawable.ic_launcher_background);
-            }
+        Fruit fruit = getItem(i);
+
+        txtTen.setText(fruit.getName());
+        txtDesc.setText(fruit.getDescription());
+
+        if (fruit.getImageUri() != null && !fruit.getImageUri().isEmpty()) {
+            image.setImageURI(Uri.parse(fruit.getImageUri()));
         } else {
-            holder.imageView.setImageResource(fruit.getImageResource());
+            image.setImageResource(fruit.getImage());
         }
 
-        return convertView;
-    }
-
-    private static class ViewHolder {
-        TextView txtName;
-        TextView txtDes;
-        ImageView imageView;
+        return view;
     }
 }
