@@ -22,7 +22,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-        View view = inflater.inflate(R.layout.row_userlist, parent, false);
+        View view = inflater.inflate(R.layout.item_user, parent, false);
 
         return new ViewHolder(view);
     }
@@ -31,9 +31,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         User user = users.get(position);
 
-        holder.tvEmail.setText(String.format("Email: %s", user.getEmail()));
-        holder.tvFullName.setText(String.format("FullName: %s", user.getFullName()));
         holder.tvUsername.setText(String.format("Username: %s", user.getUsername()));
+        holder.tvFullName.setText(String.format("FullName: %s", user.getFullName()));
+        holder.tvEmail.setText(String.format("Email: %s", user.getEmail()));
     }
 
     @Override

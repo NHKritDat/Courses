@@ -17,7 +17,11 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         findViewById(R.id.btnRecyclerView).setOnClickListener(v -> {
-            Intent intent = new Intent(this, UserAdapter.class);
+            Intent intent = new Intent(this, UserActivity.class);
+            startActivity(intent);
+        });
+        findViewById(R.id.btn2).setOnClickListener(v -> {
+            Intent intent = new Intent(this, ModuleActivity.class);
             startActivity(intent);
         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

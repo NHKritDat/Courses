@@ -21,7 +21,7 @@ public class UserActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_user);
 
-        RecyclerView view = findViewById(R.id.rvUser);
+        RecyclerView rvUser = findViewById(R.id.rvUser);
 
         users = new ArrayList<>();
         users.add(new User("NguyenTT", "Tran Thanh Nguyen", "Nguyentt@ftp.edu.vn"));
@@ -29,11 +29,11 @@ public class UserActivity extends AppCompatActivity {
         users.add(new User("HieuDT", "Do The Hieu", "hieu@fpt.edu.vn"));
         users.add(new User("ThucHN", "Hoang Ngoc Thuc", "thuc@fpt.edu.vn"));
 
-        UserAdapter userAdapter = new UserAdapter(users);
+        UserAdapter adapter = new UserAdapter(users);
 
-        view.setAdapter(userAdapter);
+        rvUser.setAdapter(adapter);
 
-        view.setLayoutManager(new LinearLayoutManager(this));
+        rvUser.setLayoutManager(new LinearLayoutManager(this));
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
