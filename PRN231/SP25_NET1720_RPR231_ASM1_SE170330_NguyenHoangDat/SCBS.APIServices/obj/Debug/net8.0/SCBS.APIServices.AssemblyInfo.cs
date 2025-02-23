@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SCBS.APIServices")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dde98454e4de867c8f57e26cafc81310a3e46301")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+173855c120f0d2e5038db6949421f87d8ea60585")]
 [assembly: System.Reflection.AssemblyProductAttribute("SCBS.APIServices")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SCBS.APIServices")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

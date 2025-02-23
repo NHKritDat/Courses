@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "UP3BbDmWm/IrMHEtJ0XuFca77aHw36906M0OMgqmWUk=",
+  "Source": "SCBS.GrpcService",
+  "BasePath": "_content/SCBS.GrpcService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

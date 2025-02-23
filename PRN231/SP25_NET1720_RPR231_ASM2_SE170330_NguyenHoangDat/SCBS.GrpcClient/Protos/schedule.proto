@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option csharp_namespace = "SCBS.GrpcClient.Protos";
+
+package schedule;
+
+service ScheduleProto {
+  rpc GetAll (EmptyRequest) returns (ScheduleItemList);
+
+  rpc GetById (ScheduleIdRequest) returns (ScheduleItem);
+
+  rpc Create (ScheduleItem) returns (ActionResult);
+
+  rpc Update (ScheduleItem) returns (ActionResult);
+
+  rpc Delete (ScheduleIdRequest) returns (ActionResult);
+}
+
+message ActionResult {
+	int32 status = 1;
+	string message = 2;
+	ScheduleItemList Data = 3;
+}
+
+message ScheduleIdRequest {
+	string id = 1;
+}
+
+message EmptyRequest {
+}
+
+message ScheduleItemList {
+	repeated ScheduleItem items = 1;
+}
+
+message ScheduleItem {
+	string id = 1;
+	string userId = 2;
+	string workDate = 3;
+	string status = 4;
+	string createdAt = 5;
+	string updatedAt = 6;
+}

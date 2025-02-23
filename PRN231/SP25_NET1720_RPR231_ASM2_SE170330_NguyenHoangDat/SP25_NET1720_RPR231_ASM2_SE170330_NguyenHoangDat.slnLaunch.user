@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "SCBS.GrpcService\\SCBS.GrpcService.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "SCBS.GrpcClient\\SCBS.GrpcClient.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
