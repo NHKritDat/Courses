@@ -4,6 +4,11 @@ public class CongViec {
     private int IdCV;
     private String TenCV;
 
+    public CongViec(int idCV, String tenCV) {
+        IdCV = idCV;
+        TenCV = tenCV;
+    }
+
     public int getIdCV() {
         return IdCV;
     }
@@ -17,11 +22,6 @@ public class CongViec {
     }
 
     public void setTenCV(String tenCV) {
-        TenCV = tenCV;
-    }
-
-    public CongViec(int idCV, String tenCV) {
-        IdCV = idCV;
         TenCV = tenCV;
     }
 }

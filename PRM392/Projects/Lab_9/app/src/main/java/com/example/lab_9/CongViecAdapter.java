@@ -1,6 +1,5 @@
 package com.example.lab_9;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,11 @@ import android.widget.TextView;
 import java.util.List;
 
 public class CongViecAdapter extends BaseAdapter {
-    private final Context context;
+    private final MainActivity context;
     private final int layout;
     private final List<CongViec> congViecList;
 
-    public CongViecAdapter(Context context, int layout, List<CongViec> congViecList) {
+    public CongViecAdapter(MainActivity context, int layout, List<CongViec> congViecList) {
         this.context = context;
         this.layout = layout;
         this.congViecList = congViecList;
@@ -36,11 +35,6 @@ public class CongViecAdapter extends BaseAdapter {
         return 0;
     }
 
-    private class ViewHolder {
-        TextView txtTen;
-        ImageView imgDelete, imgEdit;
-    }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
@@ -58,6 +52,14 @@ public class CongViecAdapter extends BaseAdapter {
         CongViec congViec = congViecList.get(position);
         holder.txtTen.setText(congViec.getTenCV());
 
+        holder.imgEdit.setOnClickListener(v -> context.DialogSuaCongViec(congViec.getTenCV(), congViec.getIdCV()));
+        holder.imgDelete.setOnClickListener(v -> context.DialogXoaCongViec(congViec.getTenCV(), congViec.getIdCV()));
+
         return convertView;
+    }
+
+    private class ViewHolder {
+        TextView txtTen;
+        ImageView imgDelete, imgEdit;
     }
 }
