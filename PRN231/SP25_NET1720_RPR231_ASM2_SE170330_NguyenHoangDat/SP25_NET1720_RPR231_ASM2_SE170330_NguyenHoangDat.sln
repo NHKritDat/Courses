@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.GrpcService", "SCBS.Gr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.GrpcClient", "SCBS.GrpcClient\SCBS.GrpcClient.csproj", "{FE07A238-E71F-4CBE-93A9-A04CC4842329}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.Repositories", "SCBS.Repositories\SCBS.Repositories.csproj", "{138AA727-33B9-3B92-63A8-6B3C43903364}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.Services", "SCBS.Services\SCBS.Services.csproj", "{F287A30D-CE46-D1E0-D77B-2DDD27260CEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +25,19 @@ Global
 		{FE07A238-E71F-4CBE-93A9-A04CC4842329}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE07A238-E71F-4CBE-93A9-A04CC4842329}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE07A238-E71F-4CBE-93A9-A04CC4842329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{138AA727-33B9-3B92-63A8-6B3C43903364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{138AA727-33B9-3B92-63A8-6B3C43903364}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{138AA727-33B9-3B92-63A8-6B3C43903364}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{138AA727-33B9-3B92-63A8-6B3C43903364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F287A30D-CE46-D1E0-D77B-2DDD27260CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F287A30D-CE46-D1E0-D77B-2DDD27260CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F287A30D-CE46-D1E0-D77B-2DDD27260CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F287A30D-CE46-D1E0-D77B-2DDD27260CEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D572712D-6627-45F2-A730-E34D685F6690}
 	EndGlobalSection
 EndGlobal

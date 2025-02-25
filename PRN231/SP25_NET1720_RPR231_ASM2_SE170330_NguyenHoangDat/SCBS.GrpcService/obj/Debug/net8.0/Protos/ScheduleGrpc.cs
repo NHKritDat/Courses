@@ -96,6 +96,46 @@ namespace SCBS.GrpcService.Protos {
         __Marshaller_schedule_ScheduleIdRequest,
         __Marshaller_schedule_ActionResult);
 
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SCBS.GrpcService.Protos.EmptyRequest, global::SCBS.GrpcService.Protos.ScheduleItemList> __Method_GetAllAsync = new grpc::Method<global::SCBS.GrpcService.Protos.EmptyRequest, global::SCBS.GrpcService.Protos.ScheduleItemList>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAllAsync",
+        __Marshaller_schedule_EmptyRequest,
+        __Marshaller_schedule_ScheduleItemList);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SCBS.GrpcService.Protos.ScheduleIdRequest, global::SCBS.GrpcService.Protos.ScheduleItem> __Method_GetByIdAsync = new grpc::Method<global::SCBS.GrpcService.Protos.ScheduleIdRequest, global::SCBS.GrpcService.Protos.ScheduleItem>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetByIdAsync",
+        __Marshaller_schedule_ScheduleIdRequest,
+        __Marshaller_schedule_ScheduleItem);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SCBS.GrpcService.Protos.ScheduleItem, global::SCBS.GrpcService.Protos.ActionResult> __Method_CreateAsync = new grpc::Method<global::SCBS.GrpcService.Protos.ScheduleItem, global::SCBS.GrpcService.Protos.ActionResult>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CreateAsync",
+        __Marshaller_schedule_ScheduleItem,
+        __Marshaller_schedule_ActionResult);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SCBS.GrpcService.Protos.ScheduleItem, global::SCBS.GrpcService.Protos.ActionResult> __Method_UpdateAsync = new grpc::Method<global::SCBS.GrpcService.Protos.ScheduleItem, global::SCBS.GrpcService.Protos.ActionResult>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateAsync",
+        __Marshaller_schedule_ScheduleItem,
+        __Marshaller_schedule_ActionResult);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::SCBS.GrpcService.Protos.ScheduleIdRequest, global::SCBS.GrpcService.Protos.ActionResult> __Method_DeleteAsync = new grpc::Method<global::SCBS.GrpcService.Protos.ScheduleIdRequest, global::SCBS.GrpcService.Protos.ActionResult>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DeleteAsync",
+        __Marshaller_schedule_ScheduleIdRequest,
+        __Marshaller_schedule_ActionResult);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -136,6 +176,36 @@ namespace SCBS.GrpcService.Protos {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SCBS.GrpcService.Protos.ScheduleItemList> GetAllAsync(global::SCBS.GrpcService.Protos.EmptyRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SCBS.GrpcService.Protos.ScheduleItem> GetByIdAsync(global::SCBS.GrpcService.Protos.ScheduleIdRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SCBS.GrpcService.Protos.ActionResult> CreateAsync(global::SCBS.GrpcService.Protos.ScheduleItem request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SCBS.GrpcService.Protos.ActionResult> UpdateAsync(global::SCBS.GrpcService.Protos.ScheduleItem request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::SCBS.GrpcService.Protos.ActionResult> DeleteAsync(global::SCBS.GrpcService.Protos.ScheduleIdRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -148,7 +218,12 @@ namespace SCBS.GrpcService.Protos {
           .AddMethod(__Method_GetById, serviceImpl.GetById)
           .AddMethod(__Method_Create, serviceImpl.Create)
           .AddMethod(__Method_Update, serviceImpl.Update)
-          .AddMethod(__Method_Delete, serviceImpl.Delete).Build();
+          .AddMethod(__Method_Delete, serviceImpl.Delete)
+          .AddMethod(__Method_GetAllAsync, serviceImpl.GetAllAsync)
+          .AddMethod(__Method_GetByIdAsync, serviceImpl.GetByIdAsync)
+          .AddMethod(__Method_CreateAsync, serviceImpl.CreateAsync)
+          .AddMethod(__Method_UpdateAsync, serviceImpl.UpdateAsync)
+          .AddMethod(__Method_DeleteAsync, serviceImpl.DeleteAsync).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -163,6 +238,11 @@ namespace SCBS.GrpcService.Protos {
       serviceBinder.AddMethod(__Method_Create, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SCBS.GrpcService.Protos.ScheduleItem, global::SCBS.GrpcService.Protos.ActionResult>(serviceImpl.Create));
       serviceBinder.AddMethod(__Method_Update, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SCBS.GrpcService.Protos.ScheduleItem, global::SCBS.GrpcService.Protos.ActionResult>(serviceImpl.Update));
       serviceBinder.AddMethod(__Method_Delete, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SCBS.GrpcService.Protos.ScheduleIdRequest, global::SCBS.GrpcService.Protos.ActionResult>(serviceImpl.Delete));
+      serviceBinder.AddMethod(__Method_GetAllAsync, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SCBS.GrpcService.Protos.EmptyRequest, global::SCBS.GrpcService.Protos.ScheduleItemList>(serviceImpl.GetAllAsync));
+      serviceBinder.AddMethod(__Method_GetByIdAsync, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SCBS.GrpcService.Protos.ScheduleIdRequest, global::SCBS.GrpcService.Protos.ScheduleItem>(serviceImpl.GetByIdAsync));
+      serviceBinder.AddMethod(__Method_CreateAsync, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SCBS.GrpcService.Protos.ScheduleItem, global::SCBS.GrpcService.Protos.ActionResult>(serviceImpl.CreateAsync));
+      serviceBinder.AddMethod(__Method_UpdateAsync, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SCBS.GrpcService.Protos.ScheduleItem, global::SCBS.GrpcService.Protos.ActionResult>(serviceImpl.UpdateAsync));
+      serviceBinder.AddMethod(__Method_DeleteAsync, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SCBS.GrpcService.Protos.ScheduleIdRequest, global::SCBS.GrpcService.Protos.ActionResult>(serviceImpl.DeleteAsync));
     }
 
   }

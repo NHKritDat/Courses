@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9E25904C-6809-4983-B718-F43E2351EEBB}|SCBS.APIServices\\SCBS.APIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm1_se170330_nguyenhoangdat\\scbs.apiservices\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9E25904C-6809-4983-B718-F43E2351EEBB}|SCBS.APIServices\\SCBS.APIServices.csproj|solutionrelative:scbs.apiservices\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.APIServices\\appsettings.json",
+              "RelativeDocumentMoniker": "SCBS.APIServices\\appsettings.json",
+              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM1_SE170330_NguyenHoangDat\\SCBS.APIServices\\appsettings.json",
+              "RelativeToolTip": "SCBS.APIServices\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-21T04:44:41.365Z",
+              "EditorCaption": ""
             }
           ]
         }

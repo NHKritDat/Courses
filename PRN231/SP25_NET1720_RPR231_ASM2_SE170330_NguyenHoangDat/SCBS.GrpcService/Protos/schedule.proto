@@ -14,6 +14,16 @@ service ScheduleProto {
   rpc Update (ScheduleItem) returns (ActionResult);
 
   rpc Delete (ScheduleIdRequest) returns (ActionResult);
+
+  rpc GetAllAsync (EmptyRequest) returns (ScheduleItemList);
+
+  rpc GetByIdAsync (ScheduleIdRequest) returns (ScheduleItem);
+
+  rpc CreateAsync (ScheduleItem) returns (ActionResult);
+
+  rpc UpdateAsync (ScheduleItem) returns (ActionResult);
+  
+  rpc DeleteAsync (ScheduleIdRequest) returns (ActionResult);
 }
 
 message ActionResult {

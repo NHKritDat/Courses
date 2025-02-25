@@ -3,35 +3,24 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace SCBS.Repositories.Models;
 
-[Table("Schedule")]
 public partial class Schedule
 {
     [Key]
-    [Column("ID")]
     public Guid Id { get; set; }
 
-    [Column("UserID")]
     public Guid UserId { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime WorkDate { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string Status { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? CreatedAt { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? UpdatedAt { get; set; }
 
-    [ForeignKey("UserId")]
-    [InverseProperty("Schedules")]
     public virtual User User { get; set; }
 }

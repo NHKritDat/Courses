@@ -46,11 +46,23 @@ public partial class NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext : DbCont
 
             entity.ToTable("Schedule", tb => tb.HasTrigger("Schedule_Update"));
 
-            entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
-            entity.Property(e => e.UpdatedAt).HasDefaultValueSql("(getdate())");
+            entity.Property(e => e.Id)
+                .HasDefaultValueSql("(newid())")
+                .HasColumnName("ID");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Status)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.WorkDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.User).WithMany(p => p.Schedules)
+                .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Schedule__UserID__00200768");
         });
@@ -61,10 +73,72 @@ public partial class NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext : DbCont
 
             entity.ToTable("User", tb => tb.HasTrigger("User_Update"));
 
-            entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
-            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
+            entity.HasIndex(e => e.Email, "UQ__User__A9D1053440C88EBD").IsUnique();
+
+            entity.Property(e => e.Id)
+                .HasDefaultValueSql("(newid())")
+                .HasColumnName("ID");
+            entity.Property(e => e.Avatar).HasMaxLength(255);
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Email)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.FullName)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.Gender)
+                .IsRequired()
+                .HasMaxLength(7);
+            entity.Property(e => e.Password)
+                .IsRequired()
+                .HasMaxLength(180);
+            entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.Rating).HasDefaultValue(0.0);
-            entity.Property(e => e.UpdatedAt).HasDefaultValueSql("(getdate())");
+            entity.Property(e => e.Role)
+                .IsRequired()
+                .HasMaxLength(8);
+            entity.Property(e => e.Status)
+                .IsRequired()
+                .HasMaxLength(8);
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Username)
+                .IsRequired()
+                .HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<UserAccount>(entity =>
+        {
+            entity.ToTable("UserAccount");
+
+            entity.Property(e => e.UserAccountId).HasColumnName("UserAccountID");
+            entity.Property(e => e.ApplicationCode).HasMaxLength(50);
+            entity.Property(e => e.CreatedBy).HasMaxLength(50);
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Email)
+                .IsRequired()
+                .HasMaxLength(150);
+            entity.Property(e => e.EmployeeCode)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.FullName)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.ModifiedBy).HasMaxLength(50);
+            entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.Password)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.Phone)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.RequestCode).HasMaxLength(50);
+            entity.Property(e => e.UserName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         OnModelCreatingPartial(modelBuilder);

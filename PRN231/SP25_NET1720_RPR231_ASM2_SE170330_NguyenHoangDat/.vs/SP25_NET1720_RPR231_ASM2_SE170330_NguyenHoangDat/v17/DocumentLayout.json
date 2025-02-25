@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM2_SE170330_NguyenHoangDat\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AE64E830-F0F0-4222-9894-F41037DB3568}|SCBS.GrpcService\\SCBS.GrpcService.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm2_se170330_nguyenhoangdat\\scbs.grpcservice\\services\\schedulegrpcservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE64E830-F0F0-4222-9894-F41037DB3568}|SCBS.GrpcService\\SCBS.GrpcService.csproj|solutionrelative:scbs.grpcservice\\services\\schedulegrpcservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE64E830-F0F0-4222-9894-F41037DB3568}|SCBS.GrpcService\\SCBS.GrpcService.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm2_se170330_nguyenhoangdat\\scbs.grpcservice\\protos\\schedule.proto||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{AE64E830-F0F0-4222-9894-F41037DB3568}|SCBS.GrpcService\\SCBS.GrpcService.csproj|solutionrelative:scbs.grpcservice\\protos\\schedule.proto||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +18,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ScheduleGrpcService.cs",
+              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM2_SE170330_NguyenHoangDat\\SCBS.GrpcService\\Services\\ScheduleGrpcService.cs",
+              "RelativeDocumentMoniker": "SCBS.GrpcService\\Services\\ScheduleGrpcService.cs",
+              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM2_SE170330_NguyenHoangDat\\SCBS.GrpcService\\Services\\ScheduleGrpcService.cs",
+              "RelativeToolTip": "SCBS.GrpcService\\Services\\ScheduleGrpcService.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAgwEcAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T03:54:03.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "schedule.proto",
+              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM2_SE170330_NguyenHoangDat\\SCBS.GrpcService\\Protos\\schedule.proto",
+              "RelativeDocumentMoniker": "SCBS.GrpcService\\Protos\\schedule.proto",
+              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM2_SE170330_NguyenHoangDat\\SCBS.GrpcService\\Protos\\schedule.proto",
+              "RelativeToolTip": "SCBS.GrpcService\\Protos\\schedule.proto",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
+              "WhenOpened": "2025-02-25T03:54:02.516Z",
+              "EditorCaption": ""
             }
           ]
         }
