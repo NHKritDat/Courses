@@ -1,0 +1,59 @@
+Fragment
+
+0. Hoàn cảnh ra đời:
+- Được ra mắt lần đầu ở phiên bản Android 3.0.
+- Với mục đích sơ khai thác các khoảng trắng mà giao diện cũ - xảy ra khi chuyển từ thiết bị có màn hình nhỏ sang một màn hình lớn hơn, bằng giao diện đa cột, với mỗi fragment đại diện cho một cột.
+- Nhận ra sức mạnh to lớn của fragment -> quyết định hoàn thiện thư viện, tạo các bản hỗ trợ cho các phiên bản cũ hơn (từ trước Android 3.0 cho tới Android 1.6).
+
+1. Fragment là gì:
+- Công cụ mạnh mẽ giúp tạo UI linh hoạt và tối ưu cho ứng dụng Android, đặc biệt hữu ích trong các ứng dụng đa màn hình.
+- Một thành phần android độc lập, được sử dụng bởi một activity, giống như một sub-activity.
+- Fragment có vòng đời và giao diện riêng.
+- Một Fragment có thể được sử dụng trong nhiều Activitiy.
+- Vòng đời của fragment bị ảnh hưởng trực tiếp bởi vòng đời của activity chủ.
+
+2. Các đặc điểm của fragment:
+- Vòng đời của fragment:
+	+ Resume(Hoạt động): Fragment hiển thị trong activity đang chạy.
+	+ Pause(Tạm dừng): Fragment mờ một phần hoặc không che phủ toàn bộ màn hình.
+	+ Stop(Dừng lại): Fragment bị che khuất hoàn toàn hoặc bị gỡ ra khỏi Activity (được lưu trữ cho trường hợp Fragment này được hiển thị trở lại).
+	+ Dead(Chết): Fragment bị gỡ ra khỏi Activity và không được đưa vào Back Stack trước đó (kể cả trường hợp Activity chứa nó Dead).
+* Các method dùng cho vòng đời của fragment: onAttach(), onCreate(), onCreateView(), onActivityCreated(), onStart(), onResume(), onPause(), onStop(), onDestroyView(), onDestroy(), onDetach(),...
+- Các loại fragment: Fragment không bao giờ tách khỏi Activity, muốn dùng Fragment phải đặt hoặc gọi từ Activity.
+	+ Static Fragment: 
+		Đặt “cứng” trong file contentView XML của activity với thẻ <fragment>. 
+		Bắt buộc phải có thuộc tính android:id. 
+		Chỉ định thẻ fragment nào sẽ chứa đựng Fragment nào một cách cố định.
+	+ Dynamics Fragment: khai báo một vùng không gian nào đó sẽ chứa đựng Fragment bằng thẻ <FrameLayout>.
+3. Quản lý các fragment:
+- FragmentManager: 
+	+ findFragmentById(): truyền vào cho nó một ID. ID này có thể là ID của thẻ fragment như với mục hiển thị tĩnh . Hoặc ID của Layout chứa Fragment. Kết quả của phương 	thức này sẽ trả về cho bạn một Fragment được chứa trong layout có ID mà bạn vừa cung cấp.
+- FragmentTransaction:
+	+ add(): Khi FrameLayout còn rỗng, dùng phương thức này add Fragment vào cho FrameLayout.
+
+	+ replace(): Khi muốn thay thế một Fragment đang có sẵn ở FrameLayout bằng một Fragment nào đó khác.
+
+	+ remove(): Khi muốn gỡ bỏ Fragment ra khỏi một FrameLayout nào đó.
+
+	+ commit(): Sau khi sử dụng add(), replace() hay remove() thì phải gọi commit() cuối cùng để FragmentTransaction bắt đầu thực hiện.
+
+	+ addToBackStack(): Sau khi replace() hay remove(), trước khi commit(), có thể sử dụng addToBackStack(), hệ thống sẽ đưa Fragment ở transaction hiện tại vào Back 	Stack.
+
+4. Ưu, nhược điểm
+- Ưu điểm
+	+ Tái sử dụng UI: Có thể sử dụng một Fragment trên nhiều Activity hoặc nhiều thiết bị có màn hình khác nhau.
+	+ Quản lý linh hoạt: Có thể thêm, xóa, thay thế dễ dàng trong Activity.
+	+ Tối ưu hiệu suất: Fragment chỉ tải và hiển thị khi cần thiết.
+	+ Hỗ trợ ViewPager: Dùng để tạo màn hình dạng vuốt như trong ứng dụng TabLayout hoặc ViewPager2.
+- Nhược điểm
+	+ Khó quản lý vòng đời: Do Fragment bị ràng buộc với Activity, việc quản lý vòng đời phức tạp hơn.
+	+ Dễ gây memory leak: Nếu không hủy đúng cách, Fragment có thể giữ tham chiếu đến Activity cũ sau khi bị hủy.
+	+ Khó debug hơn Activity: Vì Fragment có thể tồn tại trong nhiều Activity, debug sẽ phức tạp hơn.
+5. So sánh (vẽ thành cái bảng nha)
+
+Tiêu chí		Fragment					Activity
+Độc lập			Không thể tồn tại độc lập			Có thể tồn tại độc lập
+Quản lý UI		Một phần của UI trong Activity			Chứa toàn bộ UI
+Vòng đời		Phức tạp hơn do phụ thuộc vào Activity		Đơn giản hơn
+Chuyển đổi		Sử dụng FragmentTransaction			Sử dụng Intent
+Hiệu suất		Nhẹ hơn	Nặng hơn
