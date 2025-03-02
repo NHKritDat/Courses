@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM3_SE170330_NguyenHoangDat\\SCBS.BlazorApp.APIServices\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SCBS.BlazorApp.APIServices.bundle.scp.css",
+      "PackagePath": "staticwebassets\\SCBS.BlazorApp.APIServices.gwfcqpyejo.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM3_SE170330_NguyenHoangDat\\SCBS.BlazorApp.APIServices\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM3_SE170330_NguyenHoangDat\\SCBS.BlazorApp.APIServices\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM3_SE170330_NguyenHoangDat\\SCBS.BlazorApp.APIServices\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM3_SE170330_NguyenHoangDat\\SCBS.BlazorApp.APIServices\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SCBS.BlazorApp.APIServices.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SCBS.BlazorApp.APIServices.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.SCBS.BlazorApp.APIServices.props",
+      "PackagePath": "build\\SCBS.BlazorApp.APIServices.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SCBS.BlazorApp.APIServices.props",
+      "PackagePath": "buildMultiTargeting\\SCBS.BlazorApp.APIServices.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.SCBS.BlazorApp.APIServices.props",
+      "PackagePath": "buildTransitive\\SCBS.BlazorApp.APIServices.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

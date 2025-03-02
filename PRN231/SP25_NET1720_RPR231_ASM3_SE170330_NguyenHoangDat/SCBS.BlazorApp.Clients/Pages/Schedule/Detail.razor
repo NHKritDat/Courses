@@ -1,0 +1,33 @@
+﻿@page "/Schedule/Detail/{Id}"
+@using SCBS.BlazorApp.Clients.Models;
+@inject HttpClient httpClient;
+
+<h3>Detail</h3>
+
+@if (schedule == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title"><strong>User:</strong> @schedule.User.FullName</h5>
+			<p><strong>Work Date:</strong> @schedule.WorkDate</p>
+			<p><strong>Status:</strong> @schedule.Status</p>
+			<p><strong>Created At:</strong> @schedule.CreatedAt</p>
+			<p><strong>Updated At:</strong> @schedule.UpdatedAt</p>
+			<a href="/Schedule/ScheduleList" class="btn btn-primary">Back</a>
+		</div>
+	</div>
+}
+
+@code {
+	private Schedule schedule = new Schedule();
+	[Parameter]
+	public string Id { get; set; }
+	protected override async Task OnInitializedAsync()
+	{
+		schedule = await httpClient.GetFromJsonAsync<Schedule>($"https://localhost:7043/api/schedule/{Id}");
+	}
+}

@@ -1,0 +1,72 @@
+﻿@page "/Schedule/Create"
+@using SCBS.BlazorApp.Clients.Models
+@inject HttpClient httpClient
+@inject NavigationManager Navigation
+
+<h3>Create</h3>
+
+@if (isSubmitting)
+{
+	<p><em>Submitting...</em></p>
+}
+else
+{
+	<div class="card">
+		<div class="card-body">
+			<div class="mb-3">
+				<label class="form-label">User</label>
+				<select class="form-control" @bind="schedule.UserId">
+					<option value="">-- Select User --</option>
+					@foreach (var user in users)
+					{
+						<option value="@user.Id">@user.FullName</option>
+					}
+				</select>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">Work Date</label>
+				<input type="date" class="form-control" @bind="schedule.WorkDate" />
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">Status</label>
+				<input type="text" class="form-control" @bind="schedule.Status" />
+			</div>
+
+			<button class="btn btn-primary" @onclick="CreateSchedule">Create</button>
+			<button class="btn btn-secondary ms-2" @onclick="GoBack">Cancel</button>
+		</div>
+	</div>
+}
+
+
+@code {
+	private Schedule schedule = new Schedule();
+	private List<User> users = new List<User>();
+	private bool isSubmitting = false;
+	protected override async Task OnInitializedAsync()
+	{
+		users = await httpClient.GetFromJsonAsync<List<User>>("https://localhost:7043/api/user");
+	}
+
+	private async Task CreateSchedule()
+	{
+		isSubmitting = true;
+
+		var response = await httpClient.PostAsJsonAsync("https://localhost:7043/api/schedule", schedule);
+		if (response.IsSuccessStatusCode)
+		{
+			Navigation.NavigateTo("/Schedule/ScheduleList");
+		}
+		else
+		{
+			isSubmitting = false;
+		}
+	}
+
+	private void GoBack()
+	{
+		Navigation.NavigateTo("/Schedule/ScheduleList");
+	}
+}

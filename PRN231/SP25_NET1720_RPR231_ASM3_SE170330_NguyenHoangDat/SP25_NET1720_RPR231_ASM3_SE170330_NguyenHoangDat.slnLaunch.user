@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "SCBS.BlazorApp.APIServices\\SCBS.BlazorApp.APIServices.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "SCBS.BlazorApp.Clients\\SCBS.BlazorApp.Clients.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
