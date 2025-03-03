@@ -7753,6 +7753,7 @@
     "net8.0": [
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.11",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.7",
+      "Newtonsoft.Json >= 13.0.3",
       "SCBS.Repositories >= 1.0.0",
       "System.IdentityModel.Tokens.Jwt >= 8.3.0"
     ]
@@ -7820,6 +7821,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[8.0.7, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
           },
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",

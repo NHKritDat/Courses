@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -30,20 +36,18 @@
                         </li>
                     </ul>
                 </div>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
-                    <div class="nav-item text-nowrap">
-                        Welcome
-                        <strong>@Context.Request.Cookies["UserName"].ToString()</strong>
-                        | @* <a href="/SystemAccount/Logout">LogOut</a> *@
-                        <a asp-controller="UserAccount" asp-action="Logout">Logout</a>
-                    </div>
-                </div>
             </div>
         </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            @RenderBody()
+            <div class="row text-center">
+                <h3 class="text-danger">Forbidden</h3>
+                <h4 class="text-danger">You are not allowed to access this function!</h4>
+                <div>
+                    <a asp-action="Login" asp-asp-controller="UserAccount" class="btn btn-primary">Login</a>
+                </div>
+            </div>
         </main>
     </div>
 
@@ -55,6 +59,5 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

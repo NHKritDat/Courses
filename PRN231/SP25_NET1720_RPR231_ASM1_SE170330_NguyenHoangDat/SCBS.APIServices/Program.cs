@@ -15,12 +15,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IScheduleService, ScheduleService>();
 builder.Services.AddScoped<IUserAccountService, UserAccountService>();
+static IEdmModel GetEdmModel()
+{
+    var odataBuilder = new ODataConventionModelBuilder();
+    odataBuilder.EntitySet<Schedule>("Schedule");
+    odataBuilder.EntitySet<User>("User");
+    return odataBuilder.GetEdmModel();
+}
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.Never;
+}).AddOData(options =>
+{
+    options.Select().Filter().OrderBy().Expand().SetMaxTop(null).Count();
+    options.AddRouteComponents("odata", GetEdmModel());
 });
-////JWT Config
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -35,32 +45,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
     });
-//OData
-static IEdmModel GetEdmModel()
-{
-    var odataBuilder = new ODataConventionModelBuilder();
-    odataBuilder.EntitySet<Schedule>("Schedule"); // ENTITY
-    odataBuilder.EntitySet<User>("User"); // ENTITY
-    return odataBuilder.GetEdmModel();
-}
-builder.Services.AddControllers().AddOData(options =>
-{
-    options.Select().Filter().OrderBy().Expand().SetMaxTop(null).Count();
-    options.AddRouteComponents("odata", GetEdmModel());
-});
-//builder.Services.AddControllers();
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
-//Add swagger authen
 builder.Services.AddSwaggerGen(option =>
 {
-    ////JWT Config
-    option.DescribeAllParametersInCamelCase();
-
     option.ResolveConflictingActions(ApiDes => ApiDes.First());
-
+    option.DescribeAllParametersInCamelCase();
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -86,6 +76,7 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -97,11 +88,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-
 app.Run();

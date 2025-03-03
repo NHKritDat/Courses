@@ -4,14 +4,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-// Add authen
 builder.Services.AddAuthentication()
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
     {
-        options.LoginPath = new PathString("/Account/Login");
-        options.AccessDeniedPath = new PathString("/Account/Forbidden");
+        options.LoginPath = new PathString("/UserAccount/Login");
+        options.AccessDeniedPath = new PathString("/UserAccount/Forbidden");
         options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-
     });
 
 var app = builder.Build();
@@ -28,7 +26,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
 

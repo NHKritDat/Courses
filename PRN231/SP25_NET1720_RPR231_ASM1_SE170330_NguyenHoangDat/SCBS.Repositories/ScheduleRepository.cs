@@ -1,4 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SCBS.Repositories.Base;
 using SCBS.Repositories.Models;
 
@@ -7,22 +12,15 @@ namespace SCBS.Repositories
     public class ScheduleRepository : GenericRepository<Schedule>
     {
         public ScheduleRepository() { }
-        public new async Task<List<Schedule>> GetAllAsync()
-        {
-            var schedules = await _context.Schedules.Include(s => s.User).ToListAsync();
-            return schedules;
-        }
-
-        public new async Task<Schedule?> GetByIdAsync(Guid id) => await _context.Schedules.Include(s => s.User).FirstOrDefaultAsync(s => s.Id == id);
-
-        public async Task<List<Schedule>> Search(DateTime workDate, string status)
-        {
-            var schedules = await _context.Schedules
-                .Where(s => (workDate == DateTime.MinValue || s.WorkDate == workDate)
-                            && (string.IsNullOrEmpty(status) || s.Status == status))
-                .Include(s => s.User)
+        public async Task<List<Schedule>> GetAllAsync() => await _context.Schedules.Include(item => item.User).ToListAsync();
+        public async Task<Schedule> GetByIdAsync(Guid id) => await _context.Schedules.Include(item => item.User).FirstOrDefaultAsync(item => item.Id == id);
+        public async Task<List<Schedule>> Search(string title, string location, string? status) => await _context.Schedules
+                .Include(item => item.User)
+                .Where(item =>
+                (string.IsNullOrEmpty(title) || item.Title.Contains(title))
+                            && (string.IsNullOrEmpty(location) || item.Location.Contains(location))
+                            && (string.IsNullOrEmpty(status) || item.Status.Contains(status))
+                )
                 .ToListAsync();
-            return schedules;
-        }
     }
 }
