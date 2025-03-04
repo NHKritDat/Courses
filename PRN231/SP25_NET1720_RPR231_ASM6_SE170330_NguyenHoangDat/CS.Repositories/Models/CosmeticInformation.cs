@@ -13,11 +13,13 @@ public partial class CosmeticInformation
 {
     [Key]
     [Column("CosmeticID")]
+    [Required]
     [StringLength(30)]
     public string CosmeticId { get; set; }
 
     [Required]
-    [StringLength(160)]
+    [StringLength(80, MinimumLength = 2)]
+    [RegularExpression(@"^[A-Z]*[a-zA-Z\s@#0-9]*")]
     public string CosmeticName { get; set; }
 
     [Required]
@@ -29,10 +31,11 @@ public partial class CosmeticInformation
     public string ExpirationDate { get; set; }
 
     [Required]
-    [StringLength(400)]
+    [StringLength(80, MinimumLength = 2)]
     public string CosmeticSize { get; set; }
 
     [Column(TypeName = "decimal(18, 0)")]
+    [Range(0, double.MaxValue)]
     public decimal DollarPrice { get; set; }
 
     [Column("CategoryID")]

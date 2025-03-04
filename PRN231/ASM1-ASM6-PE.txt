@@ -834,3 +834,16 @@ Details, Index:
             <td>
                 @Html.DisplayFor(modelItem => item.SubModel.SubModelField)
             </td>
+
+-------------------------------Validation------------------------------------------------
+Value for Field includes a-z, A-Z, space, @, # and digit 0-9. Each word of the Fied must begin with the capital letter.:
+[RegularExpression(@"^[A-Z]*[a-zA-Z\s@#0-9]*")]
+
+String Length:
+    [StringLength(80, MinimumLength = 2)]
+
+Max min value:
+    [Range(0, double.MaxValue)]
+
+Require id:
+    [Required]

@@ -7049,8 +7049,9 @@
             "nullable": true
           },
           "cosmeticName": {
-            "maxLength": 160,
-            "minLength": 0,
+            "maxLength": 80,
+            "minLength": 2,
+            "pattern": "^[A-Z]*[a-zA-Z\\s@#0-9]*",
             "type": "string"
           },
           "skinType": {
@@ -7064,11 +7065,12 @@
             "type": "string"
           },
           "cosmeticSize": {
-            "maxLength": 400,
-            "minLength": 0,
+            "maxLength": 80,
+            "minLength": 2,
             "type": "string"
           },
           "dollarPrice": {
+            "minimum": 0,
             "type": "number",
             "format": "double"
           },

@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3B8ED30B-5BA9-4F72-8F77-58FEEF7AEEE0}|CS.Repositories\\CS.Repositories.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm6_se170330_nguyenhoangdat\\cs.repositories\\models\\cosmeticinformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B8ED30B-5BA9-4F72-8F77-58FEEF7AEEE0}|CS.Repositories\\CS.Repositories.csproj|solutionrelative:cs.repositories\\models\\cosmeticinformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CosmeticInformation.cs",
+              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat\\CS.Repositories\\Models\\CosmeticInformation.cs",
+              "RelativeDocumentMoniker": "CS.Repositories\\Models\\CosmeticInformation.cs",
+              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat\\CS.Repositories\\Models\\CosmeticInformation.cs",
+              "RelativeToolTip": "CS.Repositories\\Models\\CosmeticInformation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T03:57:15.115Z",
+              "EditorCaption": ""
             }
           ]
         }
