@@ -1,0 +1,71 @@
+Tạo Blank Solution, đặt tên theo format: SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat
+
+Tạo Web API Project: SCBS.GraphQLAPIServices
+
+Copy Repo vs Service bên ASM1 bỏ vào và add exist project
+
+Copy connection String trong application của ASM1
+
+Add Project Reference: Services
+
+Open In Terminal API:
+dotnet add package HotChocolate.AspNetCore
+dotnet add package HotChocolate.Data
+
+Tạo folder GraphQLs
+add class Query
+        private readonly IScheduleService _scheduleService;
+
+        public Query(IScheduleService scheduleService)
+        {
+            _scheduleService = scheduleService;
+        }
+
+        public async Task<List<Schedule>> GetSchedules()
+        {
+            try
+            {
+                var result = await _scheduleService.GetAllAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return new List<Schedule>();
+            }
+        }
+        public async Task<Schedule> GetScheduleById(Guid id)
+        {
+            try
+            {
+                var result = await _scheduleService.GetByIdAsync(id);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return new Schedule();
+            }
+        }
+        public async Task<List<Schedule>> SearchSchedules(string? title, string? location, string? status)
+        {
+            try
+            {
+                var result = await _scheduleService.Search(title, location, status);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return new List<Schedule>();
+            }
+        }
+
+Taoj Mutation:
+
+Add vô program:
+builder.Services.AddScoped<IScheduleService, ScheduleService>();
+builder.Services.AddGraphQLServer().AddQueryType<Query>().BindRuntimeType<DateTime, DateTimeType>(); //Query của mình
+builder.Services.AddGraphQLServer().AddMutationType<Mutation>().BindRuntimeType<DateTime,DateTimeType>(); //Mutation cuar minhf
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+app.UseRouting().UseEndpoints(endpoints => { endpoints.MapGraphQL(); });
+
+chạy thay url swagger/... bằng graphql
+

@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BD1A0BD1-DABD-41D4-AADE-2597C2DE10EC}|SCBS.GraphQLAPIServices\\SCBS.GraphQLAPIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.graphqlapiservices\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{BD1A0BD1-DABD-41D4-AADE-2597C2DE10EC}|SCBS.GraphQLAPIServices\\SCBS.GraphQLAPIServices.csproj|solutionrelative:scbs.graphqlapiservices\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.grapqlapiservices\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|solutionrelative:scbs.grapqlapiservices\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD1A0BD1-DABD-41D4-AADE-2597C2DE10EC}|SCBS.GraphQLAPIServices\\SCBS.GraphQLAPIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.graphqlapiservices\\graphqls\\scheduletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD1A0BD1-DABD-41D4-AADE-2597C2DE10EC}|SCBS.GraphQLAPIServices\\SCBS.GraphQLAPIServices.csproj|solutionrelative:scbs.graphqlapiservices\\graphqls\\scheduletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{138AA727-33B9-3B92-63A8-6B3C43903364}|SCBS.Repositories\\SCBS.Repositories.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.repositories\\base\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{138AA727-33B9-3B92-63A8-6B3C43903364}|SCBS.Repositories\\SCBS.Repositories.csproj|solutionrelative:scbs.repositories\\base\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD1A0BD1-DABD-41D4-AADE-2597C2DE10EC}|SCBS.GraphQLAPIServices\\SCBS.GraphQLAPIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.graphqlapiservices\\graphqls\\scheduleschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD1A0BD1-DABD-41D4-AADE-2597C2DE10EC}|SCBS.GraphQLAPIServices\\SCBS.GraphQLAPIServices.csproj|solutionrelative:scbs.graphqlapiservices\\graphqls\\scheduleschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.grapqlapiservices\\grapqls\\mutation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|solutionrelative:scbs.grapqlapiservices\\grapqls\\mutation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD1A0BD1-DABD-41D4-AADE-2597C2DE10EC}|SCBS.GraphQLAPIServices\\SCBS.GraphQLAPIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.graphqlapiservices\\graphqls\\schedulequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD1A0BD1-DABD-41D4-AADE-2597C2DE10EC}|SCBS.GraphQLAPIServices\\SCBS.GraphQLAPIServices.csproj|solutionrelative:scbs.graphqlapiservices\\graphqls\\schedulequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.grapqlapiservices\\grapqls\\query.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|solutionrelative:scbs.grapqlapiservices\\grapqls\\query.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{138AA727-33B9-3B92-63A8-6B3C43903364}|SCBS.Repositories\\SCBS.Repositories.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.repositories\\dbcontext\\net1720_prn231_prj_g2_skincarebookingsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{138AA727-33B9-3B92-63A8-6B3C43903364}|SCBS.Repositories\\SCBS.Repositories.csproj|solutionrelative:scbs.repositories\\dbcontext\\net1720_prn231_prj_g2_skincarebookingsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,63 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ScheduleSchema.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleSchema.cs",
-              "RelativeDocumentMoniker": "SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleSchema.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleSchema.cs",
-              "RelativeToolTip": "SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleSchema.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\Program.cs",
+              "RelativeDocumentMoniker": "SCBS.GrapQLAPIServices\\Program.cs",
+              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\Program.cs",
+              "RelativeToolTip": "SCBS.GrapQLAPIServices\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T03:47:05.278Z",
+              "WhenOpened": "2025-03-07T13:59:58.982Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ScheduleQuery.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleQuery.cs",
-              "RelativeDocumentMoniker": "SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleQuery.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleQuery.cs",
-              "RelativeToolTip": "SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleQuery.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABCAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext.cs",
+              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.Repositories\\DBContext\\NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext.cs",
+              "RelativeDocumentMoniker": "SCBS.Repositories\\DBContext\\NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext.cs",
+              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.Repositories\\DBContext\\NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext.cs",
+              "RelativeToolTip": "SCBS.Repositories\\DBContext\\NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAowCYAAACGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T03:44:55.179Z",
+              "WhenOpened": "2025-03-07T08:20:20.621Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ScheduleType.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleType.cs",
-              "RelativeDocumentMoniker": "SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleType.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleType.cs",
-              "RelativeToolTip": "SCBS.GraphQLAPIServices\\GraphQLs\\ScheduleType.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAawBUAAAAAAAAAAAAAAA==",
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.Repositories\\Base\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "SCBS.Repositories\\Base\\GenericRepository.cs",
+              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.Repositories\\Base\\GenericRepository.cs",
+              "RelativeToolTip": "SCBS.Repositories\\Base\\GenericRepository.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAkwCgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T03:41:45.295Z",
+              "WhenOpened": "2025-03-07T07:59:39.963Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GraphQLAPIServices\\appsettings.json",
-              "RelativeDocumentMoniker": "SCBS.GraphQLAPIServices\\appsettings.json",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GraphQLAPIServices\\appsettings.json",
-              "RelativeToolTip": "SCBS.GraphQLAPIServices\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-04T03:39:52.634Z",
+              "DocumentIndex": 3,
+              "Title": "Query.cs",
+              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\GrapQLs\\Query.cs",
+              "RelativeDocumentMoniker": "SCBS.GrapQLAPIServices\\GrapQLs\\Query.cs",
+              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\GrapQLs\\Query.cs",
+              "RelativeToolTip": "SCBS.GrapQLAPIServices\\GrapQLs\\Query.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T07:52:33.916Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Mutation.cs",
+              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\GrapQLs\\Mutation.cs",
+              "RelativeDocumentMoniker": "SCBS.GrapQLAPIServices\\GrapQLs\\Mutation.cs",
+              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\GrapQLs\\Mutation.cs",
+              "RelativeToolTip": "SCBS.GrapQLAPIServices\\GrapQLs\\Mutation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T07:47:18.585Z",
+              "EditorCaption": ""
             }
           ]
         }

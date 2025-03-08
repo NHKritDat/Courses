@@ -1,0 +1,6 @@
+@SCBS.GrapQLAPIServices_HostAddress = http://localhost:5027
+
+GET {{SCBS.GrapQLAPIServices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

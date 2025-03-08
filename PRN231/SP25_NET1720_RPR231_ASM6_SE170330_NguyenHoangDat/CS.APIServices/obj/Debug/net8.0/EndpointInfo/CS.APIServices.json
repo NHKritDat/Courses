@@ -7035,6 +7035,7 @@
       },
       "CosmeticInformation": {
         "required": [
+          "cosmeticId",
           "cosmeticName",
           "cosmeticSize",
           "expirationDate",
@@ -7045,8 +7046,7 @@
           "cosmeticId": {
             "maxLength": 30,
             "minLength": 0,
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "cosmeticName": {
             "maxLength": 80,

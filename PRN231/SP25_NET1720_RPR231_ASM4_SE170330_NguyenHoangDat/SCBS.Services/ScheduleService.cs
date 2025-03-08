@@ -14,7 +14,7 @@ namespace SCBS.Services
         Task<List<Schedule>> GetAllAsync();
         Task<Schedule> GetByIdAsync(Guid id);
         Task<bool> RemoveAsync(Guid id);
-        Task<List<Schedule>> Search(string title, string location, string? status);
+        Task<List<Schedule>> Search(string? title, string? location, string? status);
         Task<int> UpdateAsync(Schedule item);
     }
     public class ScheduleService : IScheduleService
@@ -37,7 +37,7 @@ namespace SCBS.Services
 
         public async Task<Schedule> GetByIdAsync(Guid id) => await _scheduleRepository.GetByIdAsync(id);
 
-        public async Task<List<Schedule>> Search(string title, string location, string? status) => await _scheduleRepository.Search(title, location, status);
+        public async Task<List<Schedule>> Search(string? title, string? location, string? status) => await _scheduleRepository.Search(title, location, status);
 
         public async Task<int> UpdateAsync(Schedule item) => await _scheduleRepository.UpdateAsync(item);
 

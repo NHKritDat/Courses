@@ -164,8 +164,16 @@ Hàm login:
 
 Chức năng chính, kiểm tra id là kiểu gì, SubModel tên là gì:
         public async Task<List<Model>> GetAllAsync() => await _context.Models.Include(item => item.SubModel).ToListAsync();
-        public async Task<Model> GetByIdAsync(type id) => await _context.Models.Include(item => item.SubModel).FirstOrDefaultAsync(item => item.Id == id);
-        public async Task<List<Model>> Search(type search1, type search2, type search3) => await _context.Models
+        public async Task<Model> GetByIdAsync(type id)
+        {
+            var entity = await _context.Models.Include(item => item.SubModel).FirstOrDefaultAsync(item => item.Id == id);
+            if (entity != null)
+            {
+                _context.Entry(entity).State = EntityState.Detached;
+            }
+            return entity;
+        }
+        public async Task<List<Model>> Search(type? search1, type? search2, type? search3) => await _context.Models
                 .Include(item => item.SubModel)
                 .Where(item =>
                 (string.IsNullOrEmpty(search1) || item.search1.Contains(search1))

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SCBS.Repositories")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+40d4dfc99205f3e4fa367de2988d70158bb77b0d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8912fede36ae75409cab92e43bd6048d5dcfbedc")]
 [assembly: System.Reflection.AssemblyProductAttribute("SCBS.Repositories")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SCBS.Repositories")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
