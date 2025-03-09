@@ -15,15 +15,18 @@ import java.util.ArrayList;
 
 public class TraineeAdapter extends RecyclerView.Adapter<TraineeAdapter.ViewHolder> {
     private final ArrayList<Trainee> trainees;
+    private final OnItemClickListener listener;
 
-    public TraineeAdapter(ArrayList<Trainee> trainees) {
+    public TraineeAdapter(ArrayList<Trainee> trainees, OnItemClickListener listener) {
         this.trainees = trainees;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_user, parent, false), listener);
     }
 
     @Override
@@ -40,17 +43,27 @@ public class TraineeAdapter extends RecyclerView.Adapter<TraineeAdapter.ViewHold
         return trainees.size();
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvName;
         TextView tvEmail;
         TextView tvPhone;
         TextView tvGender;
-        public ViewHolder(@NonNull View itemView) {
+
+        public ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvEmail = itemView.findViewById(R.id.tvEmail);
             tvPhone = itemView.findViewById(R.id.tvPhone);
             tvGender = itemView.findViewById(R.id.tvGender);
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onItemClick(getAdapterPosition());
+                }
+            });
         }
     }
 }

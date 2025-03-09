@@ -11,7 +11,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface TraineeService {
-    String TRAINEES = "user";
+    String TRAINEES = "users";
 
     @GET(TRAINEES)
     Call<Trainee[]> getAll();
