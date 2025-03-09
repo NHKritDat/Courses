@@ -1,0 +1,2 @@
+rootProject.name='merchantDemo'
+include ':app'
