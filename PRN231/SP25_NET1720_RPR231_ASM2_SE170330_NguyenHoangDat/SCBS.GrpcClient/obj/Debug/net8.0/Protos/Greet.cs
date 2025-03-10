@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace SCBS.GrpcClient {
+namespace SCBS.GrpcServices {
 
   /// <summary>Holder for reflection information generated from Protos/greet.proto</summary>
   public static partial class GreetReflection {
@@ -27,12 +27,13 @@ namespace SCBS.GrpcClient {
             "ChJQcm90b3MvZ3JlZXQucHJvdG8SBWdyZWV0IhwKDEhlbGxvUmVxdWVzdBIM",
             "CgRuYW1lGAEgASgJIh0KCkhlbGxvUmVwbHkSDwoHbWVzc2FnZRgBIAEoCTI9",
             "CgdHcmVldGVyEjIKCFNheUhlbGxvEhMuZ3JlZXQuSGVsbG9SZXF1ZXN0GhEu",
-            "Z3JlZXQuSGVsbG9SZXBseUISqgIPU0NCUy5HcnBjQ2xpZW50YgZwcm90bzM="));
+            "Z3JlZXQuSGVsbG9SZXBseUIUqgIRU0NCUy5HcnBjU2VydmljZXNiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcClient.HelloRequest), global::SCBS.GrpcClient.HelloRequest.Parser, new[]{ "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcClient.HelloReply), global::SCBS.GrpcClient.HelloReply.Parser, new[]{ "Message" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcServices.HelloRequest), global::SCBS.GrpcServices.HelloRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcServices.HelloReply), global::SCBS.GrpcServices.HelloReply.Parser, new[]{ "Message" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,7 +58,7 @@ namespace SCBS.GrpcClient {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SCBS.GrpcClient.GreetReflection.Descriptor.MessageTypes[0]; }
+      get { return global::SCBS.GrpcServices.GreetReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -258,7 +259,7 @@ namespace SCBS.GrpcClient {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SCBS.GrpcClient.GreetReflection.Descriptor.MessageTypes[1]; }
+      get { return global::SCBS.GrpcServices.GreetReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

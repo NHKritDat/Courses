@@ -3,11 +3,11 @@
     "Name": "New Profile",
     "Projects": [
       {
-        "Path": "SCBS.GrpcService\\SCBS.GrpcService.csproj",
+        "Path": "SCBS.GrpcClient\\SCBS.GrpcClient.csproj",
         "Action": "Start"
       },
       {
-        "Path": "SCBS.GrpcClient\\SCBS.GrpcClient.csproj",
+        "Path": "SCBS.GrpcServices\\SCBS.GrpcServices.csproj",
         "Action": "Start"
       }
     ]

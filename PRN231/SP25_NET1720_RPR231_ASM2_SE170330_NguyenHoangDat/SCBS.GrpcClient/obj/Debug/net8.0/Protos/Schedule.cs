@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace SCBS.GrpcClient.Protos {
+namespace SCBS.GrpcServices.Protos {
 
   /// <summary>Holder for reflection information generated from Protos/schedule.proto</summary>
   public static partial class ScheduleReflection {
@@ -24,30 +24,30 @@ namespace SCBS.GrpcClient.Protos {
     static ScheduleReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVQcm90b3Mvc2NoZWR1bGUucHJvdG8SCHNjaGVkdWxlIlkKDEFjdGlvblJl",
-            "c3VsdBIOCgZzdGF0dXMYASABKAUSDwoHbWVzc2FnZRgCIAEoCRIoCgREYXRh",
-            "GAMgASgLMhouc2NoZWR1bGUuU2NoZWR1bGVJdGVtTGlzdCIfChFTY2hlZHVs",
-            "ZUlkUmVxdWVzdBIKCgJpZBgBIAEoCSIOCgxFbXB0eVJlcXVlc3QiOQoQU2No",
-            "ZWR1bGVJdGVtTGlzdBIlCgVpdGVtcxgBIAMoCzIWLnNjaGVkdWxlLlNjaGVk",
-            "dWxlSXRlbSJyCgxTY2hlZHVsZUl0ZW0SCgoCaWQYASABKAkSDgoGdXNlcklk",
-            "GAIgASgJEhAKCHdvcmtEYXRlGAMgASgJEg4KBnN0YXR1cxgEIAEoCRIRCglj",
-            "cmVhdGVkQXQYBSABKAkSEQoJdXBkYXRlZEF0GAYgASgJMsACCg1TY2hlZHVs",
-            "ZVByb3RvEjwKBkdldEFsbBIWLnNjaGVkdWxlLkVtcHR5UmVxdWVzdBoaLnNj",
-            "aGVkdWxlLlNjaGVkdWxlSXRlbUxpc3QSPgoHR2V0QnlJZBIbLnNjaGVkdWxl",
-            "LlNjaGVkdWxlSWRSZXF1ZXN0GhYuc2NoZWR1bGUuU2NoZWR1bGVJdGVtEjgK",
-            "BkNyZWF0ZRIWLnNjaGVkdWxlLlNjaGVkdWxlSXRlbRoWLnNjaGVkdWxlLkFj",
-            "dGlvblJlc3VsdBI4CgZVcGRhdGUSFi5zY2hlZHVsZS5TY2hlZHVsZUl0ZW0a",
-            "Fi5zY2hlZHVsZS5BY3Rpb25SZXN1bHQSPQoGRGVsZXRlEhsuc2NoZWR1bGUu",
-            "U2NoZWR1bGVJZFJlcXVlc3QaFi5zY2hlZHVsZS5BY3Rpb25SZXN1bHRCGaoC",
-            "FlNDQlMuR3JwY0NsaWVudC5Qcm90b3NiBnByb3RvMw=="));
+            "ChVQcm90b3Mvc2NoZWR1bGUucHJvdG8SCHNjaGVkdWxlIlEKDEFjdGlvblJl",
+            "c3VsdBIOCgZzdGF0dXMYASABKAUSDwoHbWVzc2FnZRgCIAEoCRIgCgRkYXRh",
+            "GAMgASgLMhIuc2NoZWR1bGUuSXRlbUxpc3QiFwoJSWRSZXF1ZXN0EgoKAmlk",
+            "GAEgASgJIg4KDEVtcHR5UmVxdWVzdCIpCghJdGVtTGlzdBIdCgVpdGVtcxgB",
+            "IAMoCzIOLnNjaGVkdWxlLkl0ZW0irwEKBEl0ZW0SCgoCaWQYASABKAkSDgoG",
+            "dXNlcklkGAIgASgJEhAKCHdvcmtEYXRlGAMgASgJEg4KBnN0YXR1cxgEIAEo",
+            "CRIRCgljcmVhdGVkQXQYBSABKAkSEQoJdXBkYXRlZEF0GAYgASgJEg0KBXRp",
+            "dGxlGAcgASgJEhMKC2Rlc2NyaXB0aW9uGAggASgJEhAKCGxvY2F0aW9uGAkg",
+            "ASgJEg0KBW5vdGVzGAogASgJMqgCCgxTY2hlZHVsZUdycGMSOQoLR2V0QWxs",
+            "QXN5bmMSFi5zY2hlZHVsZS5FbXB0eVJlcXVlc3QaEi5zY2hlZHVsZS5JdGVt",
+            "TGlzdBIzCgxHZXRCeUlkQXN5bmMSEy5zY2hlZHVsZS5JZFJlcXVlc3QaDi5z",
+            "Y2hlZHVsZS5JdGVtEjUKC0NyZWF0ZUFzeW5jEg4uc2NoZWR1bGUuSXRlbRoW",
+            "LnNjaGVkdWxlLkFjdGlvblJlc3VsdBI1CgtVcGRhdGVBc3luYxIOLnNjaGVk",
+            "dWxlLkl0ZW0aFi5zY2hlZHVsZS5BY3Rpb25SZXN1bHQSOgoLUmVtb3ZlQXN5",
+            "bmMSEy5zY2hlZHVsZS5JZFJlcXVlc3QaFi5zY2hlZHVsZS5BY3Rpb25SZXN1",
+            "bHRCG6oCGFNDQlMuR3JwY1NlcnZpY2VzLlByb3Rvc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcClient.Protos.ActionResult), global::SCBS.GrpcClient.Protos.ActionResult.Parser, new[]{ "Status", "Message", "Data" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcClient.Protos.ScheduleIdRequest), global::SCBS.GrpcClient.Protos.ScheduleIdRequest.Parser, new[]{ "Id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcClient.Protos.EmptyRequest), global::SCBS.GrpcClient.Protos.EmptyRequest.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcClient.Protos.ScheduleItemList), global::SCBS.GrpcClient.Protos.ScheduleItemList.Parser, new[]{ "Items" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcClient.Protos.ScheduleItem), global::SCBS.GrpcClient.Protos.ScheduleItem.Parser, new[]{ "Id", "UserId", "WorkDate", "Status", "CreatedAt", "UpdatedAt" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcServices.Protos.ActionResult), global::SCBS.GrpcServices.Protos.ActionResult.Parser, new[]{ "Status", "Message", "Data" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcServices.Protos.IdRequest), global::SCBS.GrpcServices.Protos.IdRequest.Parser, new[]{ "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcServices.Protos.EmptyRequest), global::SCBS.GrpcServices.Protos.EmptyRequest.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcServices.Protos.ItemList), global::SCBS.GrpcServices.Protos.ItemList.Parser, new[]{ "Items" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SCBS.GrpcServices.Protos.Item), global::SCBS.GrpcServices.Protos.Item.Parser, new[]{ "Id", "UserId", "WorkDate", "Status", "CreatedAt", "UpdatedAt", "Title", "Description", "Location", "Notes" }, null, null, null, null)
           }));
     }
     #endregion
@@ -69,7 +69,7 @@ namespace SCBS.GrpcClient.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SCBS.GrpcClient.Protos.ScheduleReflection.Descriptor.MessageTypes[0]; }
+      get { return global::SCBS.GrpcServices.Protos.ScheduleReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -125,12 +125,12 @@ namespace SCBS.GrpcClient.Protos {
       }
     }
 
-    /// <summary>Field number for the "Data" field.</summary>
+    /// <summary>Field number for the "data" field.</summary>
     public const int DataFieldNumber = 3;
-    private global::SCBS.GrpcClient.Protos.ScheduleItemList data_;
+    private global::SCBS.GrpcServices.Protos.ItemList data_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::SCBS.GrpcClient.Protos.ScheduleItemList Data {
+    public global::SCBS.GrpcServices.Protos.ItemList Data {
       get { return data_; }
       set {
         data_ = value;
@@ -256,7 +256,7 @@ namespace SCBS.GrpcClient.Protos {
       }
       if (other.data_ != null) {
         if (data_ == null) {
-          Data = new global::SCBS.GrpcClient.Protos.ScheduleItemList();
+          Data = new global::SCBS.GrpcServices.Protos.ItemList();
         }
         Data.MergeFrom(other.Data);
       }
@@ -289,7 +289,7 @@ namespace SCBS.GrpcClient.Protos {
           }
           case 26: {
             if (data_ == null) {
-              Data = new global::SCBS.GrpcClient.Protos.ScheduleItemList();
+              Data = new global::SCBS.GrpcServices.Protos.ItemList();
             }
             input.ReadMessage(Data);
             break;
@@ -323,7 +323,7 @@ namespace SCBS.GrpcClient.Protos {
           }
           case 26: {
             if (data_ == null) {
-              Data = new global::SCBS.GrpcClient.Protos.ScheduleItemList();
+              Data = new global::SCBS.GrpcServices.Protos.ItemList();
             }
             input.ReadMessage(Data);
             break;
@@ -336,21 +336,21 @@ namespace SCBS.GrpcClient.Protos {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class ScheduleIdRequest : pb::IMessage<ScheduleIdRequest>
+  public sealed partial class IdRequest : pb::IMessage<IdRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<ScheduleIdRequest> _parser = new pb::MessageParser<ScheduleIdRequest>(() => new ScheduleIdRequest());
+    private static readonly pb::MessageParser<IdRequest> _parser = new pb::MessageParser<IdRequest>(() => new IdRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<ScheduleIdRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<IdRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SCBS.GrpcClient.Protos.ScheduleReflection.Descriptor.MessageTypes[1]; }
+      get { return global::SCBS.GrpcServices.Protos.ScheduleReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -361,7 +361,7 @@ namespace SCBS.GrpcClient.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ScheduleIdRequest() {
+    public IdRequest() {
       OnConstruction();
     }
 
@@ -369,15 +369,15 @@ namespace SCBS.GrpcClient.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ScheduleIdRequest(ScheduleIdRequest other) : this() {
+    public IdRequest(IdRequest other) : this() {
       id_ = other.id_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ScheduleIdRequest Clone() {
-      return new ScheduleIdRequest(this);
+    public IdRequest Clone() {
+      return new IdRequest(this);
     }
 
     /// <summary>Field number for the "id" field.</summary>
@@ -395,12 +395,12 @@ namespace SCBS.GrpcClient.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as ScheduleIdRequest);
+      return Equals(other as IdRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(ScheduleIdRequest other) {
+    public bool Equals(IdRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -473,7 +473,7 @@ namespace SCBS.GrpcClient.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(ScheduleIdRequest other) {
+    public void MergeFrom(IdRequest other) {
       if (other == null) {
         return;
       }
@@ -548,7 +548,7 @@ namespace SCBS.GrpcClient.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SCBS.GrpcClient.Protos.ScheduleReflection.Descriptor.MessageTypes[2]; }
+      get { return global::SCBS.GrpcServices.Protos.ScheduleReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -695,21 +695,21 @@ namespace SCBS.GrpcClient.Protos {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class ScheduleItemList : pb::IMessage<ScheduleItemList>
+  public sealed partial class ItemList : pb::IMessage<ItemList>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<ScheduleItemList> _parser = new pb::MessageParser<ScheduleItemList>(() => new ScheduleItemList());
+    private static readonly pb::MessageParser<ItemList> _parser = new pb::MessageParser<ItemList>(() => new ItemList());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<ScheduleItemList> Parser { get { return _parser; } }
+    public static pb::MessageParser<ItemList> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SCBS.GrpcClient.Protos.ScheduleReflection.Descriptor.MessageTypes[3]; }
+      get { return global::SCBS.GrpcServices.Protos.ScheduleReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -720,7 +720,7 @@ namespace SCBS.GrpcClient.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ScheduleItemList() {
+    public ItemList() {
       OnConstruction();
     }
 
@@ -728,37 +728,37 @@ namespace SCBS.GrpcClient.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ScheduleItemList(ScheduleItemList other) : this() {
+    public ItemList(ItemList other) : this() {
       items_ = other.items_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ScheduleItemList Clone() {
-      return new ScheduleItemList(this);
+    public ItemList Clone() {
+      return new ItemList(this);
     }
 
     /// <summary>Field number for the "items" field.</summary>
     public const int ItemsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::SCBS.GrpcClient.Protos.ScheduleItem> _repeated_items_codec
-        = pb::FieldCodec.ForMessage(10, global::SCBS.GrpcClient.Protos.ScheduleItem.Parser);
-    private readonly pbc::RepeatedField<global::SCBS.GrpcClient.Protos.ScheduleItem> items_ = new pbc::RepeatedField<global::SCBS.GrpcClient.Protos.ScheduleItem>();
+    private static readonly pb::FieldCodec<global::SCBS.GrpcServices.Protos.Item> _repeated_items_codec
+        = pb::FieldCodec.ForMessage(10, global::SCBS.GrpcServices.Protos.Item.Parser);
+    private readonly pbc::RepeatedField<global::SCBS.GrpcServices.Protos.Item> items_ = new pbc::RepeatedField<global::SCBS.GrpcServices.Protos.Item>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::SCBS.GrpcClient.Protos.ScheduleItem> Items {
+    public pbc::RepeatedField<global::SCBS.GrpcServices.Protos.Item> Items {
       get { return items_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as ScheduleItemList);
+      return Equals(other as ItemList);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(ScheduleItemList other) {
+    public bool Equals(ItemList other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -823,7 +823,7 @@ namespace SCBS.GrpcClient.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(ScheduleItemList other) {
+    public void MergeFrom(ItemList other) {
       if (other == null) {
         return;
       }
@@ -882,21 +882,21 @@ namespace SCBS.GrpcClient.Protos {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class ScheduleItem : pb::IMessage<ScheduleItem>
+  public sealed partial class Item : pb::IMessage<Item>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<ScheduleItem> _parser = new pb::MessageParser<ScheduleItem>(() => new ScheduleItem());
+    private static readonly pb::MessageParser<Item> _parser = new pb::MessageParser<Item>(() => new Item());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<ScheduleItem> Parser { get { return _parser; } }
+    public static pb::MessageParser<Item> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SCBS.GrpcClient.Protos.ScheduleReflection.Descriptor.MessageTypes[4]; }
+      get { return global::SCBS.GrpcServices.Protos.ScheduleReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -907,7 +907,7 @@ namespace SCBS.GrpcClient.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ScheduleItem() {
+    public Item() {
       OnConstruction();
     }
 
@@ -915,20 +915,24 @@ namespace SCBS.GrpcClient.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ScheduleItem(ScheduleItem other) : this() {
+    public Item(Item other) : this() {
       id_ = other.id_;
       userId_ = other.userId_;
       workDate_ = other.workDate_;
       status_ = other.status_;
       createdAt_ = other.createdAt_;
       updatedAt_ = other.updatedAt_;
+      title_ = other.title_;
+      description_ = other.description_;
+      location_ = other.location_;
+      notes_ = other.notes_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ScheduleItem Clone() {
-      return new ScheduleItem(this);
+    public Item Clone() {
+      return new Item(this);
     }
 
     /// <summary>Field number for the "id" field.</summary>
@@ -1003,15 +1007,63 @@ namespace SCBS.GrpcClient.Protos {
       }
     }
 
+    /// <summary>Field number for the "title" field.</summary>
+    public const int TitleFieldNumber = 7;
+    private string title_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as ScheduleItem);
+    public string Title {
+      get { return title_; }
+      set {
+        title_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 8;
+    private string description_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "location" field.</summary>
+    public const int LocationFieldNumber = 9;
+    private string location_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Location {
+      get { return location_; }
+      set {
+        location_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "notes" field.</summary>
+    public const int NotesFieldNumber = 10;
+    private string notes_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Notes {
+      get { return notes_; }
+      set {
+        notes_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(ScheduleItem other) {
+    public override bool Equals(object other) {
+      return Equals(other as Item);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(Item other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1024,6 +1076,10 @@ namespace SCBS.GrpcClient.Protos {
       if (Status != other.Status) return false;
       if (CreatedAt != other.CreatedAt) return false;
       if (UpdatedAt != other.UpdatedAt) return false;
+      if (Title != other.Title) return false;
+      if (Description != other.Description) return false;
+      if (Location != other.Location) return false;
+      if (Notes != other.Notes) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1037,6 +1093,10 @@ namespace SCBS.GrpcClient.Protos {
       if (Status.Length != 0) hash ^= Status.GetHashCode();
       if (CreatedAt.Length != 0) hash ^= CreatedAt.GetHashCode();
       if (UpdatedAt.Length != 0) hash ^= UpdatedAt.GetHashCode();
+      if (Title.Length != 0) hash ^= Title.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (Location.Length != 0) hash ^= Location.GetHashCode();
+      if (Notes.Length != 0) hash ^= Notes.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1079,6 +1139,22 @@ namespace SCBS.GrpcClient.Protos {
         output.WriteRawTag(50);
         output.WriteString(UpdatedAt);
       }
+      if (Title.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Title);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(Description);
+      }
+      if (Location.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(Location);
+      }
+      if (Notes.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(Notes);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1113,6 +1189,22 @@ namespace SCBS.GrpcClient.Protos {
         output.WriteRawTag(50);
         output.WriteString(UpdatedAt);
       }
+      if (Title.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Title);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(Description);
+      }
+      if (Location.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(Location);
+      }
+      if (Notes.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(Notes);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1141,6 +1233,18 @@ namespace SCBS.GrpcClient.Protos {
       if (UpdatedAt.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(UpdatedAt);
       }
+      if (Title.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
+      if (Location.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Location);
+      }
+      if (Notes.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Notes);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1149,7 +1253,7 @@ namespace SCBS.GrpcClient.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(ScheduleItem other) {
+    public void MergeFrom(Item other) {
       if (other == null) {
         return;
       }
@@ -1170,6 +1274,18 @@ namespace SCBS.GrpcClient.Protos {
       }
       if (other.UpdatedAt.Length != 0) {
         UpdatedAt = other.UpdatedAt;
+      }
+      if (other.Title.Length != 0) {
+        Title = other.Title;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
+      if (other.Location.Length != 0) {
+        Location = other.Location;
+      }
+      if (other.Notes.Length != 0) {
+        Notes = other.Notes;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1214,6 +1330,22 @@ namespace SCBS.GrpcClient.Protos {
             UpdatedAt = input.ReadString();
             break;
           }
+          case 58: {
+            Title = input.ReadString();
+            break;
+          }
+          case 66: {
+            Description = input.ReadString();
+            break;
+          }
+          case 74: {
+            Location = input.ReadString();
+            break;
+          }
+          case 82: {
+            Notes = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -1255,6 +1387,22 @@ namespace SCBS.GrpcClient.Protos {
           }
           case 50: {
             UpdatedAt = input.ReadString();
+            break;
+          }
+          case 58: {
+            Title = input.ReadString();
+            break;
+          }
+          case 66: {
+            Description = input.ReadString();
+            break;
+          }
+          case 74: {
+            Location = input.ReadString();
+            break;
+          }
+          case 82: {
+            Notes = input.ReadString();
             break;
           }
         }

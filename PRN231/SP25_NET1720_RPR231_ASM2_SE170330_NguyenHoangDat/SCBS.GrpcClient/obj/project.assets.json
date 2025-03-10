@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "Google.Protobuf/3.29.3": {
+      "Google.Protobuf/3.30.0": {
         "type": "package",
         "compile": {
           "lib/net5.0/Google.Protobuf.dll": {
@@ -61,7 +61,7 @@
           }
         }
       },
-      "Grpc.Tools/2.69.0": {
+      "Grpc.Tools/2.70.0": {
         "type": "package",
         "build": {
           "build/Grpc.Tools.props": {},
@@ -87,14 +87,14 @@
     }
   },
   "libraries": {
-    "Google.Protobuf/3.29.3": {
-      "sha512": "t7nZFFUFwigCwZ+nIXHDLweXvwIpsOXi+P7J7smPT/QjI3EKxnCzTQOhBqyEh6XEzc/pNH+bCFOOSjatrPt6Tw==",
+    "Google.Protobuf/3.30.0": {
+      "sha512": "ZnEI4oZWnHvd+Yz5Gcnx5Q5RQIuzptIzd0fmxAN8f81FYHI0USZqMOrPTkrsd/QEzo9vl2b217v9FqFgHfufQw==",
       "type": "package",
-      "path": "google.protobuf/3.29.3",
+      "path": "google.protobuf/3.30.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "google.protobuf.3.29.3.nupkg.sha512",
+        "google.protobuf.3.30.0.nupkg.sha512",
         "google.protobuf.nuspec",
         "lib/net45/Google.Protobuf.dll",
         "lib/net45/Google.Protobuf.pdb",
@@ -190,10 +190,10 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Tools/2.69.0": {
-      "sha512": "W5hW4R1h19FCzKb8ToqIJMI5YxnQqGmREEpV8E5XkfCtLPIK5MSHztwQ8gZUfG8qu9fg5MhItjzyPRqQBjnrbA==",
+    "Grpc.Tools/2.70.0": {
+      "sha512": "Mibx8fUC1ihh1jZU5+yy7nR4C05FPSI1uKAtSaLkorU3xX/6XNWhuZhku5BuWdw2FRPuWKDfpts5f7a1UUqH2g==",
       "type": "package",
-      "path": "grpc.tools/2.69.0",
+      "path": "grpc.tools/2.70.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -222,7 +222,7 @@
         "build/native/include/google/protobuf/timestamp.proto",
         "build/native/include/google/protobuf/type.proto",
         "build/native/include/google/protobuf/wrappers.proto",
-        "grpc.tools.2.69.0.nupkg.sha512",
+        "grpc.tools.2.70.0.nupkg.sha512",
         "grpc.tools.nuspec",
         "packageIcon.png",
         "tools/linux_arm64/grpc_csharp_plugin",
@@ -294,9 +294,9 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Google.Protobuf >= 3.29.3",
+      "Google.Protobuf >= 3.30.0",
       "Grpc.Net.Client >= 2.67.0",
-      "Grpc.Tools >= 2.69.0"
+      "Grpc.Tools >= 2.70.0"
     ]
   },
   "packageFolders": {
@@ -351,7 +351,7 @@
         "dependencies": {
           "Google.Protobuf": {
             "target": "Package",
-            "version": "[3.29.3, )"
+            "version": "[3.30.0, )"
           },
           "Grpc.Net.Client": {
             "target": "Package",
@@ -361,7 +361,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.69.0, )"
+            "version": "[2.70.0, )"
           }
         },
         "imports": [

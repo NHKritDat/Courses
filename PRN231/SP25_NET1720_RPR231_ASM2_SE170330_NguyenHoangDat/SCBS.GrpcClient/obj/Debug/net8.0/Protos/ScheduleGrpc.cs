@@ -7,10 +7,10 @@
 
 using grpc = global::Grpc.Core;
 
-namespace SCBS.GrpcClient.Protos {
-  public static partial class ScheduleProto
+namespace SCBS.GrpcServices.Protos {
+  public static partial class ScheduleGrpc
   {
-    static readonly string __ServiceName = "schedule.ScheduleProto";
+    static readonly string __ServiceName = "schedule.ScheduleGrpc";
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
@@ -46,194 +46,194 @@ namespace SCBS.GrpcClient.Protos {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::SCBS.GrpcClient.Protos.EmptyRequest> __Marshaller_schedule_EmptyRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SCBS.GrpcClient.Protos.EmptyRequest.Parser));
+    static readonly grpc::Marshaller<global::SCBS.GrpcServices.Protos.EmptyRequest> __Marshaller_schedule_EmptyRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SCBS.GrpcServices.Protos.EmptyRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::SCBS.GrpcClient.Protos.ScheduleItemList> __Marshaller_schedule_ScheduleItemList = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SCBS.GrpcClient.Protos.ScheduleItemList.Parser));
+    static readonly grpc::Marshaller<global::SCBS.GrpcServices.Protos.ItemList> __Marshaller_schedule_ItemList = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SCBS.GrpcServices.Protos.ItemList.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::SCBS.GrpcClient.Protos.ScheduleIdRequest> __Marshaller_schedule_ScheduleIdRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SCBS.GrpcClient.Protos.ScheduleIdRequest.Parser));
+    static readonly grpc::Marshaller<global::SCBS.GrpcServices.Protos.IdRequest> __Marshaller_schedule_IdRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SCBS.GrpcServices.Protos.IdRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::SCBS.GrpcClient.Protos.ScheduleItem> __Marshaller_schedule_ScheduleItem = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SCBS.GrpcClient.Protos.ScheduleItem.Parser));
+    static readonly grpc::Marshaller<global::SCBS.GrpcServices.Protos.Item> __Marshaller_schedule_Item = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SCBS.GrpcServices.Protos.Item.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::SCBS.GrpcClient.Protos.ActionResult> __Marshaller_schedule_ActionResult = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SCBS.GrpcClient.Protos.ActionResult.Parser));
+    static readonly grpc::Marshaller<global::SCBS.GrpcServices.Protos.ActionResult> __Marshaller_schedule_ActionResult = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SCBS.GrpcServices.Protos.ActionResult.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::SCBS.GrpcClient.Protos.EmptyRequest, global::SCBS.GrpcClient.Protos.ScheduleItemList> __Method_GetAll = new grpc::Method<global::SCBS.GrpcClient.Protos.EmptyRequest, global::SCBS.GrpcClient.Protos.ScheduleItemList>(
+    static readonly grpc::Method<global::SCBS.GrpcServices.Protos.EmptyRequest, global::SCBS.GrpcServices.Protos.ItemList> __Method_GetAllAsync = new grpc::Method<global::SCBS.GrpcServices.Protos.EmptyRequest, global::SCBS.GrpcServices.Protos.ItemList>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "GetAll",
+        "GetAllAsync",
         __Marshaller_schedule_EmptyRequest,
-        __Marshaller_schedule_ScheduleItemList);
+        __Marshaller_schedule_ItemList);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::SCBS.GrpcClient.Protos.ScheduleIdRequest, global::SCBS.GrpcClient.Protos.ScheduleItem> __Method_GetById = new grpc::Method<global::SCBS.GrpcClient.Protos.ScheduleIdRequest, global::SCBS.GrpcClient.Protos.ScheduleItem>(
+    static readonly grpc::Method<global::SCBS.GrpcServices.Protos.IdRequest, global::SCBS.GrpcServices.Protos.Item> __Method_GetByIdAsync = new grpc::Method<global::SCBS.GrpcServices.Protos.IdRequest, global::SCBS.GrpcServices.Protos.Item>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "GetById",
-        __Marshaller_schedule_ScheduleIdRequest,
-        __Marshaller_schedule_ScheduleItem);
+        "GetByIdAsync",
+        __Marshaller_schedule_IdRequest,
+        __Marshaller_schedule_Item);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::SCBS.GrpcClient.Protos.ScheduleItem, global::SCBS.GrpcClient.Protos.ActionResult> __Method_Create = new grpc::Method<global::SCBS.GrpcClient.Protos.ScheduleItem, global::SCBS.GrpcClient.Protos.ActionResult>(
+    static readonly grpc::Method<global::SCBS.GrpcServices.Protos.Item, global::SCBS.GrpcServices.Protos.ActionResult> __Method_CreateAsync = new grpc::Method<global::SCBS.GrpcServices.Protos.Item, global::SCBS.GrpcServices.Protos.ActionResult>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "Create",
-        __Marshaller_schedule_ScheduleItem,
+        "CreateAsync",
+        __Marshaller_schedule_Item,
         __Marshaller_schedule_ActionResult);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::SCBS.GrpcClient.Protos.ScheduleItem, global::SCBS.GrpcClient.Protos.ActionResult> __Method_Update = new grpc::Method<global::SCBS.GrpcClient.Protos.ScheduleItem, global::SCBS.GrpcClient.Protos.ActionResult>(
+    static readonly grpc::Method<global::SCBS.GrpcServices.Protos.Item, global::SCBS.GrpcServices.Protos.ActionResult> __Method_UpdateAsync = new grpc::Method<global::SCBS.GrpcServices.Protos.Item, global::SCBS.GrpcServices.Protos.ActionResult>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "Update",
-        __Marshaller_schedule_ScheduleItem,
+        "UpdateAsync",
+        __Marshaller_schedule_Item,
         __Marshaller_schedule_ActionResult);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::SCBS.GrpcClient.Protos.ScheduleIdRequest, global::SCBS.GrpcClient.Protos.ActionResult> __Method_Delete = new grpc::Method<global::SCBS.GrpcClient.Protos.ScheduleIdRequest, global::SCBS.GrpcClient.Protos.ActionResult>(
+    static readonly grpc::Method<global::SCBS.GrpcServices.Protos.IdRequest, global::SCBS.GrpcServices.Protos.ActionResult> __Method_RemoveAsync = new grpc::Method<global::SCBS.GrpcServices.Protos.IdRequest, global::SCBS.GrpcServices.Protos.ActionResult>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "Delete",
-        __Marshaller_schedule_ScheduleIdRequest,
+        "RemoveAsync",
+        __Marshaller_schedule_IdRequest,
         __Marshaller_schedule_ActionResult);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::SCBS.GrpcClient.Protos.ScheduleReflection.Descriptor.Services[0]; }
+      get { return global::SCBS.GrpcServices.Protos.ScheduleReflection.Descriptor.Services[0]; }
     }
 
-    /// <summary>Client for ScheduleProto</summary>
-    public partial class ScheduleProtoClient : grpc::ClientBase<ScheduleProtoClient>
+    /// <summary>Client for ScheduleGrpc</summary>
+    public partial class ScheduleGrpcClient : grpc::ClientBase<ScheduleGrpcClient>
     {
-      /// <summary>Creates a new client for ScheduleProto</summary>
+      /// <summary>Creates a new client for ScheduleGrpc</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public ScheduleProtoClient(grpc::ChannelBase channel) : base(channel)
+      public ScheduleGrpcClient(grpc::ChannelBase channel) : base(channel)
       {
       }
-      /// <summary>Creates a new client for ScheduleProto that uses a custom <c>CallInvoker</c>.</summary>
+      /// <summary>Creates a new client for ScheduleGrpc that uses a custom <c>CallInvoker</c>.</summary>
       /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public ScheduleProtoClient(grpc::CallInvoker callInvoker) : base(callInvoker)
+      public ScheduleGrpcClient(grpc::CallInvoker callInvoker) : base(callInvoker)
       {
       }
       /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected ScheduleProtoClient() : base()
+      protected ScheduleGrpcClient() : base()
       {
       }
       /// <summary>Protected constructor to allow creation of configured clients.</summary>
       /// <param name="configuration">The client configuration.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected ScheduleProtoClient(ClientBaseConfiguration configuration) : base(configuration)
+      protected ScheduleGrpcClient(ClientBaseConfiguration configuration) : base(configuration)
       {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::SCBS.GrpcClient.Protos.ScheduleItemList GetAll(global::SCBS.GrpcClient.Protos.EmptyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetAll(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::SCBS.GrpcClient.Protos.ScheduleItemList GetAll(global::SCBS.GrpcClient.Protos.EmptyRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_GetAll, null, options, request);
-      }
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcClient.Protos.ScheduleItemList> GetAllAsync(global::SCBS.GrpcClient.Protos.EmptyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::SCBS.GrpcServices.Protos.ItemList GetAllAsync(global::SCBS.GrpcServices.Protos.EmptyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetAllAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcClient.Protos.ScheduleItemList> GetAllAsync(global::SCBS.GrpcClient.Protos.EmptyRequest request, grpc::CallOptions options)
+      public virtual global::SCBS.GrpcServices.Protos.ItemList GetAllAsync(global::SCBS.GrpcServices.Protos.EmptyRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_GetAll, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_GetAllAsync, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::SCBS.GrpcClient.Protos.ScheduleItem GetById(global::SCBS.GrpcClient.Protos.ScheduleIdRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcServices.Protos.ItemList> GetAllAsyncAsync(global::SCBS.GrpcServices.Protos.EmptyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return GetById(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetAllAsyncAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::SCBS.GrpcClient.Protos.ScheduleItem GetById(global::SCBS.GrpcClient.Protos.ScheduleIdRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcServices.Protos.ItemList> GetAllAsyncAsync(global::SCBS.GrpcServices.Protos.EmptyRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_GetById, null, options, request);
+        return CallInvoker.AsyncUnaryCall(__Method_GetAllAsync, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcClient.Protos.ScheduleItem> GetByIdAsync(global::SCBS.GrpcClient.Protos.ScheduleIdRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::SCBS.GrpcServices.Protos.Item GetByIdAsync(global::SCBS.GrpcServices.Protos.IdRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetByIdAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcClient.Protos.ScheduleItem> GetByIdAsync(global::SCBS.GrpcClient.Protos.ScheduleIdRequest request, grpc::CallOptions options)
+      public virtual global::SCBS.GrpcServices.Protos.Item GetByIdAsync(global::SCBS.GrpcServices.Protos.IdRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_GetById, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_GetByIdAsync, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::SCBS.GrpcClient.Protos.ActionResult Create(global::SCBS.GrpcClient.Protos.ScheduleItem request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcServices.Protos.Item> GetByIdAsyncAsync(global::SCBS.GrpcServices.Protos.IdRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return Create(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetByIdAsyncAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::SCBS.GrpcClient.Protos.ActionResult Create(global::SCBS.GrpcClient.Protos.ScheduleItem request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcServices.Protos.Item> GetByIdAsyncAsync(global::SCBS.GrpcServices.Protos.IdRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_Create, null, options, request);
+        return CallInvoker.AsyncUnaryCall(__Method_GetByIdAsync, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcClient.Protos.ActionResult> CreateAsync(global::SCBS.GrpcClient.Protos.ScheduleItem request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::SCBS.GrpcServices.Protos.ActionResult CreateAsync(global::SCBS.GrpcServices.Protos.Item request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return CreateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcClient.Protos.ActionResult> CreateAsync(global::SCBS.GrpcClient.Protos.ScheduleItem request, grpc::CallOptions options)
+      public virtual global::SCBS.GrpcServices.Protos.ActionResult CreateAsync(global::SCBS.GrpcServices.Protos.Item request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_Create, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_CreateAsync, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::SCBS.GrpcClient.Protos.ActionResult Update(global::SCBS.GrpcClient.Protos.ScheduleItem request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcServices.Protos.ActionResult> CreateAsyncAsync(global::SCBS.GrpcServices.Protos.Item request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return Update(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return CreateAsyncAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::SCBS.GrpcClient.Protos.ActionResult Update(global::SCBS.GrpcClient.Protos.ScheduleItem request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcServices.Protos.ActionResult> CreateAsyncAsync(global::SCBS.GrpcServices.Protos.Item request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_Update, null, options, request);
+        return CallInvoker.AsyncUnaryCall(__Method_CreateAsync, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcClient.Protos.ActionResult> UpdateAsync(global::SCBS.GrpcClient.Protos.ScheduleItem request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::SCBS.GrpcServices.Protos.ActionResult UpdateAsync(global::SCBS.GrpcServices.Protos.Item request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return UpdateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcClient.Protos.ActionResult> UpdateAsync(global::SCBS.GrpcClient.Protos.ScheduleItem request, grpc::CallOptions options)
+      public virtual global::SCBS.GrpcServices.Protos.ActionResult UpdateAsync(global::SCBS.GrpcServices.Protos.Item request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_Update, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateAsync, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::SCBS.GrpcClient.Protos.ActionResult Delete(global::SCBS.GrpcClient.Protos.ScheduleIdRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcServices.Protos.ActionResult> UpdateAsyncAsync(global::SCBS.GrpcServices.Protos.Item request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return Delete(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return UpdateAsyncAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::SCBS.GrpcClient.Protos.ActionResult Delete(global::SCBS.GrpcClient.Protos.ScheduleIdRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcServices.Protos.ActionResult> UpdateAsyncAsync(global::SCBS.GrpcServices.Protos.Item request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_Delete, null, options, request);
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateAsync, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcClient.Protos.ActionResult> DeleteAsync(global::SCBS.GrpcClient.Protos.ScheduleIdRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::SCBS.GrpcServices.Protos.ActionResult RemoveAsync(global::SCBS.GrpcServices.Protos.IdRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return DeleteAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return RemoveAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcClient.Protos.ActionResult> DeleteAsync(global::SCBS.GrpcClient.Protos.ScheduleIdRequest request, grpc::CallOptions options)
+      public virtual global::SCBS.GrpcServices.Protos.ActionResult RemoveAsync(global::SCBS.GrpcServices.Protos.IdRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_Delete, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_RemoveAsync, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcServices.Protos.ActionResult> RemoveAsyncAsync(global::SCBS.GrpcServices.Protos.IdRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RemoveAsyncAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::SCBS.GrpcServices.Protos.ActionResult> RemoveAsyncAsync(global::SCBS.GrpcServices.Protos.IdRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_RemoveAsync, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected override ScheduleProtoClient NewInstance(ClientBaseConfiguration configuration)
+      protected override ScheduleGrpcClient NewInstance(ClientBaseConfiguration configuration)
       {
-        return new ScheduleProtoClient(configuration);
+        return new ScheduleGrpcClient(configuration);
       }
     }
 
