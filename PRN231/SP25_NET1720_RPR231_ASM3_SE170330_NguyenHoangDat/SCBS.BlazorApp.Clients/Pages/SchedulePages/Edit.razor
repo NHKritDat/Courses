@@ -1,0 +1,125 @@
+﻿@page "/schedules/edit"
+@using SCBS.BlazorApp.Clients.Models
+@inject HttpClient httpClient
+@inject NavigationManager NavigationManager
+
+<h1>Edit</h1>
+
+<h2>Schedule</h2>
+<hr />
+@if (Schedule is null || users is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="Schedule" OnValidSubmit="UpdateSchedule" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert" />
+                <input type="hidden" name="Schedule.Id" value="@Schedule.Id" />
+                <div class="mb-3">
+                    <label for="userid" class="form-label">UserId:</label>
+                    <InputSelect id="userid" @bind-Value="Schedule.UserId" class="form-control">
+                        @foreach (var user in users)
+                        {
+                            <option value="@user.Id">@user.FullName</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="() => Schedule.UserId" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="workdate" class="form-label">WorkDate:</label>
+                    <InputDate id="workdate" @bind-Value="Schedule.WorkDate" class="form-control" />
+                    <ValidationMessage For="() => Schedule.WorkDate" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status:</label>
+                    <InputText id="status" @bind-Value="Schedule.Status" class="form-control" aria-required="true" />
+                    <ValidationMessage For="() => Schedule.Status" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="createdat" class="form-label">CreatedAt:</label>
+                    <InputDate id="createdat" @bind-Value="Schedule.CreatedAt" class="form-control" />
+                    <ValidationMessage For="() => Schedule.CreatedAt" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="updatedat" class="form-label">UpdatedAt:</label>
+                    <InputDate id="updatedat" @bind-Value="Schedule.UpdatedAt" class="form-control" />
+                    <ValidationMessage For="() => Schedule.UpdatedAt" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <InputText id="title" @bind-Value="Schedule.Title" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Title" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <InputText id="description" @bind-Value="Schedule.Description" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Description" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location:</label>
+                    <InputText id="location" @bind-Value="Schedule.Location" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Location" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="notes" class="form-label">Notes:</label>
+                    <InputText id="notes" @bind-Value="Schedule.Notes" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Notes" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+<div>
+    <a href="/schedules">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private Guid Id { get; set; }
+
+    private Schedule? Schedule { get; set; }
+    private List<User>? users { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Schedule ??= await httpClient.GetFromJsonAsync<Schedule>("https://localhost:7197/api/schedules/" + Id);
+        users ??= await httpClient.GetFromJsonAsync<List<User>>("https://localhost:7197/api/users");
+
+        if (Schedule is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task UpdateSchedule()
+    {
+        try
+        {
+            Schedule!.User = await httpClient.GetFromJsonAsync<User>("https://localhost:7197/api/users/" + Schedule!.UserId);
+            await httpClient.PutAsJsonAsync("https://localhost:7197/api/schedules/" + Schedule!.Id, Schedule);
+        }
+        catch
+        {
+            if (!ScheduleExists(Schedule!.Id))
+            {
+                NavigationManager.NavigateTo("notfound");
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        NavigationManager.NavigateTo("/schedules");
+    }
+
+    private bool ScheduleExists(Guid id)
+    {
+		return httpClient.GetFromJsonAsync<Schedule>("https://localhost:7197/api/schedules/" + id).Result != null;
+    }
+}

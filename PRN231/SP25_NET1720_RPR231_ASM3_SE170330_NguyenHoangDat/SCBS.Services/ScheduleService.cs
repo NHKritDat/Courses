@@ -5,21 +5,20 @@ namespace SCBS.Services
 {
     public interface IScheduleService
     {
+        Task<int> CreateAsync(Schedule item);
         Task<List<Schedule>> GetAllAsync();
-        Task<Schedule?> GetByIdAsync(Guid id);
-        Task<int> Create(Schedule schedule);
-        Task<int> Update(Schedule schedule);
-        Task<bool> Delete(Guid id);
-        Task<List<Schedule>> Search(DateTime workDate, string status);
+        Task<Schedule> GetByIdAsync(Guid id);
+        Task<bool> RemoveAsync(Guid id);
+        Task<List<Schedule>> Search(string? title, string? location, string? status);
+        Task<int> UpdateAsync(Schedule item);
     }
     public class ScheduleService : IScheduleService
     {
         private readonly ScheduleRepository _scheduleRepository;
         public ScheduleService() => _scheduleRepository = new ScheduleRepository();
+        public async Task<int> CreateAsync(Schedule item) => await _scheduleRepository.CreateAsync(item);
 
-        public async Task<int> Create(Schedule schedule) => await _scheduleRepository.CreateAsync(schedule);
-
-        public async Task<bool> Delete(Guid id)
+        public async Task<bool> RemoveAsync(Guid id)
         {
             var item = await _scheduleRepository.GetByIdAsync(id);
             if (item != null)
@@ -31,10 +30,12 @@ namespace SCBS.Services
 
         public async Task<List<Schedule>> GetAllAsync() => await _scheduleRepository.GetAllAsync();
 
-        public async Task<Schedule?> GetByIdAsync(Guid id) => await _scheduleRepository.GetByIdAsync(id);
+        public async Task<Schedule> GetByIdAsync(Guid id) => await _scheduleRepository.GetByIdAsync(id);
 
-        public async Task<List<Schedule>> Search(DateTime workDate, string status) => await _scheduleRepository.Search(workDate, status);
+        public async Task<List<Schedule>> Search(string? title, string? location, string? status) => await _scheduleRepository.Search(title, location, status);
 
-        public async Task<int> Update(Schedule schedule) => await _scheduleRepository.UpdateAsync(schedule);
+        public async Task<int> UpdateAsync(Schedule item) => await _scheduleRepository.UpdateAsync(item);
+
     }
+
 }

@@ -1,0 +1,705 @@
+Tạo Blank solution đặt tên format: SP25_NET1720_RPR231_ASM3_SE170330_NguyenHoangDat
+
+Tạo Project:
+- Blazor Web Assembly: SCBS.BlazorApp.Clients
+- Blaozor Web App: SCBS.BlazorApp.APIServices
+- Class Library:
+	- SCBS.Repositories
+	- SCBS.Services
+
+Xóa Class1
+
+Config start up clients + api services
+
+Project Reference:
+api -> service -> repo
+client -> repo
+
+Open in Terminal Repo:
+dotnet add package Microsoft.EntityFrameworkCore --version 8.0.5
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 8.0.5
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 8.0.5
+dotnet add package Microsoft.Extensions.Configuration --version 8.0.0
+dotnet add package Microsoft.Extensions.Configuration.Json --version 8.0.0
+
+--------------------------------Set up Repo-------------------------------------------------
+Project -> EF Core -> Reverse Engineer
+Add... -> Add Database Connection
+Server Name: Krit-Dat\NHKRITDAT_MSSQL
+SQL Server Authentication
+Username: sa
+Password: 123456
+Encrypt: False
+tick Trust Server Certificate
+Select correct db
+
+Select Connect
+Select Table
+Use DataAnnotation
+Include connection string
+
+Tạo folder DBContext
+Chuyển Context vào folder trên
+Đổi namespace DBContext
+using Models
+
+Comment OnConfiguring
+Bỏ đoạn này vào:
+public static string GetConnectionString(string connectionStringName)
+{
+    var config = new ConfigurationBuilder()
+        .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+        .AddJsonFile("appsettings.json")
+        .Build();
+
+    string connectionString = config.GetConnectionString(connectionStringName);
+    return connectionString;
+}
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    => optionsBuilder.UseSqlServer(GetConnectionString("DefaultConnection")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+
+Tạo folder Base
+Tạo GenericRepository
+Xóa bên trong và bỏ đoạn này vào:
+public class GenericRepository<T> where T : class
+{
+    protected Sp25CosmeticsDBContext _context;
+
+    public GenericRepository()
+    {
+        _context ??= new Sp25CosmeticsDBContext();
+    }
+
+    public GenericRepository(Sp25CosmeticsDBContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<List<T>> GetAllAsync()
+    {
+        return await _context.Set<T>().ToListAsync();
+    }
+
+    public async Task<int> CreateAsync(T entity)
+    {
+        _context.Add(entity);
+        return await _context.SaveChangesAsync();
+    }
+
+    public async Task<int> UpdateAsync(T entity)
+    {
+        var tracker = _context.Attach(entity);
+        tracker.State = EntityState.Modified;
+        return await _context.SaveChangesAsync();
+    }
+
+    public async Task<bool> RemoveAsync(T entity)
+    {
+        _context.Remove(entity);
+        await _context.SaveChangesAsync();
+        return true;
+    }
+
+    public async Task<T> GetByIdAsync(int id)
+    {
+        var entity = await _context.Set<T>().FindAsync(id);
+        if (entity != null)
+        {
+            _context.Entry(entity).State = EntityState.Detached;
+        }
+
+        return entity;
+    }
+
+    public async Task<T> GetByIdAsync(string code)
+    {
+        var entity = await _context.Set<T>().FindAsync(code);
+        if (entity != null)
+        {
+            _context.Entry(entity).State = EntityState.Detached;
+        }
+
+        return entity;
+    }
+
+    public async Task<T> GetByIdAsync(Guid code)
+    {
+        var entity = await _context.Set<T>().FindAsync(code);
+        if (entity != null)
+        {
+            _context.Entry(entity).State = EntityState.Detached;
+        }
+
+        return entity;
+    }
+}
+
+Tạo các class repo [Model]Repository : GenericRepository<Model> thêm public
+Constructor rỗng: 
+        public ModelRepository() { }
+
+Hàm login:
+        public async Task<Model> Get[Model](string [field], string password) => await _context.Model.FirstOrDefaultAsync(u => u.Field == [field đăng nhập bằng cái gì] && u.Password == password [&& u.IsActive đề có yêu cầu active hay không]);
+
+Chức năng chính, kiểm tra id là kiểu gì, SubModel tên là gì:
+        public async Task<List<Model>> GetAllAsync() => await _context.Models.Include(item => item.SubModel).ToListAsync();
+        public async Task<Model> GetByIdAsync(type id)
+        {
+            var entity = await _context.Models.Include(item => item.SubModel).FirstOrDefaultAsync(item => item.Id == id);
+            if (entity != null)
+            {
+                _context.Entry(entity).State = EntityState.Detached;
+            }
+            return entity;
+        }
+        public async Task<List<Model>> Search(type? search1, type? search2, type? search3) => await _context.Models
+                .Include(item => item.SubModel)
+                .Where(item =>
+                (string.IsNullOrEmpty(search1) || item.search1.Contains(search1))
+                            && (string.IsNullOrEmpty(search2) || item.search2.Contains(search2))
+                            && (string.IsNullOrEmpty(search3) || item.search3.Contains(search3))
+                )
+                .ToListAsync();
+
+------------------------------------------------Services----------------------------------------------
+Tạo các class [Model]Service và xóa nội dung bên trong
+    public interface IModelService
+    {
+    }
+    public class ModelService : IModelService
+    {
+        private readonly ModelRepository _modelRepository;
+        public ModelService() => _modelRepository = new ModelRepository();
+    }
+
+Hàm login:
+        public async Task<Model> Authenticate(type field, string password) => await _modelRepository.GetModel(field, password);
+Cho lên interface
+
+Hàm chính:
+        public async Task<int> CreateAsync(Model item) => await _modelRepository.CreateAsync(item);
+
+        public async Task<bool> RemoveAsync(type id)
+        {
+            var item = await _modelRepository.GetByIdAsync(id);
+            if (item != null)
+            {
+                return await _modelRepository.RemoveAsync(item);
+            }
+            return false;
+        }
+
+        public async Task<List<Model>> GetAllAsync() => await _modelRepository.GetAllAsync();
+
+        public async Task<Model> GetByIdAsync(type id) => await _modelRepository.GetByIdAsync(id);
+
+        public async Task<List<Model>> Search() => await _modelRepository.Search();
+
+        public async Task<int> UpdateAsync(Model item) => await _modelRepository.UpdateAsync(item);
+Cho lên interface đủ 6 hàm, điều chỉnh Search giống repo
+
+Hàm phụ:
+        public async Task<List<Model>> GetAllAsync() => await _modelRepository.GetAllAsync();
+
+        public async Task<Model> GetByIdAsync(type id) => await _modelRepository.GetByIdAsync(id);
+Cho lên interface đủ 2 hàm
+
+-------------------------------------API Services----------------------------------------------
+appsettings:
+,
+    "ConnectionStrings": {
+        "DefaultConnection": "Data Source=Krit-Dat\\NHKRITDAT_MSSQL;Initial Catalog=NET1720_PRN231_PRJ_G2_SkinCareBookingSystem;Persist Security Info=True;User ID=sa;Password=123456;Encrypt=False"
+    }
+
+Programs:
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.Never;
+});
+
+builder.Services.AddScoped<IScheduleService, ScheduleService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserAccountService, UserAccountService>();
+
+app.MapBlazorHub();
+app.MapControllers();
+
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+Tạo folder Controllers:
+Api Controller using EntityFramework
+
+-----------------------------------Clients-------------------------------------------
+NavMenu:
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/Schedule/ScheduleList">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> ScheduleList
+            </NavLink>
+        </div>
+
+Pages:
+Tạo folder SchedulePages:
+Index:
+@page "/schedules"
+@using SCBS.BlazorApp.Clients.Models
+@inject HttpClient httpClient
+
+<h1>Index</h1>
+
+<p>
+    <a href="schedules/create">Create New</a>
+</p>
+
+@if (schedules == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>UserId</th>
+                <th>WorkDate</th>
+                <th>Status</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var schedule in schedules)
+            {
+                <tr>
+                    <td>@schedule.User.FullName</td>
+                    <td>@schedule.WorkDate</td>
+                    <td>@schedule.Status</td>
+                    <td>@schedule.Title</td>
+                    <td>
+                        <a href="@($"schedules/edit?id={schedule.Id}")">Edit</a> |
+                        <a href="@($"schedules/details?id={schedule.Id}")">Details</a> |
+                        <a href="@($"schedules/delete?id={schedule.Id}")">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+	private List<Schedule>? schedules;
+	protected override async Task OnInitializedAsync()
+	{
+		schedules = await httpClient.GetFromJsonAsync<List<Schedule>>("https://localhost:7197/api/schedules");
+	}
+}
+
+Details:
+@page "/schedules/details"
+@using SCBS.BlazorApp.Clients.Models
+@inject HttpClient httpClient
+@inject NavigationManager NavigationManager
+
+<h1>Details</h1>
+
+<div>
+    <h2>Schedule</h2>
+    <hr />
+    @if (schedule is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <dl class="row">
+            <dt class="col-sm-2">UserId</dt>
+            <dd class="col-sm-10">@schedule.UserId</dd>
+            <dt class="col-sm-2">WorkDate</dt>
+            <dd class="col-sm-10">@schedule.WorkDate</dd>
+            <dt class="col-sm-2">Status</dt>
+            <dd class="col-sm-10">@schedule.Status</dd>
+            <dt class="col-sm-2">CreatedAt</dt>
+            <dd class="col-sm-10">@schedule.CreatedAt</dd>
+            <dt class="col-sm-2">UpdatedAt</dt>
+            <dd class="col-sm-10">@schedule.UpdatedAt</dd>
+            <dt class="col-sm-2">Title</dt>
+            <dd class="col-sm-10">@schedule.Title</dd>
+            <dt class="col-sm-2">Description</dt>
+            <dd class="col-sm-10">@schedule.Description</dd>
+            <dt class="col-sm-2">Location</dt>
+            <dd class="col-sm-10">@schedule.Location</dd>
+            <dt class="col-sm-2">Notes</dt>
+            <dd class="col-sm-10">@schedule.Notes</dd>
+        </dl>
+        <div>
+            <a href="@($"/schedules/edit?id={schedule.Id}")">Edit</a> |
+            <a href="@($"/schedules")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private Schedule? schedule;
+
+    [SupplyParameterFromQuery]
+    private Guid Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        schedule = await httpClient.GetFromJsonAsync<Schedule>("https://localhost:7197/api/schedules/"+Id);
+
+        if (schedule is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}
+
+Edit:
+@page "/schedules/edit"
+@using SCBS.BlazorApp.Clients.Models
+@inject HttpClient httpClient
+@inject NavigationManager NavigationManager
+
+<h1>Edit</h1>
+
+<h2>Schedule</h2>
+<hr />
+@if (Schedule is null || users is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="Schedule" OnValidSubmit="UpdateSchedule" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert" />
+                <input type="hidden" name="Schedule.Id" value="@Schedule.Id" />
+                <div class="mb-3">
+                    <label for="userid" class="form-label">UserId:</label>
+                    <InputSelect id="userid" @bind-Value="Schedule.UserId" class="form-control">
+                        @foreach (var user in users)
+                        {
+                            <option value="@user.Id">@user.FullName</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="() => Schedule.UserId" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="workdate" class="form-label">WorkDate:</label>
+                    <InputDate id="workdate" @bind-Value="Schedule.WorkDate" class="form-control" />
+                    <ValidationMessage For="() => Schedule.WorkDate" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status:</label>
+                    <InputText id="status" @bind-Value="Schedule.Status" class="form-control" aria-required="true" />
+                    <ValidationMessage For="() => Schedule.Status" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="createdat" class="form-label">CreatedAt:</label>
+                    <InputDate id="createdat" @bind-Value="Schedule.CreatedAt" class="form-control" />
+                    <ValidationMessage For="() => Schedule.CreatedAt" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="updatedat" class="form-label">UpdatedAt:</label>
+                    <InputDate id="updatedat" @bind-Value="Schedule.UpdatedAt" class="form-control" />
+                    <ValidationMessage For="() => Schedule.UpdatedAt" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <InputText id="title" @bind-Value="Schedule.Title" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Title" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <InputText id="description" @bind-Value="Schedule.Description" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Description" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location:</label>
+                    <InputText id="location" @bind-Value="Schedule.Location" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Location" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="notes" class="form-label">Notes:</label>
+                    <InputText id="notes" @bind-Value="Schedule.Notes" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Notes" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+<div>
+    <a href="/schedules">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private Guid Id { get; set; }
+
+    private Schedule? Schedule { get; set; }
+    private List<User>? users { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Schedule ??= await httpClient.GetFromJsonAsync<Schedule>("https://localhost:7197/api/schedules/" + Id);
+        users ??= await httpClient.GetFromJsonAsync<List<User>>("https://localhost:7197/api/users");
+
+        if (Schedule is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task UpdateSchedule()
+    {
+        try
+        {
+            Schedule!.User = await httpClient.GetFromJsonAsync<User>("https://localhost:7197/api/users/" + Schedule!.UserId);
+            await httpClient.PutAsJsonAsync("https://localhost:7197/api/schedules/" + Schedule!.Id, Schedule);
+        }
+        catch
+        {
+            if (!ScheduleExists(Schedule!.Id))
+            {
+                NavigationManager.NavigateTo("notfound");
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        NavigationManager.NavigateTo("/schedules");
+    }
+
+    private bool ScheduleExists(Guid id)
+    {
+		return httpClient.GetFromJsonAsync<Schedule>("https://localhost:7197/api/schedules/" + id).Result != null;
+    }
+}
+
+Delete:
+@page "/schedules/edit"
+@using SCBS.BlazorApp.Clients.Models
+@inject HttpClient httpClient
+@inject NavigationManager NavigationManager
+
+<h1>Edit</h1>
+
+<h2>Schedule</h2>
+<hr />
+@if (Schedule is null || users is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="Schedule" OnValidSubmit="UpdateSchedule" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert" />
+                <input type="hidden" name="Schedule.Id" value="@Schedule.Id" />
+                <div class="mb-3">
+                    <label for="userid" class="form-label">UserId:</label>
+                    <InputSelect id="userid" @bind-Value="Schedule.UserId" class="form-control">
+                        @foreach (var user in users)
+                        {
+                            <option value="@user.Id">@user.FullName</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="() => Schedule.UserId" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="workdate" class="form-label">WorkDate:</label>
+                    <InputDate id="workdate" @bind-Value="Schedule.WorkDate" class="form-control" />
+                    <ValidationMessage For="() => Schedule.WorkDate" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status:</label>
+                    <InputText id="status" @bind-Value="Schedule.Status" class="form-control" aria-required="true" />
+                    <ValidationMessage For="() => Schedule.Status" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="createdat" class="form-label">CreatedAt:</label>
+                    <InputDate id="createdat" @bind-Value="Schedule.CreatedAt" class="form-control" />
+                    <ValidationMessage For="() => Schedule.CreatedAt" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="updatedat" class="form-label">UpdatedAt:</label>
+                    <InputDate id="updatedat" @bind-Value="Schedule.UpdatedAt" class="form-control" />
+                    <ValidationMessage For="() => Schedule.UpdatedAt" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <InputText id="title" @bind-Value="Schedule.Title" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Title" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <InputText id="description" @bind-Value="Schedule.Description" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Description" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location:</label>
+                    <InputText id="location" @bind-Value="Schedule.Location" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Location" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="notes" class="form-label">Notes:</label>
+                    <InputText id="notes" @bind-Value="Schedule.Notes" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Notes" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+<div>
+    <a href="/schedules">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private Guid Id { get; set; }
+
+    private Schedule? Schedule { get; set; }
+    private List<User>? users { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Schedule ??= await httpClient.GetFromJsonAsync<Schedule>("https://localhost:7197/api/schedules/" + Id);
+        users ??= await httpClient.GetFromJsonAsync<List<User>>("https://localhost:7197/api/users");
+
+        if (Schedule is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task UpdateSchedule()
+    {
+        try
+        {
+            Schedule!.User = await httpClient.GetFromJsonAsync<User>("https://localhost:7197/api/users/" + Schedule!.UserId);
+            await httpClient.PutAsJsonAsync("https://localhost:7197/api/schedules/" + Schedule!.Id, Schedule);
+        }
+        catch
+        {
+            if (!ScheduleExists(Schedule!.Id))
+            {
+                NavigationManager.NavigateTo("notfound");
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        NavigationManager.NavigateTo("/schedules");
+    }
+
+    private bool ScheduleExists(Guid id)
+    {
+		return httpClient.GetFromJsonAsync<Schedule>("https://localhost:7197/api/schedules/" + id).Result != null;
+    }
+}
+
+Create:
+@page "/schedules/create"
+@using SCBS.BlazorApp.Clients.Models
+@inject HttpClient httpClient
+@inject NavigationManager NavigationManager
+
+<h1>Create</h1>
+
+<h2>Schedule</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Schedule" OnValidSubmit="AddSchedule" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="mb-3">
+                <label for="userid" class="form-label">UserId:</label>
+                <InputSelect id="userid" @bind-Value="Schedule.UserId" class="form-control">
+                    @foreach (var user in users)
+                    {
+                        <option value="@user.Id">@user.FullName</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => Schedule.UserId" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="workdate" class="form-label">WorkDate:</label>
+                <InputDate id="workdate" @bind-Value="Schedule.WorkDate" class="form-control" />
+                <ValidationMessage For="() => Schedule.WorkDate" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status:</label>
+                <InputText id="status" @bind-Value="Schedule.Status" class="form-control" aria-required="true" />
+                <ValidationMessage For="() => Schedule.Status" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="createdat" class="form-label">CreatedAt:</label>
+                <InputDate id="createdat" @bind-Value="Schedule.CreatedAt" class="form-control" />
+                <ValidationMessage For="() => Schedule.CreatedAt" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="updatedat" class="form-label">UpdatedAt:</label>
+                <InputDate id="updatedat" @bind-Value="Schedule.UpdatedAt" class="form-control" />
+                <ValidationMessage For="() => Schedule.UpdatedAt" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <InputText id="title" @bind-Value="Schedule.Title" class="form-control" />
+                <ValidationMessage For="() => Schedule.Title" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <InputText id="description" @bind-Value="Schedule.Description" class="form-control" />
+                <ValidationMessage For="() => Schedule.Description" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location:</label>
+                <InputText id="location" @bind-Value="Schedule.Location" class="form-control" />
+                <ValidationMessage For="() => Schedule.Location" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="notes" class="form-label">Notes:</label>
+                <InputText id="notes" @bind-Value="Schedule.Notes" class="form-control" />
+                <ValidationMessage For="() => Schedule.Notes" class="text-danger" />
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/schedules">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private Schedule Schedule { get; set; } = new();
+	private List<User>? users = new List<User>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		users = await httpClient.GetFromJsonAsync<List<User>>("https://localhost:7197/api/users");
+	}
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddSchedule()
+    {
+		Schedule.Id = Guid.NewGuid();
+		await httpClient.PostAsJsonAsync("https://localhost:7197/api/schedules", Schedule);
+        NavigationManager.NavigateTo("/schedules");
+    }
+}
+
