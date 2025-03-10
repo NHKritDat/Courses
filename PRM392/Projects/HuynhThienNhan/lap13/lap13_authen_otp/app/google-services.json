@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "813400391949",
+    "project_id": "authenlab-18c5f",
+    "storage_bucket": "authenlab-18c5f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813400391949:android:0b242f50c418ed25e9f044",
+        "android_client_info": {
+          "package_name": "com.example.lap13_authen_otp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZdNt2dTIJgtI_3Z2ufVJ-rXhuX9WcaWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
