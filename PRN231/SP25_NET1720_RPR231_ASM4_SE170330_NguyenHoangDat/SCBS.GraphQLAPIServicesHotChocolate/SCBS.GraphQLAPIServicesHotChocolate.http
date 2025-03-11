@@ -1,0 +1,6 @@
+@SCBS.GraphQLAPIServicesHotChocolate_HostAddress = http://localhost:5274
+
+GET {{SCBS.GraphQLAPIServicesHotChocolate_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

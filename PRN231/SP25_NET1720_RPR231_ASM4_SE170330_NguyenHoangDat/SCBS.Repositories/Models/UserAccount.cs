@@ -8,55 +8,34 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SCBS.Repositories.Models;
 
-[Table("UserAccount")]
 public partial class UserAccount
 {
-    [Key]
-    [Column("UserAccountID")]
     public int UserAccountId { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string UserName { get; set; }
 
-    [Required]
-    [StringLength(100)]
     public string Password { get; set; }
 
-    [Required]
-    [StringLength(100)]
     public string FullName { get; set; }
 
-    [Required]
-    [StringLength(150)]
     public string Email { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string Phone { get; set; }
 
-    [Required]
-    [StringLength(50)]
     public string EmployeeCode { get; set; }
 
     public int RoleId { get; set; }
 
-    [StringLength(50)]
     public string RequestCode { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? CreatedDate { get; set; }
 
-    [StringLength(50)]
     public string ApplicationCode { get; set; }
 
-    [StringLength(50)]
     public string CreatedBy { get; set; }
 
-    [Column(TypeName = "datetime")]
     public DateTime? ModifiedDate { get; set; }
 
-    [StringLength(50)]
     public string ModifiedBy { get; set; }
 
     public bool IsActive { get; set; }

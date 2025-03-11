@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.grapqlapiservices\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|solutionrelative:scbs.grapqlapiservices\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{138AA727-33B9-3B92-63A8-6B3C43903364}|SCBS.Repositories\\SCBS.Repositories.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.repositories\\base\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{138AA727-33B9-3B92-63A8-6B3C43903364}|SCBS.Repositories\\SCBS.Repositories.csproj|solutionrelative:scbs.repositories\\base\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.grapqlapiservices\\grapqls\\mutation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|solutionrelative:scbs.grapqlapiservices\\grapqls\\mutation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.grapqlapiservices\\grapqls\\query.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{279EEA9F-8A2B-4873-B283-826555C9E7EF}|SCBS.GrapQLAPIServices\\SCBS.GrapQLAPIServices.csproj|solutionrelative:scbs.grapqlapiservices\\grapqls\\query.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{138AA727-33B9-3B92-63A8-6B3C43903364}|SCBS.Repositories\\SCBS.Repositories.csproj|d:\\courses\\prn231\\sp25_net1720_rpr231_asm4_se170330_nguyenhoangdat\\scbs.repositories\\dbcontext\\net1720_prn231_prj_g2_skincarebookingsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{138AA727-33B9-3B92-63A8-6B3C43903364}|SCBS.Repositories\\SCBS.Repositories.csproj|solutionrelative:scbs.repositories\\dbcontext\\net1720_prn231_prj_g2_skincarebookingsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,76 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\Program.cs",
-              "RelativeDocumentMoniker": "SCBS.GrapQLAPIServices\\Program.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\Program.cs",
-              "RelativeToolTip": "SCBS.GrapQLAPIServices\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T13:59:58.982Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.Repositories\\DBContext\\NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext.cs",
-              "RelativeDocumentMoniker": "SCBS.Repositories\\DBContext\\NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.Repositories\\DBContext\\NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext.cs",
-              "RelativeToolTip": "SCBS.Repositories\\DBContext\\NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAowCYAAACGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T08:20:20.621Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GenericRepository.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.Repositories\\Base\\GenericRepository.cs",
-              "RelativeDocumentMoniker": "SCBS.Repositories\\Base\\GenericRepository.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.Repositories\\Base\\GenericRepository.cs",
-              "RelativeToolTip": "SCBS.Repositories\\Base\\GenericRepository.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAkwCgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T07:59:39.963Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Query.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\GrapQLs\\Query.cs",
-              "RelativeDocumentMoniker": "SCBS.GrapQLAPIServices\\GrapQLs\\Query.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\GrapQLs\\Query.cs",
-              "RelativeToolTip": "SCBS.GrapQLAPIServices\\GrapQLs\\Query.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T07:52:33.916Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Mutation.cs",
-              "DocumentMoniker": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\GrapQLs\\Mutation.cs",
-              "RelativeDocumentMoniker": "SCBS.GrapQLAPIServices\\GrapQLs\\Mutation.cs",
-              "ToolTip": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM4_SE170330_NguyenHoangDat\\SCBS.GrapQLAPIServices\\GrapQLs\\Mutation.cs",
-              "RelativeToolTip": "SCBS.GrapQLAPIServices\\GrapQLs\\Mutation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T07:47:18.585Z",
-              "EditorCaption": ""
             }
           ]
         }

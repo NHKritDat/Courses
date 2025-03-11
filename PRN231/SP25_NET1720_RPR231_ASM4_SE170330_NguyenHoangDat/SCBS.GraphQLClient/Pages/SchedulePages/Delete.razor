@@ -1,0 +1,90 @@
+﻿@page "/schedules/delete"
+@using SCBS.GraphQLClient.Models
+@using SCBS.GraphQLClient.GrapQLClients
+@inject GraphQLConsumer graphQLConsumer
+@inject NavigationManager NavigationManager
+
+<h1>Delete</h1>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+	<h2>Schedule</h2>
+	<hr />
+	@if (schedule is null)
+	{
+		<p><em>Loading...</em></p>
+	}
+	else
+	{
+		<dl class="row">
+			<dt class="col-sm-2">UserId</dt>
+			<dd class="col-sm-10">@schedule.UserId</dd>
+		</dl>
+		<dl class="row">
+			<dt class="col-sm-2">WorkDate</dt>
+			<dd class="col-sm-10">@schedule.WorkDate</dd>
+		</dl>
+		<dl class="row">
+			<dt class="col-sm-2">Status</dt>
+			<dd class="col-sm-10">@schedule.Status</dd>
+		</dl>
+		<dl class="row">
+			<dt class="col-sm-2">CreatedAt</dt>
+			<dd class="col-sm-10">@schedule.CreatedAt</dd>
+		</dl>
+		<dl class="row">
+			<dt class="col-sm-2">UpdatedAt</dt>
+			<dd class="col-sm-10">@schedule.UpdatedAt</dd>
+		</dl>
+		<dl class="row">
+			<dt class="col-sm-2">Title</dt>
+			<dd class="col-sm-10">@schedule.Title</dd>
+		</dl>
+		<dl class="row">
+			<dt class="col-sm-2">Description</dt>
+			<dd class="col-sm-10">@schedule.Description</dd>
+		</dl>
+		<dl class="row">
+			<dt class="col-sm-2">Location</dt>
+			<dd class="col-sm-10">@schedule.Location</dd>
+		</dl>
+		<dl class="row">
+			<dt class="col-sm-2">Notes</dt>
+			<dd class="col-sm-10">@schedule.Notes</dd>
+		</dl>
+		<EditForm method="post" Model="schedule" OnValidSubmit="DeleteSchedule" FormName="delete" Enhance>
+			<button type="submit" class="btn btn-danger" disabled="@(schedule is null)">Delete</button> |
+			<a href="/schedules">Back to List</a>
+		</EditForm>
+	}
+</div>
+
+@code {
+	private Schedule? schedule;
+
+	[SupplyParameterFromQuery]
+	private Guid Id { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		try
+		{
+			schedule = await graphQLConsumer.GetSchedule(Id);
+		}
+		catch (Exception ex)
+		{
+			schedule = new Schedule();
+		}
+
+		if (schedule is null)
+		{
+			NavigationManager.NavigateTo("notfound");
+		}
+	}
+
+	private async Task DeleteSchedule()
+	{
+		await graphQLConsumer.Delete(Id);
+		NavigationManager.NavigateTo("/schedules");
+	}
+}

@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.Repositories", "SCBS.Repositories\SCBS.Repositories.csproj", "{138AA727-33B9-3B92-63A8-6B3C43903364}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.Repositories", "SCBS.Repositories\SCBS.Repositories.csproj", "{01C2BC07-EF88-4E57-8CB3-34EBDA1F4F3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.Services", "SCBS.Services\SCBS.Services.csproj", "{F287A30D-CE46-D1E0-D77B-2DDD27260CEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.Services", "SCBS.Services\SCBS.Services.csproj", "{2B8052BB-E770-4B5A-8876-05ECC123FBAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.GrapQLAPIServices", "SCBS.GrapQLAPIServices\SCBS.GrapQLAPIServices.csproj", "{279EEA9F-8A2B-4873-B283-826555C9E7EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.GraphQLAPIServicesHotChocolate", "SCBS.GraphQLAPIServicesHotChocolate\SCBS.GraphQLAPIServicesHotChocolate.csproj", "{7D9775A1-0D92-4260-880C-000F3CCFD2FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.GraphQLClient", "SCBS.GraphQLClient\SCBS.GraphQLClient.csproj", "{4A14D451-D2E1-44A0-B473-4F903D0EC04B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,23 +17,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{138AA727-33B9-3B92-63A8-6B3C43903364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{138AA727-33B9-3B92-63A8-6B3C43903364}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{138AA727-33B9-3B92-63A8-6B3C43903364}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{138AA727-33B9-3B92-63A8-6B3C43903364}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F287A30D-CE46-D1E0-D77B-2DDD27260CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F287A30D-CE46-D1E0-D77B-2DDD27260CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F287A30D-CE46-D1E0-D77B-2DDD27260CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F287A30D-CE46-D1E0-D77B-2DDD27260CEF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{279EEA9F-8A2B-4873-B283-826555C9E7EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{279EEA9F-8A2B-4873-B283-826555C9E7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{279EEA9F-8A2B-4873-B283-826555C9E7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{279EEA9F-8A2B-4873-B283-826555C9E7EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01C2BC07-EF88-4E57-8CB3-34EBDA1F4F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C2BC07-EF88-4E57-8CB3-34EBDA1F4F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C2BC07-EF88-4E57-8CB3-34EBDA1F4F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C2BC07-EF88-4E57-8CB3-34EBDA1F4F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B8052BB-E770-4B5A-8876-05ECC123FBAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B8052BB-E770-4B5A-8876-05ECC123FBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B8052BB-E770-4B5A-8876-05ECC123FBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B8052BB-E770-4B5A-8876-05ECC123FBAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D9775A1-0D92-4260-880C-000F3CCFD2FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D9775A1-0D92-4260-880C-000F3CCFD2FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D9775A1-0D92-4260-880C-000F3CCFD2FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D9775A1-0D92-4260-880C-000F3CCFD2FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A14D451-D2E1-44A0-B473-4F903D0EC04B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A14D451-D2E1-44A0-B473-4F903D0EC04B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A14D451-D2E1-44A0-B473-4F903D0EC04B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A14D451-D2E1-44A0-B473-4F903D0EC04B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B7036C24-1ECC-4D2B-ACA7-3DAD09EA4A79}
+		SolutionGuid = {CDC89872-986D-456A-BA6F-69411EED439C}
 	EndGlobalSection
 EndGlobal

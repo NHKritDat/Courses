@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "SCBS.GraphQLAPIServicesHotChocolate\\SCBS.GraphQLAPIServicesHotChocolate.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "SCBS.MVCWebApp\\SCBS.MVCWebApp.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "SCBS.GraphQLClient\\SCBS.GraphQLClient.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
