@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/btnShowMap"
+        android:layout_width="154dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="48dp"
+        android:text="Show Map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLocation"
+        android:layout_width="154dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="48dp"
+        android:text="Location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnChangeMarker" />
+
+    <Button
+        android:id="@+id/btnChangeMarker"
+        android:layout_width="154dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="48dp"
+        android:text="Change Marker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnShowMap" />
+
+    <Button
+        android:id="@+id/btnSearchView"
+        android:layout_width="154dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="48dp"
+        android:text="Search View"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLocation" />
+
+    <Button
+        android:id="@+id/btnChangeType"
+        android:layout_width="154dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="48dp"
+        android:text="Change Type Map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchView" />
+
+    <Button
+        android:id="@+id/btnTrack"
+        android:layout_width="154dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="48dp"
+        android:text="Tracking"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toEndOf="@id/btnShowMap"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnZoomAndCompass"
+        android:layout_width="154dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="48dp"
+        android:text="Zoom and Compass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toEndOf="@id/btnChangeMarker"
+        app:layout_constraintTop_toBottomOf="@id/btnTrack" />
+</androidx.constraintlayout.widget.ConstraintLayout>
