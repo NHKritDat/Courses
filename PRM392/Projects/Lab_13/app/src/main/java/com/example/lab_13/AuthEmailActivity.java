@@ -24,9 +24,10 @@ public class AuthEmailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auth_email);
         init();
 
-        btnRegister.setOnClickListener(v -> {
-            signUpUser(editTextTextEmailAddress.getText().toString(), editTextPassword.getText().toString());
-        });
+        btnRegister.setOnClickListener(v ->
+                signUpUser(editTextTextEmailAddress.getText().toString(), editTextPassword.getText().toString()));
+
+        findViewById(R.id.btnBack2).setOnClickListener(v-> finish());
     }
 
     private void signUpUser(String email, String password) {

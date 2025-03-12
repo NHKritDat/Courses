@@ -7,6 +7,7 @@
     tools:context=".HomeActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -15,5 +16,11 @@
         android:textAlignment="center"
         android:textColor="@color/purple_500"
         android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back" />
 
 </RelativeLayout>
