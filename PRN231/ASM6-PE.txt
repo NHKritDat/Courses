@@ -181,7 +181,7 @@ Chức năng chính, kiểm tra id là kiểu gì, SubModel tên là gì:
                             && (string.IsNullOrEmpty(search3) || item.search3.Contains(search3))
                 )
                 .ToListAsync();
-
+Kiểm tra search có bằng OData không? Không thì bỏ hàm search
 ------------------------------------------------Services----------------------------------------------
 Tạo các class [Model]Service và xóa nội dung bên trong
     public interface IModelService
@@ -224,7 +224,7 @@ Hàm phụ:
 
         public async Task<Model> GetByIdAsync(type id) => await _modelRepository.GetByIdAsync(id);
 Cho lên interface đủ 2 hàm
-
+1 hàm all th
 ------------------------------------------------------API---------------------------------------------
 thêm vào appsettings.json:
 ,
@@ -363,7 +363,6 @@ Cho vào class:
         public ModelController(IModelService modelService) => _modelService = modelService;
 Thêm phân quyền, check yêu cầu của đề role nào được dùng:
         [Authorize(Roles = "1")]
-Update: Xóa {id}
 Thêm Search:
         [HttpGet("search")]
         [Authorize(Roles = "1,3,4")]
@@ -372,6 +371,7 @@ Thêm Search:
 ---------------------------------------Web App------------------------------------------
 Programs:
 app.UseAuthentication();
+
 builder.Services.AddAuthentication()
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
     {
@@ -468,13 +468,13 @@ Login thay bằng hàm dưới, import LoginRequest bằng Models:
         }
 
 Thêm vào 2 controller còn lại
-- [Authorize(Roles ="")] theo yêu cầu đề cho Home
-- [Authorize] cho chức năng chính
+- [Authorize]
 
 Chức năng chính:
 - [Authorize(Roles ="")] theo yêu cầu đề cho từng hàm
 - Xóa context
 - private string APIEndPoint = "https://localhost:Port/api/"; fix
+-         private string OdataEndPoint = "https://localhost:thay bang port /odata/";fix
 - Index:
             using (var httpClient = new HttpClient())
             {
@@ -502,7 +502,8 @@ Chức năng chính:
             }
             return View(new List<Model>());
 
-public async Task<IActionResult> Search(string? field1, string? field2, string? field3)
+- Search:
+public async Task<IActionResult> Search(string? cosmeticName, string? cosmeticSize, string? skinType)
 {
     using (var httpClient = new HttpClient())
     {
@@ -514,22 +515,33 @@ public async Task<IActionResult> Search(string? field1, string? field2, string? 
 
         #endregion
 
-        using (var response = await httpClient.GetAsync(APIEndPoint + "Model/search?field1=" + field1 + "&field2=" + field2 + "&field3=" + field3)) fix
+        var filter = $"$filter=contains(CosmeticName, '{cosmeticName}') and contains(CosmeticSize, '{cosmeticSize}') and contains(SkinType, '{skinType}')";
+        var groupBy = "$apply=groupby((CosmeticName, CosmeticSize, SkinType))";
+        var odataQuery = $"{OdataEndPoint}CosmeticInformation?{filter}&{groupBy}";
+
+        using (var response = await httpClient.GetAsync(odataQuery))
         {
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Model>>(content);
+
+                var result = JsonConvert.DeserializeObject<ODataResponse<Model>>(content);
 
                 if (result != null)
                 {
-                    return View("Index", result);
+                    return View("Index", result.Value);
                 }
             }
         }
     }
     return View("Index", new List<Model>());
 }
+
+    public class ODataResponse<T>
+    {
+        [JsonProperty("value")]
+        public List<T> Value { get; set; }
+    }
 
 - Details:
             if (id == null)
@@ -562,7 +574,7 @@ public async Task<IActionResult> Search(string? field1, string? field2, string? 
             }
             return NotFound();
 -
-private async Task<List<SubModel>> GetSubModels() fix
+private async Task<List<SubModel>> GetSubModels() 
 {
     var subModels = new List<SubModel>();
     using (var httpClient = new HttpClient())
@@ -722,33 +734,6 @@ private async Task<List<SubModel>> GetSubModels() fix
             }
 
             return RedirectToAction(nameof(Index));
-- Exists:
-            using (var httpClient = new HttpClient())
-            {
-                #region Add Token to header of Request
-
-                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
-
-                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
-
-                #endregion
-
-
-                using (var response = await httpClient.GetAsync(APIEndPoint + "Model")) fix
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var content = await response.Content.ReadAsStringAsync();
-                        var result = JsonConvert.DeserializeObject<List<Model>>(content); fix
-
-                        if (result != null)
-                        {
-                            return result.Any(e => e.ModelId == id); fix
-                        }
-                    }
-                }
-            }
-            return false;
 
 Views Layout:
                         <li class="nav-item">
@@ -759,12 +744,12 @@ Views Layout:
                     <div class="nav-item text-nowrap">
                         Welcome
                         <strong>@Context.Request.Cookies["Field"].ToString()</strong> fix
-                        | @* <a href="/SystemAccount/Logout">LogOut</a> *@
+                        |
                         <a asp-controller="Model" asp-action="Logout">Logout</a> fix
                     </div>
                 </div>
 
-Tạo folder Model Login:
+Tạo folder [Model] để login trong Views:
 - Forbidden
 - Login
 

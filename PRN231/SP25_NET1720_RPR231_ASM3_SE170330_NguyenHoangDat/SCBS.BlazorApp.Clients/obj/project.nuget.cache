@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DB6o3f2BvaE=",
+  "dgSpecHash": "ITRFC2z/GVo=",
   "success": true,
   "projectFilePath": "D:\\Courses\\PRN231\\SP25_NET1720_RPR231_ASM3_SE170330_NguyenHoangDat\\SCBS.BlazorApp.Clients\\SCBS.BlazorApp.Clients.csproj",
   "expectedPackageFiles": [
@@ -28,10 +28,10 @@
     "C:\\Users\\dat01\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\dat01\\.nuget\\packages\\microsoft.jsinterop\\8.0.13\\microsoft.jsinterop.8.0.13.nupkg.sha512",
     "C:\\Users\\dat01\\.nuget\\packages\\microsoft.jsinterop.webassembly\\8.0.13\\microsoft.jsinterop.webassembly.8.0.13.nupkg.sha512",
-    "C:\\Users\\dat01\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.13\\microsoft.net.illink.tasks.8.0.13.nupkg.sha512",
-    "C:\\Users\\dat01\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.2\\microsoft.net.sdk.webassembly.pack.9.0.2.nupkg.sha512",
+    "C:\\Users\\dat01\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.14\\microsoft.net.illink.tasks.8.0.14.nupkg.sha512",
+    "C:\\Users\\dat01\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.3\\microsoft.net.sdk.webassembly.pack.9.0.3.nupkg.sha512",
     "C:\\Users\\dat01\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
-    "C:\\Users\\dat01\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.13\\microsoft.netcore.app.runtime.mono.browser-wasm.8.0.13.nupkg.sha512"
+    "C:\\Users\\dat01\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.14\\microsoft.netcore.app.runtime.mono.browser-wasm.8.0.14.nupkg.sha512"
   ],
   "logs": []
 }

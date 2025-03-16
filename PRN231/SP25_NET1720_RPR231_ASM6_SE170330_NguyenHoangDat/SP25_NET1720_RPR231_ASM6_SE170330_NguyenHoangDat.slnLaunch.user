@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "CosmeticsStore.APIServices\\CosmeticsStore.APIServices.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "CosmeticsStore.MVCWebApp\\CosmeticsStore.MVCWebApp.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

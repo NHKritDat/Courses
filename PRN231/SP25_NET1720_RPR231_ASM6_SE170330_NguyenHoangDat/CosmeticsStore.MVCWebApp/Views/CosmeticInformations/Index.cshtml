@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CosmeticsStore.Repositories.Models.CosmeticInformation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form method="get" asp-action="Search">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" name="cosmeticName" class="form-control" placeholder="Search by Cosmetic Name" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="cosmeticSize" class="form-control" placeholder="Search by Cosmetic Size" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="skinType" class="form-control" placeholder="Search by Skin Type" />
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a asp-action="Index" class="btn btn-secondary">Reset</a>
+        </div>
+    </div>
+</form>
+
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CosmeticName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkinType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CosmeticSize)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CosmeticName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkinType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CosmeticSize)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CosmeticId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CosmeticId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CosmeticId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

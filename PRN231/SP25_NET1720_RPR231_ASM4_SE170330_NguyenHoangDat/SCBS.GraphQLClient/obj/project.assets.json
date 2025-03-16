@@ -534,13 +534,13 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.13": {
+      "Microsoft.NET.ILLink.Tasks/8.0.14": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.2": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.3": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -1126,13 +1126,13 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.13": {
+      "Microsoft.NET.ILLink.Tasks/8.0.14": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.2": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.3": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -2157,10 +2157,10 @@
         "microsoft.jsinterop.webassembly.nuspec"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/8.0.13": {
-      "sha512": "R19ZTaRiQAK+xo9ZwaHbF/1vb1wwR1Wn5+sqp9v8+CDjbdS8R6qftKdw0VSXWKm7VAMi7P+NCU4zxDzhEWcAwQ==",
+    "Microsoft.NET.ILLink.Tasks/8.0.14": {
+      "sha512": "4U2fd7PexNKrK5ZqfqIcXZj9/lRRjFsLgA/pxuFQTuGQuLYP/+7yACz/j7EmWbEj/fspOf4mafi/vHIy/rKDzQ==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/8.0.13",
+      "path": "microsoft.net.illink.tasks/8.0.14",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -2174,7 +2174,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.8.0.13.nupkg.sha512",
+        "microsoft.net.illink.tasks.8.0.14.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net472/ILLink.Tasks.dll",
         "tools/net472/ILLink.Tasks.dll.config",
@@ -2208,10 +2208,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.2": {
-      "sha512": "svOs6YArbcpL06ZWj+b4hNVlJC5m37ydSgS+1XJWJzQu5fdT7ToEOaik1yiNo9AD357PBEiUJWTlrIcwdF8IeA==",
+    "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.3": {
+      "sha512": "DMmycEIk9lhnpvDMYprPo0eCJNv0g3jujnpREkormE8wQ8NfWjuh+Sj66V4FS+e+OE1jws4FbKdat0GPWwA92g==",
       "type": "package",
-      "path": "microsoft.net.sdk.webassembly.pack/9.0.2",
+      "path": "microsoft.net.sdk.webassembly.pack/9.0.3",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -2242,7 +2242,7 @@
         "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets",
         "build/Wasm.web.config",
         "build/browser.runtimeconfig.template.json",
-        "microsoft.net.sdk.webassembly.pack.9.0.2.nupkg.sha512",
+        "microsoft.net.sdk.webassembly.pack.9.0.3.nupkg.sha512",
         "microsoft.net.sdk.webassembly.pack.nuspec",
         "tools/net472/Microsoft.NET.Sdk.WebAssembly.Pack.Tasks.dll",
         "tools/net472/Microsoft.NET.WebAssembly.Webcil.dll",
@@ -2345,8 +2345,8 @@
       "Graphql >= 8.4.1",
       "Microsoft.AspNetCore.Components.WebAssembly >= 8.0.13",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 8.0.13",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.13",
-      "Microsoft.NET.Sdk.WebAssembly.Pack >= 9.0.2"
+      "Microsoft.NET.ILLink.Tasks >= 8.0.14",
+      "Microsoft.NET.Sdk.WebAssembly.Pack >= 9.0.3"
     ]
   },
   "packageFolders": {
@@ -2423,13 +2423,13 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[8.0.13, )",
+            "version": "[8.0.14, )",
             "autoReferenced": true
           },
           "Microsoft.NET.Sdk.WebAssembly.Pack": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.2, )",
+            "version": "[9.0.3, )",
             "autoReferenced": true
           }
         },
@@ -2447,7 +2447,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-            "version": "[8.0.13, 8.0.13]"
+            "version": "[8.0.14, 8.0.14]"
           }
         ],
         "frameworkReferences": {
@@ -2455,7 +2455,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
