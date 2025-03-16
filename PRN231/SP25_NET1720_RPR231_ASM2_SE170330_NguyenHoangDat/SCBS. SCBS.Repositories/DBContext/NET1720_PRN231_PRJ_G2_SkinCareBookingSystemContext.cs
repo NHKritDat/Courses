@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using SCBS._SCBS.Repositories.Models;
+using SCBS.Repositories.Models;
 
-namespace SCBS._SCBS.Repositories.DBContext;
+namespace SCBS.Repositories.DBContext;
 
 public partial class NET1720_PRN231_PRJ_G2_SkinCareBookingSystemContext : DbContext
 {

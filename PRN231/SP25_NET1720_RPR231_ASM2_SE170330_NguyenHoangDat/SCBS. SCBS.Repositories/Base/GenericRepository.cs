@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SCBS._SCBS.Repositories.DBContext;
+using SCBS.Repositories.DBContext;
 
-namespace SCBS._SCBS.Repositories.Base
+namespace SCBS.Repositories.Base
 {
     public class GenericRepository<T> where T : class
     {

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "SCBS.GrpcServices.Protos";
+option csharp_namespace = "SCBS.GrpcClient.Protos";
 
 package schedule;
 

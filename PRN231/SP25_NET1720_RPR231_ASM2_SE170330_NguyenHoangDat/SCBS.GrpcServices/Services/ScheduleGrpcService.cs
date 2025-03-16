@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using Grpc.Core;
-using SCBS._SCBS.Repositories.Models;
-using SCBS._SCBS.Services;
+using SCBS.Repositories.Models;
+using SCBS.Services;
 using SCBS.GrpcServices.Protos;
 
 namespace SCBS.GrpcServices.Services
@@ -14,7 +14,7 @@ namespace SCBS.GrpcServices.Services
         {
             _scheduleService = scheduleService;
         }
-        public override async Task<Item> GetByIdAsync(IdRequest request, ServerCallContext context)
+        public override async Task<Item> GetById(IdRequest request, ServerCallContext context)
         {
             var schedule = await _scheduleService.GetByIdAsync(Guid.Parse(request.Id));
 
@@ -28,7 +28,7 @@ namespace SCBS.GrpcServices.Services
             var result = JsonSerializer.Deserialize<Item>(itemString, opt);
             return result != null ? await Task.FromResult(result) : new Item();
         }
-        public override async Task<ItemList> GetAllAsync(EmptyRequest request, ServerCallContext context)
+        public override async Task<ItemList> GetAll(EmptyRequest request, ServerCallContext context)
         {
             var schedules = await _scheduleService.GetAllAsync();
             var response = new ItemList();
@@ -45,7 +45,7 @@ namespace SCBS.GrpcServices.Services
 
             return await Task.FromResult(response);
         }
-        public override async Task<ActionResult> CreateAsync(Item request, ServerCallContext context)
+        public override async Task<ActionResult> Create(Item request, ServerCallContext context)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace SCBS.GrpcServices.Services
                 return new ActionResult { Status = 0, Message = "Create Failed" };
             }
         }
-        public override async Task<ActionResult> UpdateAsync(Item request, ServerCallContext context)
+        public override async Task<ActionResult> Update(Item request, ServerCallContext context)
         {
             try
             {
@@ -103,7 +103,7 @@ namespace SCBS.GrpcServices.Services
                 return new ActionResult { Status = 0, Message = "Update Failed" };
             }
         }
-        public override async Task<ActionResult> RemoveAsync(IdRequest request, ServerCallContext context)
+        public override async Task<ActionResult> Remove(IdRequest request, ServerCallContext context)
         {
             try
             {

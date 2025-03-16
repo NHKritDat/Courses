@@ -10,11 +10,11 @@ namespace SCBS.Services
 {
     public interface IUserService
     {
-        Task<int> Create(User user);
-        Task<bool> Delete(Guid id);
+        Task<int> CreateAsync(User user);
+        Task<bool> DeleteAsync(Guid id);
         Task<List<User>> GetAllAsync();
         Task<User> GetByIdAsync(Guid id);
-        Task<int> Update(User user);
+        Task<int> UpdateAsync(User user);
     }
     public class UserService : IUserService
     {
@@ -23,9 +23,9 @@ namespace SCBS.Services
         public async Task<List<User>> GetAllAsync() => await _userRepository.GetAllAsync();
 
         public async Task<User> GetByIdAsync(Guid id) => await _userRepository.GetByIdAsync(id);
-        public async Task<int> Create(User user) => await _userRepository.CreateAsync(user);
-        public async Task<int> Update(User user) => await _userRepository.UpdateAsync(user);
-        public async Task<bool> Delete(Guid id)
+        public async Task<int> CreateAsync(User user) => await _userRepository.CreateAsync(user);
+        public async Task<int> UpdateAsync(User user) => await _userRepository.UpdateAsync(user);
+        public async Task<bool> DeleteAsync(Guid id)
         {
             var user = await GetByIdAsync(id);
             if (user == null) return false;

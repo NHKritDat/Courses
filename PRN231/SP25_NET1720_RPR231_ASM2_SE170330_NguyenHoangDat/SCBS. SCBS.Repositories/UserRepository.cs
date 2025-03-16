@@ -1,7 +1,7 @@
-﻿using SCBS._SCBS.Repositories.Base;
-using SCBS._SCBS.Repositories.Models;
+﻿using SCBS.Repositories.Base;
+using SCBS.Repositories.Models;
 
-namespace SCBS._SCBS.Repositories
+namespace SCBS.Repositories
 {
     public class UserRepository : GenericRepository<User>
     {

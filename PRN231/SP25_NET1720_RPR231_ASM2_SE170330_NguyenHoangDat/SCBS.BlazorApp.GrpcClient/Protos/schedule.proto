@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option csharp_namespace = "SCBS.BlazorApp.GrpcClient.Protos";
+
+package schedule;
+
+service ScheduleGrpc{
+	rpc GetAll (EmptyRequest) returns (ItemList);
+
+	rpc GetById (IdRequest) returns (Item);
+
+	rpc Create (Item) returns (ActionResult);
+
+	rpc Update (Item) returns (ActionResult);
+  
+	rpc Remove (IdRequest) returns (ActionResult);
+}
+
+message ActionResult {
+	int32 status = 1;
+	string message = 2;
+	ItemList data = 3;
+}
+
+message IdRequest {
+	string id = 1;
+}
+
+message EmptyRequest {
+}
+
+message ItemList {
+	repeated Item items = 1;
+}
+
+message Item {
+	string id = 1;
+	string userId = 2;
+	string workDate = 3;
+	string status = 4;
+	string createdAt = 5;
+	string updatedAt = 6;
+	string title = 7;
+	string description = 8;
+	string location = 9;
+	string notes = 10;
+}

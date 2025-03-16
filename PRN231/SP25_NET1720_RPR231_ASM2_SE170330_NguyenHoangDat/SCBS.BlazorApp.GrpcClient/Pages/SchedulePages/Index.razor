@@ -1,0 +1,84 @@
+﻿@page "/schedules"
+@using Grpc.Net.Client
+@using Grpc.Net.Client.Web
+@using SCBS.BlazorApp.GrpcClient.Models
+@using SCBS.BlazorApp.GrpcClient.Protos
+@inject ScheduleGrpc.ScheduleGrpcClient scheduleGrpcClient
+
+<h1>Index</h1>
+
+<p>
+	<a href="schedules/create">Create New</a>
+</p>
+
+@if (isLoading)
+{
+	<p><em>Loading...</em></p>
+}
+else if (schedules == null || !schedules.Any())
+{
+	<p><em>No schedules available.</em></p>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>UserId</th>
+				<th>WorkDate</th>
+				<th>Status</th>
+				<th>Title</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var schedule in schedules)
+			{
+				<tr>
+					<td>@schedule.UserId</td>
+					<td>@schedule.WorkDate</td>
+					<td>@schedule.Status</td>
+					<td>@schedule.Title</td>
+					<td>
+						<a href="@($"schedules/edit?id={schedule.Id}")">Edit</a> |
+						<a href="@($"schedules/details?id={schedule.Id}")">Details</a> |
+						<a href="@($"schedules/delete?id={schedule.Id}")">Delete</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
+@code {
+	private List<Schedule> schedules = new();
+	private bool isLoading = true;
+
+	protected override async Task OnInitializedAsync()
+	{
+		try
+		{
+			var response = await scheduleGrpcClient.GetAllAsync(new EmptyRequest());
+			foreach (var item in response.Items)
+			{
+				schedules.Add(new Schedule
+					{
+						Id = Guid.Parse(item.Id),
+						UserId = Guid.Parse(item.UserId),
+						WorkDate = DateTime.Parse(item.WorkDate),
+						Status = item.Status,
+						Title = item.Title
+					});
+			}
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine("An error occurred.");
+			Console.WriteLine(ex.Message);
+		}
+		finally
+		{
+			isLoading = false;
+		}
+	}
+}

@@ -1,0 +1,137 @@
+﻿@page "/schedules/create"
+@using SCBS.BlazorApp.GrpcClient.Models
+@using SCBS.BlazorApp.GrpcClient.Protos
+@inject ScheduleGrpc.ScheduleGrpcClient scheduleGrpcClient
+@inject UserGrpc.UserGrpcClient userGrpcClient
+@inject NavigationManager NavigationManager
+
+<h1>Create</h1>
+
+<h2>Schedule</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @if (isLoading)
+        {
+            <p>Loading...</p>
+        }
+        else
+        {
+            <EditForm method="post" Model="Schedule" OnValidSubmit="AddSchedule" FormName="create" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary class="text-danger" role="alert" />
+                <div class="mb-3">
+                    <label for="userid" class="form-label">UserId:</label>
+                    <InputSelect id="userid" @bind-Value="Schedule.UserId" class="form-control">
+                        @foreach (var user in users)
+                        {
+                            <option value="@user.Id">@user.FullName</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="() => Schedule.UserId" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="workdate" class="form-label">WorkDate:</label>
+                    <InputDate id="workdate" @bind-Value="Schedule.WorkDate" class="form-control" />
+                    <ValidationMessage For="() => Schedule.WorkDate" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status:</label>
+                    <InputText id="status" @bind-Value="Schedule.Status" class="form-control" aria-required="true" />
+                    <ValidationMessage For="() => Schedule.Status" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="createdat" class="form-label">CreatedAt:</label>
+                    <InputDate id="createdat" @bind-Value="Schedule.CreatedAt" class="form-control" />
+                    <ValidationMessage For="() => Schedule.CreatedAt" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="updatedat" class="form-label">UpdatedAt:</label>
+                    <InputDate id="updatedat" @bind-Value="Schedule.UpdatedAt" class="form-control" />
+                    <ValidationMessage For="() => Schedule.UpdatedAt" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <InputText id="title" @bind-Value="Schedule.Title" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Title" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <InputText id="description" @bind-Value="Schedule.Description" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Description" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location:</label>
+                    <InputText id="location" @bind-Value="Schedule.Location" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Location" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="notes" class="form-label">Notes:</label>
+                    <InputText id="notes" @bind-Value="Schedule.Notes" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Notes" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </EditForm>
+        }
+    </div>
+</div>
+
+<div>
+    <a href="/schedules">Back to List</a>
+</div>
+
+@code {
+    private Schedule Schedule { get; set; } = new();
+    private List<User> users = new();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var response = await userGrpcClient.GetAllUsersAsync(new EmptyUserRequest());
+            users = response.Items.Select(u => new User
+                {
+                    Id = Guid.Parse(u.Id),
+                    FullName = u.Username
+                }).ToList();
+        }
+        catch (Exception ex)
+        {
+            // Handle error (e.g., log it, show a message to the user, etc.)
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task AddSchedule()
+    {
+        Schedule.Id = Guid.NewGuid();
+
+        var grpcItem = new Item
+            {
+                Id = Schedule.Id.ToString(),
+                UserId = Schedule.UserId.ToString(),
+                WorkDate = Schedule.WorkDate.ToString("yyyy-MM-dd"),
+                Status = Schedule.Status,
+                CreatedAt = Schedule.CreatedAt?.ToString("yyyy-MM-dd") ?? "",
+                UpdatedAt = Schedule.UpdatedAt?.ToString("yyyy-MM-dd") ?? "",
+                Title = Schedule.Title ?? "",
+                Description = Schedule.Description ?? "",
+                Location = Schedule.Location ?? "",
+                Notes = Schedule.Notes ?? ""
+            };
+
+        try
+        {
+            await scheduleGrpcClient.CreateAsync(grpcItem);
+            NavigationManager.NavigateTo("/schedules");
+        }
+        catch (Exception ex)
+        {
+            // Handle error (e.g., log it, show a message to the user, etc.)
+        }
+    }
+}

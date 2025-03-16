@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.GrpcClient", "SCBS.GrpcClient\SCBS.GrpcClient.csproj", "{BE900DDE-499E-4353-82B0-1242406CE90F}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.Services", "SCBS. SCBS.Services\SCBS.Services.csproj", "{9D0FF644-2D27-4DEA-BEBC-024D2FC695BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.GrpcServices", "SCBS.GrpcServices\SCBS.GrpcServices.csproj", "{901697FF-7824-4F7D-BEB3-D44ED6F52D92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCBS.BlazorApp.GrpcClient", "SCBS.BlazorApp.GrpcClient\SCBS.BlazorApp.GrpcClient.csproj", "{D0D9C8C8-4751-4FB9-8120-4B05F9937162}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{901697FF-7824-4F7D-BEB3-D44ED6F52D92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{901697FF-7824-4F7D-BEB3-D44ED6F52D92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{901697FF-7824-4F7D-BEB3-D44ED6F52D92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0D9C8C8-4751-4FB9-8120-4B05F9937162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0D9C8C8-4751-4FB9-8120-4B05F9937162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0D9C8C8-4751-4FB9-8120-4B05F9937162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0D9C8C8-4751-4FB9-8120-4B05F9937162}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

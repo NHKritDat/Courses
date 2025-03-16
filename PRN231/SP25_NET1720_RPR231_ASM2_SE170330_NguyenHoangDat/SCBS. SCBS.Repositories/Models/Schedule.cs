@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace SCBS._SCBS.Repositories.Models;
+namespace SCBS.Repositories.Models;
 
 [Table("Schedule")]
 public partial class Schedule

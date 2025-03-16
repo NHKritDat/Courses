@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "SCBS.BlazorApp.GrpcClient.Protos";
+
+package user;
+
+service UserGrpc{
+	rpc GetAllUsers (EmptyUserRequest) returns (UserList);
+}
+
+message UserList {
+	repeated UserItem items = 1;
+}
+
+message UserItem {
+	string id = 1;
+	string username = 2;
+}
+
+message EmptyUserRequest {
+}

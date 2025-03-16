@@ -1,0 +1,131 @@
+﻿@page "/schedules/delete"
+@using SCBS.BlazorApp.GrpcClient.Models
+@using SCBS.BlazorApp.GrpcClient.Protos
+@inject ScheduleGrpc.ScheduleGrpcClient scheduleGrpcClient
+@inject NavigationManager NavigationManager
+@inject IJSRuntime jsRuntime
+
+<h1>Delete</h1>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+    <h2>Schedule</h2>
+    <hr />
+    @if (isLoading)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else if (errorMessage is not null)
+    {
+        <p class="text-danger">@errorMessage</p>
+    }
+    else if (schedule is not null)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">UserId</dt>
+            <dd class="col-sm-10">@schedule.UserId</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">WorkDate</dt>
+            <dd class="col-sm-10">@schedule.WorkDate</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Status</dt>
+            <dd class="col-sm-10">@schedule.Status</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">CreatedAt</dt>
+            <dd class="col-sm-10">@schedule.CreatedAt</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">UpdatedAt</dt>
+            <dd class="col-sm-10">@schedule.UpdatedAt</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Title</dt>
+            <dd class="col-sm-10">@schedule.Title</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Description</dt>
+            <dd class="col-sm-10">@schedule.Description</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Location</dt>
+            <dd class="col-sm-10">@schedule.Location</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Notes</dt>
+            <dd class="col-sm-10">@schedule.Notes</dd>
+        </dl>
+        <EditForm Model="schedule" OnValidSubmit="ConfirmDelete">
+            <button type="submit" class="btn btn-danger" disabled="@(schedule is null)">Delete</button> |
+            <a href="/schedules">Back to List</a>
+        </EditForm>
+    }
+</div>
+
+@code {
+    private Schedule? schedule;
+    private bool isLoading = true;
+    private string? errorMessage;
+
+    [SupplyParameterFromQuery]
+    private Guid Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var idRequest = new IdRequest { Id = Id.ToString() };
+            var grpcSchedule = await scheduleGrpcClient.GetByIdAsync(idRequest);
+            schedule = new Schedule
+                {
+                    Id = Guid.Parse(grpcSchedule.Id),
+                    UserId = Guid.Parse(grpcSchedule.UserId),
+                    WorkDate = DateTime.TryParse(grpcSchedule.WorkDate, out var workDate) ? workDate : DateTime.MinValue,
+                    Status = grpcSchedule.Status,
+                    CreatedAt = !string.IsNullOrEmpty(grpcSchedule.CreatedAt) && DateTime.TryParse(grpcSchedule.CreatedAt, out var createdAt) ? createdAt : null,
+                    UpdatedAt = !string.IsNullOrEmpty(grpcSchedule.UpdatedAt) && DateTime.TryParse(grpcSchedule.UpdatedAt, out var updatedAt) ? updatedAt : null,
+                    Title = grpcSchedule.Title,
+                    Description = grpcSchedule.Description,
+                    Location = grpcSchedule.Location,
+                    Notes = grpcSchedule.Notes
+                };
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error loading schedule: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+
+        if (schedule is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task ConfirmDelete()
+    {
+        if (await jsRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this schedule?"))
+        {
+            await DeleteSchedule();
+        }
+    }
+
+    private async Task DeleteSchedule()
+    {
+        try
+        {
+            var idRequest = new IdRequest { Id = Id.ToString() };
+            await scheduleGrpcClient.RemoveAsync(idRequest);
+            NavigationManager.NavigateTo("/schedules");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error deleting schedule: {ex.Message}";
+        }
+    }
+}

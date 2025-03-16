@@ -1,5 +1,5 @@
 ﻿using Grpc.Net.Client;
-using SCBS.GrpcServices.Protos;
+using SCBS.GrpcClient.Protos;
 
 Console.WriteLine("Hello, Welcome to gRPC Client!");
 // The port number must match the port of the gRPC server.

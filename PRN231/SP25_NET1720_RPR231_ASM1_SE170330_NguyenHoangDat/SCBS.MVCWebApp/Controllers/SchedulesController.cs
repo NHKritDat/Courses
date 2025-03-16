@@ -312,37 +312,7 @@ namespace SCBS.MVCWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private async Task<bool> ScheduleExists(Guid id)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                #region Add Token to header of Request
-
-                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
-
-                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
-
-                #endregion
-
-
-                using (var response = await httpClient.GetAsync(APIEndPoint + "Schedule"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var content = await response.Content.ReadAsStringAsync();
-                        var result = JsonConvert.DeserializeObject<List<Schedule>>(content);
-
-                        if (result != null)
-                        {
-                            return result.Any(e => e.Id == id);
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-
-        public async Task<IActionResult> Users()
+        public IActionResult Users()
         {
             return View();
         }

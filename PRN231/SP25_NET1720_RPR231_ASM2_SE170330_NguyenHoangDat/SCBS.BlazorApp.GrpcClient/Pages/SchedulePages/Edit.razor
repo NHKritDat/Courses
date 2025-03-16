@@ -1,0 +1,177 @@
+﻿@page "/schedules/edit"
+@using SCBS.BlazorApp.GrpcClient.Models
+@using SCBS.BlazorApp.GrpcClient.Protos
+@inject ScheduleGrpc.ScheduleGrpcClient scheduleGrpcClient
+@inject UserGrpc.UserGrpcClient userGrpcClient
+@inject NavigationManager NavigationManager
+
+<h1>Edit</h1>
+
+<h2>Schedule</h2>
+<hr />
+@if (isLoading)
+{
+    <p><em>Loading...</em></p>
+}
+else if (errorMessage != null)
+{
+    <p class="text-danger">@errorMessage</p>
+}
+else if (Schedule == null || users == null)
+{
+    <p><em>Schedule or users not found.</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm Model="Schedule" OnValidSubmit="UpdateSchedule">
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert" />
+                <input type="hidden" name="Schedule.Id" value="@Schedule.Id" />
+                <div class="mb-3">
+                    <label for="userid" class="form-label">UserId:</label>
+                    <InputSelect id="userid" @bind-Value="Schedule.UserId" class="form-control">
+                        @foreach (var user in users)
+                        {
+                            <option value="@user.Id">@user.FullName</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="() => Schedule.UserId" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="workdate" class="form-label">WorkDate:</label>
+                    <InputDate id="workdate" @bind-Value="Schedule.WorkDate" class="form-control" />
+                    <ValidationMessage For="() => Schedule.WorkDate" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status:</label>
+                    <InputText id="status" @bind-Value="Schedule.Status" class="form-control" aria-required="true" />
+                    <ValidationMessage For="() => Schedule.Status" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="createdat" class="form-label">CreatedAt:</label>
+                    <InputDate id="createdat" @bind-Value="Schedule.CreatedAt" class="form-control" />
+                    <ValidationMessage For="() => Schedule.CreatedAt" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="updatedat" class="form-label">UpdatedAt:</label>
+                    <InputDate id="updatedat" @bind-Value="Schedule.UpdatedAt" class="form-control" />
+                    <ValidationMessage For="() => Schedule.UpdatedAt" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <InputText id="title" @bind-Value="Schedule.Title" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Title" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <InputText id="description" @bind-Value="Schedule.Description" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Description" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location:</label>
+                    <InputText id="location" @bind-Value="Schedule.Location" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Location" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="notes" class="form-label">Notes:</label>
+                    <InputText id="notes" @bind-Value="Schedule.Notes" class="form-control" />
+                    <ValidationMessage For="() => Schedule.Notes" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+<div>
+    <a href="/schedules">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private Guid Id { get; set; }
+
+    private Schedule? Schedule { get; set; }
+    private List<User>? users { get; set; }
+    private bool isLoading = true;
+    private string? errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadSchedule();
+            await LoadUsers();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task LoadSchedule()
+    {
+        var idRequest = new IdRequest { Id = Id.ToString() };
+        var grpcSchedule = await scheduleGrpcClient.GetByIdAsync(idRequest);
+        Schedule = new Schedule
+            {
+                Id = Guid.Parse(grpcSchedule.Id),
+                UserId = Guid.Parse(grpcSchedule.UserId),
+                WorkDate = DateTime.TryParse(grpcSchedule.WorkDate, out var workDate) ? workDate : DateTime.MinValue,
+                Status = grpcSchedule.Status,
+                CreatedAt = !string.IsNullOrEmpty(grpcSchedule.CreatedAt) && DateTime.TryParse(grpcSchedule.CreatedAt, out var createdAt) ? createdAt : null,
+                UpdatedAt = !string.IsNullOrEmpty(grpcSchedule.UpdatedAt) && DateTime.TryParse(grpcSchedule.UpdatedAt, out var updatedAt) ? updatedAt : null,
+                Title = grpcSchedule.Title,
+                Description = grpcSchedule.Description,
+                Location = grpcSchedule.Location,
+                Notes = grpcSchedule.Notes
+            };
+
+        if (Schedule == null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task LoadUsers()
+    {
+        var userResponse = await userGrpcClient.GetAllUsersAsync(new EmptyUserRequest());
+        users = userResponse.Items.Select(u => new User
+            {
+                Id = Guid.Parse(u.Id),
+                FullName = u.Username
+            }).ToList();
+    }
+
+    private async Task UpdateSchedule()
+    {
+        var grpcItem = new Item
+            {
+                Id = Schedule!.Id.ToString(),
+                UserId = Schedule.UserId.ToString(),
+                WorkDate = Schedule.WorkDate.ToString("yyyy-MM-dd"),
+                Status = Schedule.Status,
+                CreatedAt = Schedule.CreatedAt?.ToString("yyyy-MM-dd") ?? "",
+                UpdatedAt = Schedule.UpdatedAt?.ToString("yyyy-MM-dd") ?? "",
+                Title = Schedule.Title ?? "",
+                Description = Schedule.Description ?? "",
+                Location = Schedule.Location ?? "",
+                Notes = Schedule.Notes ?? ""
+            };
+
+        try
+        {
+            await scheduleGrpcClient.UpdateAsync(grpcItem);
+            NavigationManager.NavigateTo("/schedules");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred while updating the schedule: {ex.Message}";
+        }
+    }
+}

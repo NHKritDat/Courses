@@ -1,0 +1,103 @@
+﻿@page "/schedules/details"
+@using SCBS.BlazorApp.GrpcClient.Protos
+@using SCBS.BlazorApp.GrpcClient.Models
+@inject ScheduleGrpc.ScheduleGrpcClient scheduleGrpcClient
+@inject NavigationManager NavigationManager
+
+<h1>Details</h1>
+
+<div>
+    <h2>Schedule</h2>
+    <hr />
+    @if (isLoading)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else if (errorMessage is not null)
+    {
+        <p class="text-danger">@errorMessage</p>
+    }
+    else if (schedule is null)
+    {
+        <p><em>Schedule not found.</em></p>
+    }
+    else
+    {
+        <dl class="row">
+            <dt class="col-sm-2">UserId</dt>
+            <dd class="col-sm-10">@schedule.UserId</dd>
+            <dt class="col-sm-2">WorkDate</dt>
+            <dd class="col-sm-10">@schedule.WorkDate</dd>
+            <dt class="col-sm-2">Status</dt>
+            <dd class="col-sm-10">@schedule.Status</dd>
+            <dt class="col-sm-2">CreatedAt</dt>
+            <dd class="col-sm-10">@schedule.CreatedAt</dd>
+            <dt class="col-sm-2">UpdatedAt</dt>
+            <dd class="col-sm-10">@schedule.UpdatedAt</dd>
+            <dt class="col-sm-2">Title</dt>
+            <dd class="col-sm-10">@schedule.Title</dd>
+            <dt class="col-sm-2">Description</dt>
+            <dd class="col-sm-10">@schedule.Description</dd>
+            <dt class="col-sm-2">Location</dt>
+            <dd class="col-sm-10">@schedule.Location</dd>
+            <dt class="col-sm-2">Notes</dt>
+            <dd class="col-sm-10">@schedule.Notes</dd>
+        </dl>
+        <div>
+            <a href="@($"/schedules/edit?id={schedule.Id}")">Edit</a> |
+            <a href="@($"/schedules")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private Schedule? schedule;
+    private bool isLoading = true;
+    private string? errorMessage;
+
+    [SupplyParameterFromQuery]
+    private Guid Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadScheduleAsync();
+    }
+
+    private async Task LoadScheduleAsync()
+    {
+        try
+        {
+            var idRequest = new IdRequest { Id = Id.ToString() };
+            var grpcSchedule = await scheduleGrpcClient.GetByIdAsync(idRequest);
+
+            if (grpcSchedule != null)
+            {
+                schedule = new Schedule
+                    {
+                        Id = Guid.Parse(grpcSchedule.Id),
+                        UserId = Guid.Parse(grpcSchedule.UserId),
+                        WorkDate = DateTime.TryParse(grpcSchedule.WorkDate, out var workDate) ? workDate : DateTime.MinValue,
+                        Status = grpcSchedule.Status,
+                        CreatedAt = DateTime.TryParse(grpcSchedule.CreatedAt, out var createdAt) ? createdAt : null,
+                        UpdatedAt = DateTime.TryParse(grpcSchedule.UpdatedAt, out var updatedAt) ? updatedAt : null,
+                        Title = grpcSchedule.Title,
+                        Description = grpcSchedule.Description,
+                        Location = grpcSchedule.Location,
+                        Notes = grpcSchedule.Notes
+                    };
+            }
+            else
+            {
+                errorMessage = "Schedule not found.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

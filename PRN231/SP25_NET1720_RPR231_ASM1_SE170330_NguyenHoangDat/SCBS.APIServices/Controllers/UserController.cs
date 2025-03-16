@@ -22,10 +22,10 @@ namespace SCBS.APIServices.Controllers
         [HttpGet("{id}")]
         public async Task<User> Get(Guid id) => await _userService.GetByIdAsync(id);
         [HttpPost]
-        public async Task<int> Post([FromBody] User user) => await _userService.Create(user);
+        public async Task<int> Post([FromBody] User user) => await _userService.CreateAsync(user);
         [HttpPut]
-        public async Task<int> Put([FromBody] User user) => await _userService.Update(user);
+        public async Task<int> Put([FromBody] User user) => await _userService.UpdateAsync(user);
         [HttpDelete("{id}")]
-        public async Task<bool> Delete(Guid id) => await _userService.Delete(id);
+        public async Task<bool> Delete(Guid id) => await _userService.DeleteAsync(id);
     }
 }

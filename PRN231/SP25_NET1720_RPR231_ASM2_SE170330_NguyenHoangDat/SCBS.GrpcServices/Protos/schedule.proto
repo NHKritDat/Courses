@@ -5,15 +5,15 @@ option csharp_namespace = "SCBS.GrpcServices.Protos";
 package schedule;
 
 service ScheduleGrpc{
-	rpc GetAllAsync (EmptyRequest) returns (ItemList);
+	rpc GetAll (EmptyRequest) returns (ItemList);
 
-	rpc GetByIdAsync (IdRequest) returns (Item);
+	rpc GetById (IdRequest) returns (Item);
 
-	rpc CreateAsync (Item) returns (ActionResult);
+	rpc Create (Item) returns (ActionResult);
 
-	rpc UpdateAsync (Item) returns (ActionResult);
+	rpc Update (Item) returns (ActionResult);
   
-	rpc RemoveAsync (IdRequest) returns (ActionResult);
+	rpc Remove (IdRequest) returns (ActionResult);
 }
 
 message ActionResult {
