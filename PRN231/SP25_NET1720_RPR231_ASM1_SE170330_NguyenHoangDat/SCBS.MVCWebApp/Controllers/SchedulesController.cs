@@ -341,5 +341,10 @@ namespace SCBS.MVCWebApp.Controllers
             }
             return false;
         }
+
+        public async Task<IActionResult> Users()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,857 @@
+Tạo blank solution đặt tên theo format: NguyenHoangDat SE170330
+
+--------------------Tạo project----------------------------------
+Tạo 2 Class library:
+- [Project].Repositories
+- [Project].Services
+
+Tạo 1 Web API Project
+- [Project].APIServices
+
+Tạo 1 Web App MVC Project
+- [Project].MVCWebApp
+
+Xóa các class default
+
+Open in Terminal Repo:
+dotnet add package Microsoft.EntityFrameworkCore --version 8.0.5
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 8.0.5
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 8.0.5
+dotnet add package Microsoft.Extensions.Configuration --version 8.0.0
+dotnet add package Microsoft.Extensions.Configuration.Json --version 8.0.0
+
+Open in Terminal APIServices:
+dotnet add package  Microsoft.AspNetCore.Authentication.JwtBearer --version 8.0.10
+dotnet add package Microsoft.AspNetCore.OData --version 8.2.5
+
+Open in Terminal WebApp:
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 8.0.7
+dotnet add package System.IdentityModel.Tokens.Jwt --version 8.3.0
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 8.0.5
+dotnet add package Newtonsoft.Json --version 13.0.3
+
+Add Project Reference
+Services -> Repo
+APIServices -> Services
+WebApp -> Repo
+
+Solution -> Config Startup -> Multiple -> API và WebApp
+
+WebApp -> Properties -> Debug -> Open Debug -> https: URL: [Model]/Login
+
+Kiểm tra port API: APIServices -> Properties -> launchSettings.json -> https:applicationUrl:
+Port: Copy bỏ đây để sau dễ xài
+
+--------------------------------Set up Repo-------------------------------------------------
+Project -> EF Core -> Reverse Engineer
+Add... -> Add Database Connection
+Server Name: Krit-Dat\NHKRITDAT_MSSQL
+SQL Server Authentication
+Username: sa
+Password: 123456
+Encrypt: False
+tick Trust Server Certificate
+Select correct db
+
+Select Connect
+Select Table
+Use DataAnnotation
+Include connection string
+
+Tạo folder DBContext
+Chuyển Context vào folder trên
+Đổi namespace DBContext
+using Models
+
+Comment OnConfiguring
+Bỏ đoạn này vào:
+public static string GetConnectionString(string connectionStringName)
+{
+    var config = new ConfigurationBuilder()
+        .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+        .AddJsonFile("appsettings.json")
+        .Build();
+
+    string connectionString = config.GetConnectionString(connectionStringName);
+    return connectionString;
+}
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    => optionsBuilder.UseSqlServer(GetConnectionString("DefaultConnection")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+
+Tạo folder Base
+Tạo GenericRepository
+Xóa bên trong và bỏ đoạn này vào:
+public class GenericRepository<T> where T : class
+{
+    protected Sp25CosmeticsDBContext _context;
+
+    public GenericRepository()
+    {
+        _context ??= new Sp25CosmeticsDBContext();
+    }
+
+    public GenericRepository(Sp25CosmeticsDBContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<List<T>> GetAllAsync()
+    {
+        return await _context.Set<T>().ToListAsync();
+    }
+
+    public async Task<int> CreateAsync(T entity)
+    {
+        _context.Add(entity);
+        return await _context.SaveChangesAsync();
+    }
+
+    public async Task<int> UpdateAsync(T entity)
+    {
+        var tracker = _context.Attach(entity);
+        tracker.State = EntityState.Modified;
+        return await _context.SaveChangesAsync();
+    }
+
+    public async Task<bool> RemoveAsync(T entity)
+    {
+        _context.Remove(entity);
+        await _context.SaveChangesAsync();
+        return true;
+    }
+
+    public async Task<T> GetByIdAsync(int id)
+    {
+        var entity = await _context.Set<T>().FindAsync(id);
+        if (entity != null)
+        {
+            _context.Entry(entity).State = EntityState.Detached;
+        }
+
+        return entity;
+    }
+
+    public async Task<T> GetByIdAsync(string code)
+    {
+        var entity = await _context.Set<T>().FindAsync(code);
+        if (entity != null)
+        {
+            _context.Entry(entity).State = EntityState.Detached;
+        }
+
+        return entity;
+    }
+
+    public async Task<T> GetByIdAsync(Guid code)
+    {
+        var entity = await _context.Set<T>().FindAsync(code);
+        if (entity != null)
+        {
+            _context.Entry(entity).State = EntityState.Detached;
+        }
+
+        return entity;
+    }
+}
+
+Tạo các class repo [Model]Repository : GenericRepository<Model> thêm public
+Constructor rỗng: 
+        public ModelRepository() { }
+
+Hàm login:
+        public async Task<Model> Get[Model](string [field], string password) => await _context.Model.FirstOrDefaultAsync(u => u.Field == [field đăng nhập bằng cái gì] && u.Password == password [&& u.IsActive đề có yêu cầu active hay không]);
+
+Chức năng chính, kiểm tra id là kiểu gì, SubModel tên là gì:
+        public async Task<List<Model>> GetAllAsync() => await _context.Models.Include(item => item.SubModel).ToListAsync();
+        public async Task<Model> GetByIdAsync(type id)
+        {
+            var entity = await _context.Models.Include(item => item.SubModel).FirstOrDefaultAsync(item => item.Id == id);
+            if (entity != null)
+            {
+                _context.Entry(entity).State = EntityState.Detached;
+            }
+            return entity;
+        }
+        public async Task<List<Model>> Search(type? search1, type? search2, type? search3) => await _context.Models
+                .Include(item => item.SubModel)
+                .Where(item =>
+                (string.IsNullOrEmpty(search1) || item.search1.Contains(search1))
+                            && (string.IsNullOrEmpty(search2) || item.search2.Contains(search2))
+                            && (string.IsNullOrEmpty(search3) || item.search3.Contains(search3))
+                )
+                .ToListAsync();
+
+------------------------------------------------Services----------------------------------------------
+Tạo các class [Model]Service và xóa nội dung bên trong
+    public interface IModelService
+    {
+    }
+    public class ModelService : IModelService
+    {
+        private readonly ModelRepository _modelRepository;
+        public ModelService() => _modelRepository = new ModelRepository();
+    }
+
+Hàm login:
+        public async Task<Model> Authenticate(type field, string password) => await _modelRepository.GetModel(field, password);
+Cho lên interface
+
+Hàm chính:
+        public async Task<int> CreateAsync(Model item) => await _modelRepository.CreateAsync(item);
+
+        public async Task<bool> RemoveAsync(type id)
+        {
+            var item = await _modelRepository.GetByIdAsync(id);
+            if (item != null)
+            {
+                return await _modelRepository.RemoveAsync(item);
+            }
+            return false;
+        }
+
+        public async Task<List<Model>> GetAllAsync() => await _modelRepository.GetAllAsync();
+
+        public async Task<Model> GetByIdAsync(type id) => await _modelRepository.GetByIdAsync(id);
+
+        public async Task<List<Model>> Search() => await _modelRepository.Search();
+
+        public async Task<int> UpdateAsync(Model item) => await _modelRepository.UpdateAsync(item);
+Cho lên interface đủ 6 hàm, điều chỉnh Search giống repo
+
+Hàm phụ:
+        public async Task<List<Model>> GetAllAsync() => await _modelRepository.GetAllAsync();
+
+        public async Task<Model> GetByIdAsync(type id) => await _modelRepository.GetByIdAsync(id);
+Cho lên interface đủ 2 hàm
+
+------------------------------------------------------API---------------------------------------------
+thêm vào appsettings.json:
+,
+  "ConnectionStrings": {
+    "DefaultConnection": "//Lấy cuỗi trong context và xóa comment ở đó"
+  },
+    "Jwt": {
+        "Key": "0ccfeb299b126a479a64630e2d34e9e91e5fcbcaea8ac9e3347e224b0557a53e",
+        "Issuer": "https://localhost:Port ở trên là gì bỏ vô đây",
+        "Audience": "https://localhost:Port ở trên là gì bỏ vô đây"
+    }
+Lỗi thì thêm connection: ;TrustServerCertificate=True
+
+Program.cs:
+Thêm Services đủ 3 cái:
+builder.Services.AddScoped<IModelService, ModelService>();
+Cors:
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+OData:
+static IEdmModel GetEdmModel()
+{
+    var odataBuilder = new ODataConventionModelBuilder();
+    odataBuilder.EntitySet<Model1>("Model1");
+    odataBuilder.EntitySet<Model2>("Model2");
+    return odataBuilder.GetEdmModel();
+}
+Thay AddController bằng đoạn dưới:
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.Never;
+}).AddOData(options =>
+{
+    options.Select().Filter().OrderBy().Expand().SetMaxTop(null).Count();
+    options.AddRouteComponents("odata", GetEdmModel());
+});
+Thêm Authen:
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
+Thay AddSwagger bằng đoạn dưới:
+builder.Services.AddSwaggerGen(option =>
+{
+    option.ResolveConflictingActions(ApiDes => ApiDes.First());
+    option.DescribeAllParametersInCamelCase();
+    option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter a valid token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
+    });
+    option.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
+});
+
+Tạo API Controller with read/write actions class: [Model]Controller
+
+Login thay bên trong class:
+        private readonly IConfiguration _config;
+        private readonly IModelService _modelService;
+
+        public ModelController(IConfiguration config, IModelService modelService)
+        {
+            _config = config;
+            _modelService = modelService;
+        }
+
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] LoginReqeust request)
+        {
+            var user = _modelService.Authenticate(request.Field, request.Password);
+
+            if (user == null || user.Result == null)
+                return Unauthorized();
+
+            var token = GenerateJSONWebToken(user.Result);
+
+            return Ok(token);
+        }
+
+        private string GenerateJSONWebToken(Model model)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(_config["Jwt:Issuer"]
+                    , _config["Jwt:Audience"]
+                    , new Claim[]
+                    {
+                new(ClaimTypes.Name, model.Field),
+                new(ClaimTypes.Role, model.Role.ToString()),
+                    },
+                    expires: DateTime.Now.AddMinutes(120),
+                    signingCredentials: credentials
+                );
+
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+            return tokenString;
+        }
+
+        public sealed record LoginReqeust(type Field, string Password);
+
+Chức năng:
+Thêm vào Đầu Controller:
+    [Authorize]
+    [EnableQuery]
+Cho vào class:
+        private readonly IModelService _modelService;
+        public ModelController(IModelService modelService) => _modelService = modelService;
+Thêm phân quyền, check yêu cầu của đề role nào được dùng:
+        [Authorize(Roles = "1")]
+Update: Xóa {id}
+Thêm Search:
+        [HttpGet("search")]
+        [Authorize(Roles = "1,3,4")]
+        public async Task<IEnumerable<Model>> Search([FromQuery] string? fied1, [FromQuery] string? fied2, [FromQuery] string? fied3) => await _modelService.Search(fied1, fied2, fied3);
+
+---------------------------------------Web App------------------------------------------
+Programs:
+app.UseAuthentication();
+builder.Services.AddAuthentication()
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+    {
+        options.LoginPath = new PathString("/Model/Login"); fix
+        options.AccessDeniedPath = new PathString("/Model/Forbidden"); fix
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+    });
+
+Tạo LoginRequest trong Models:
+        public string [Field] { get; set; }
+        public string Password { get; set; }
+
+Tạo MVC Controller: [Model]Controller đủ 2
+- Login Controller Empty
+- Chức năng chính MVC Controller with views, using Entity Framework
+
+Login thay bằng hàm dưới, import LoginRequest bằng Models:
+        private string APIEndPoint = "https://localhost:thay bang port cua api /api/"; fix
+        public IActionResult Index()
+        {
+            return RedirectToAction("Login");
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginRequest login)
+        {
+
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.PostAsJsonAsync(APIEndPoint + "[Model]/Login", login)) Fix
+                    {
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var tokenString = await response.Content.ReadAsStringAsync();
+
+                            var tokenHandler = new JwtSecurityTokenHandler();
+                            var jwtToken = tokenHandler.ReadToken(tokenString) as JwtSecurityToken;
+
+                            if (jwtToken != null)
+                            {
+                                var field = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value; fix
+                                var role = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+
+                                var claims = new List<Claim>
+                        {
+                            new Claim(ClaimTypes.Name, field), fix
+                            new Claim(ClaimTypes.Role, role),
+                        };
+
+                                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+
+                                Response.Cookies.Append("Field", field); fix
+                                Response.Cookies.Append("Role", role);
+                                Response.Cookies.Append("TokenString", tokenString);
+
+                                return RedirectToAction("Index", "Models"); trả về trang chức năng chính
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            ModelState.AddModelError("", "Login failure");
+            return View();
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            Response.Cookies.Delete("Field"); fix
+            Response.Cookies.Delete("Role");
+            Response.Cookies.Delete("TokenString");
+
+            return RedirectToAction("Login", "Model"); fix
+        }
+
+        public async Task<IActionResult> Forbidden()
+        {
+            return View();
+        }
+
+Thêm vào 2 controller còn lại
+- [Authorize(Roles ="")] theo yêu cầu đề cho Home
+- [Authorize] cho chức năng chính
+
+Chức năng chính:
+- [Authorize(Roles ="")] theo yêu cầu đề cho từng hàm
+- Xóa context
+- private string APIEndPoint = "https://localhost:Port/api/"; fix
+- Index:
+            using (var httpClient = new HttpClient())
+            {
+                #region Add Token to header of Request
+
+                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+                #endregion
+
+                using (var response = await httpClient.GetAsync(APIEndPoint + "Model")) fix
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = await response.Content.ReadAsStringAsync();
+                        var result = JsonConvert.DeserializeObject<List<Model>>(content);
+
+                        if (result != null)
+                        {
+                            return View(result);
+                        }
+                    }
+                }
+            }
+            return View(new List<Model>());
+
+public async Task<IActionResult> Search(string? field1, string? field2, string? field3)
+{
+    using (var httpClient = new HttpClient())
+    {
+        #region Add Token to header of Request
+
+        var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+
+        httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+        #endregion
+
+        using (var response = await httpClient.GetAsync(APIEndPoint + "Model/search?field1=" + field1 + "&field2=" + field2 + "&field3=" + field3)) fix
+        {
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<List<Model>>(content);
+
+                if (result != null)
+                {
+                    return View("Index", result);
+                }
+            }
+        }
+    }
+    return View("Index", new List<Model>());
+}
+
+- Details:
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                #region Add Token to header of Request
+
+                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+                #endregion
+
+                using (var response = await httpClient.GetAsync(APIEndPoint + "Model/" + id)) fix
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = await response.Content.ReadAsStringAsync();
+                        var result = JsonConvert.DeserializeObject<Model>(content);
+                        if (result != null)
+                        {
+                            return View(result);
+                        }
+                    }
+                }
+            }
+            return NotFound();
+-
+private async Task<List<SubModel>> GetSubModels() fix
+{
+    var subModels = new List<SubModel>();
+    using (var httpClient = new HttpClient())
+    {
+        #region Add Token to header of Request
+
+        var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+        httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+        #endregion
+
+        using (var response = await httpClient.GetAsync(APIEndPoint + "SubModel"))
+        {
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                subModels = JsonConvert.DeserializeObject<List<SubModel>>(content);
+            }
+        }
+    }
+    return subModels;
+}
+- Create Get:
+            ViewData["SubModelId"] = new SelectList(await GetSubModels(), "SubModelId", "SubModelField"); fix
+- Create Post:
+            if (ModelState.IsValid)
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    #region Add Token to header of Request
+
+                    var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+                    httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+                    #endregion
+
+                    using (var response = await httpClient.PostAsJsonAsync(APIEndPoint + "Model", model)) fix
+                    {
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var content = await response.Content.ReadAsStringAsync();
+                            var result = JsonConvert.DeserializeObject<int>(content);
+                            if (result > 0)
+                            {
+                                return RedirectToAction(nameof(Index));
+                            }
+                        }
+                    }
+                }
+
+            }
+            ViewData["SubModelId"] = new SelectList(await GetSubModels(), "SubModelId", "SubModelField", model.SubModelId); fix
+- Edit Get:
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var subModels = await GetSubModels();
+            using (var httpClient = new HttpClient())
+            {
+                #region Add Token to header of Request
+
+                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+                #endregion
+
+                using (var response = await httpClient.GetAsync(APIEndPoint + "Model/" + id)) fix
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = await response.Content.ReadAsStringAsync();
+                        var result = JsonConvert.DeserializeObject<Model>(content);
+                        if (result != null)
+                        {
+                            ViewData["SubModelId"] = new SelectList(subModels, "SubModelId", "SubModelField", result.SubModelId); fix
+                            return View(result);
+                        }
+                    }
+                }
+            }
+            return NotFound();
+- Edit Post:
+            if (ModelState.IsValid)
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    #region Add Token to header of Request
+
+                    var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+                    httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+                    #endregion
+
+                    using (var response = await httpClient.PutAsJsonAsync(APIEndPoint + "Model", model)) fix
+                    {
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var content = await response.Content.ReadAsStringAsync();
+                            var result = JsonConvert.DeserializeObject<int>(content);
+                            if (result > 0)
+                            {
+                                return RedirectToAction(nameof(Index));
+                            }
+                        }
+                    }
+                }
+            }
+            ViewData["SubModelId"] = new SelectList(await GetSubModels(), "SubModelId", "SubModelField", model.SubModelId); fix
+- Delete Get:
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                #region Add Token to header of Request
+
+                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+                #endregion
+
+                using (var response = await httpClient.GetAsync(APIEndPoint + "Model/" + id)) fix
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = await response.Content.ReadAsStringAsync();
+                        var result = JsonConvert.DeserializeObject<Model>(content);
+                        if (result != null)
+                        {
+                            return View(result);
+                        }
+                    }
+                }
+            }
+            return NotFound();
+- Delete Post:
+            using (var httpClient = new HttpClient())
+            {
+                #region Add Token to header of Request
+
+                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+                #endregion
+
+                using (var response = await httpClient.DeleteAsync(APIEndPoint + "Model/" + id)) fix
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+            }
+
+            return RedirectToAction(nameof(Index));
+- Exists:
+            using (var httpClient = new HttpClient())
+            {
+                #region Add Token to header of Request
+
+                var tokenString = HttpContext.Request.Cookies.FirstOrDefault(c => c.Key == "TokenString").Value;
+
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+                #endregion
+
+
+                using (var response = await httpClient.GetAsync(APIEndPoint + "Model")) fix
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = await response.Content.ReadAsStringAsync();
+                        var result = JsonConvert.DeserializeObject<List<Model>>(content); fix
+
+                        if (result != null)
+                        {
+                            return result.Any(e => e.ModelId == id); fix
+                        }
+                    }
+                }
+            }
+            return false;
+
+Views Layout:
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Models" asp-action="Index">Models</a>
+                        </li>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                    <div class="nav-item text-nowrap">
+                        Welcome
+                        <strong>@Context.Request.Cookies["Field"].ToString()</strong> fix
+                        | @* <a href="/SystemAccount/Logout">LogOut</a> *@
+                        <a asp-controller="Model" asp-action="Logout">Logout</a> fix
+                    </div>
+                </div>
+
+Tạo folder Model Login:
+- Forbidden
+- Login
+
+Copy từ Layout bỏ vào, xóa dòng trước </body>, xóa phần hiển thị logout
+@{
+	Layout = null;
+}
+
+Forbidden:
+            <div class="row text-center">
+                <h3 class="text-danger">Forbidden</h3>
+                <h4 class="text-danger">You are not allowed to access this function!</h4> fix theo đề
+                <div>
+                    <a asp-action="Login" asp-asp-controller="Model" class="btn btn-primary">Login</a> fix
+                </div>
+            </div>
+
+Login:
+@model CS.MVCWebApp.Models.LoginRequest fix
+<div class="container">
+	<main role="main" class="pb-3">
+		<div class="row text-center">
+			<h1 class="display-4">Login</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+			</div>
+			<div class="col-md-4">
+				<form asp-action="Login">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="form-group">
+						<label asp-for="Field" class="control-label"></label> fix
+						<input asp-for="Field" class="form-control" /> fix
+						<span asp-validation-for="Field" class="text-danger"></span> fix
+					</div>
+					<div class="form-group">
+						<label asp-for="Password" class="control-label"></label>
+						<input type="password" asp-for="Password" class="form-control" />
+						<span asp-validation-for="Password" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Login" class="btn btn-primary" />
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+			</div>
+		</div>
+	</main>
+</div>
+
+Views Chức năng chính:
+Index:
+<form method="get" asp-action="Search">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" name="field1" class="form-control" placeholder="Search by field1" /> fix theo đề
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="field2" class="form-control" placeholder="Search by field2" /> fix theo đề
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="field3" class="form-control" placeholder="Search by field3" /> fix theo đề
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a asp-action="Index" class="btn btn-secondary">Reset</a>
+        </div>
+    </div>
+</form>
+
+<br />
+
+Details, Index:
+            <td>
+                @Html.DisplayFor(modelItem => item.SubModel.SubModelField)
+            </td>
+
+-------------------------------Validation------------------------------------------------
+Value for Field includes a-z, A-Z, space, @, # and digit 0-9. Each word of the Fied must begin with the capital letter.:
+[RegularExpression(@"^[A-Z]*[a-zA-Z\s@#0-9]*")]
+
+String Length:
+    [StringLength(80, MinimumLength = 2)]
+
+Max min value:
+    [Range(0, double.MaxValue)]
+
+Require id:
+    [Required]

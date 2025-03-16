@@ -1,0 +1,205 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	ViewData["Title"] = "Users";
+}
+
+<h1>Schedules - jQuery.Ajax call RestFullAPI</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				Username
+			</th>
+			<th>
+				Role
+			</th>
+			<th>
+				Email
+			</th>
+			<th>
+				Gender
+			</th>
+			<th>
+				Status
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody class="tblBody">
+	</tbody>
+</table>
+
+<div class="modal" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frmUser", id = "frmUser" }))
+			{
+				@Html.AntiForgeryToken()
+				<div class="modal-header">
+					<h5 class="modal-title" id="userModalLabel">User</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="1">Id</label>
+							@* <input type="hidden" id="Id" name="Id" value="0" /> *@
+							<input type="text" id="id" name="id" class="form-control" />
+						</div>
+						<div class="col-md-4">
+							<label for="1">Username</label>
+							<input type="text" id="username" name="username" class="form-control" />
+						</div>
+						<div class="col-md-4">
+							<label for="1">Full Name</label>
+							<input type="text" id="fullName" name="fullName" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="1">Password</label>
+							<input type="password" id="password" name="password" class="form-control" />
+						</div>
+						<div class="col-md-4">
+							<label for="1">Email</label>
+							<input type="text" id="email" name="email" class="form-control" />
+						</div>
+						<div class="col-md-4">
+							<label for="1">Avatar</label>
+							<input type="text" id="avatar" name="avatar" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="1">Phone</label>
+							<input type="text" id="phone" name="phone" class="form-control" />
+						</div>
+						<div class="col-md-4">
+							<label for="1">Gender</label>
+							<input type="text" id="gender" name="gender" class="form-control" />
+						</div>
+						<div class="col-md-4">
+							<label for="1">Role</label>
+							<input type="text" id="role" name="role" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="1">Status</label>
+							<input type="text" id="status" name="status" class="form-control" />
+						</div>
+						<div class="col-md-4">
+							<label for="1">Rating</label>
+							<input type="number" id="rating" name="rating" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="1">CreatedAt</label>
+							<input type="datetime-local" id="createdAt" name="createdAt" class="form-control" />
+						</div>
+						<div class="col-md-4">
+							<label for="1">UpdatedAt</label>
+							<input type="datetime-local" id="updatedAt" name="updatedAt" class="form-control" />
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="btSave" type="button" class="btn btn-primary">Save</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				</div>
+			}
+		</div>
+	</div>
+</div>
+<div class="">
+	<button type="button" class="btn btn-primary" onclick="add();">
+		Add
+	</button>
+</div>
+
+@section scripts {
+	<script type="text/javascript">
+		$(document).ready(function () {
+			loadData();
+		});
+
+		function loadData() {
+			$.ajax({
+				url: 'https://localhost:7051/api/User',
+				type: "GET",
+				contentType: "application/json;charset=utf-8",
+				dataType: "json",
+				success: function (result) {
+					console.log(result);
+					var html = '';
+					$.each(result, function (key, item) {
+						html += '<tr>';
+						html += '<td>' + item.username + '</td>';
+						html += '<td>' + item.role + '</td>';
+						html += '<td>' + item.email + '</td>';
+						html += '<td>' + item.gender + '</td>';
+						html += '<td>' + item.status + '</td>';
+						html += '<td></td>';
+						html += '</tr>';
+					});
+
+					$('.tblBody').html(html);
+				},
+				error: function (xhr, error) {
+					alert(xhr.statusText);
+				}
+			});
+		};
+
+		function add() {
+			//alert("Save function");
+			$("#userModalLabel").html("Add New");
+
+			$('#userModal').modal('show');
+		};
+
+		$("#btSave").click(function () {
+			//alert("Save in progress");
+			$.ajax({
+				type: 'POST',
+				url: 'https://localhost:7051/api/User',
+				headers: {
+					'Accept': 'text/plain',
+					'Content-Type': 'application/json; charset=utf-8'
+				},
+				data: JSON.stringify({
+					id: $("#id").val(),
+					username: $("#username").val(),
+					fullName: $("#fullName").val(),
+					password: $("#password").val(),
+					email: $("#email").val(),
+					avatar: $("#avatar").val(),
+					phone: $("#phone").val(),
+					gender: $("#gender").val(),
+					role: $("#role").val(),
+					status: $("#status").val(),
+					rating: $("#rating").val(),
+					createdAt: $("#createdAt").val(),
+					updatedAt: $("#updatedAt").val()
+				}),
+				success: function (result) {
+					console.log(result);
+					var statusValue = parseInt(result.status) || 0;
+					if (statusValue > 0) {
+						$('#userModal').modal('hide');
+						loadData();
+					}
+					alert(result.message);
+				},
+				error: function (xhr, error) {
+					alert(xhr.responseText);
+					console.log(xhr);
+				}
+			});
+		});
+	</script>
+}

@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Isq4YU6raZaf0nnK7ImZc3Dm++GsOkvfGi8+/9vSC80=",
+  "Source": "SCBS.APIServices",
+  "BasePath": "_content/SCBS.APIServices",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

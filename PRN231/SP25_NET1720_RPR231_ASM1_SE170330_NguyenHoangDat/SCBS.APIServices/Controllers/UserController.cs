@@ -16,12 +16,16 @@ namespace SCBS.APIServices.Controllers
         public UserController(IUserService userService) => _userService = userService;
         // GET: api/<UserController>
         [HttpGet]
-        [Authorize(Roles = "1,2")]
         public async Task<IEnumerable<User>> Get() => await _userService.GetAllAsync();
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        [Authorize(Roles = "1,2")]
         public async Task<User> Get(Guid id) => await _userService.GetByIdAsync(id);
+        [HttpPost]
+        public async Task<int> Post([FromBody] User user) => await _userService.Create(user);
+        [HttpPut]
+        public async Task<int> Put([FromBody] User user) => await _userService.Update(user);
+        [HttpDelete("{id}")]
+        public async Task<bool> Delete(Guid id) => await _userService.Delete(id);
     }
 }
