@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "SCBS.SoapApiServices\\SCBS.SoapApiServices.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "SCBS.SoapClients.MVC\\SCBS.SoapClients.MVC.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

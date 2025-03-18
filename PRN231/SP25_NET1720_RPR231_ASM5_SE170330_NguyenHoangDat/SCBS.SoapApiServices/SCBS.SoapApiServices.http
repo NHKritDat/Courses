@@ -1,0 +1,6 @@
+@SCBS.SoapApiServices_HostAddress = http://localhost:5296
+
+GET {{SCBS.SoapApiServices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
