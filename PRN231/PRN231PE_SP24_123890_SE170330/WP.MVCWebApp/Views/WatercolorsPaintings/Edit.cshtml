@@ -1,0 +1,64 @@
+﻿@model WP.Repositories.Models.WatercolorsPainting
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>WatercolorsPainting</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PaintingId" />
+            <div class="form-group">
+                <label asp-for="PaintingName" class="control-label"></label>
+                <input asp-for="PaintingName" class="form-control" />
+                <span asp-validation-for="PaintingName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaintingDescription" class="control-label"></label>
+                <input asp-for="PaintingDescription" class="form-control" />
+                <span asp-validation-for="PaintingDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaintingAuthor" class="control-label"></label>
+                <input asp-for="PaintingAuthor" class="form-control" />
+                <span asp-validation-for="PaintingAuthor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublishYear" class="control-label"></label>
+                <input asp-for="PublishYear" class="form-control" />
+                <span asp-validation-for="PublishYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedDate" class="control-label"></label>
+                <input asp-for="CreatedDate" class="form-control" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StyleId" class="control-label"></label>
+                <select asp-for="StyleId" class="form-control" asp-items="ViewBag.StyleId"></select>
+                <span asp-validation-for="StyleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

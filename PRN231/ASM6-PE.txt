@@ -202,15 +202,7 @@ Chức năng chính, kiểm tra id là kiểu gì, SubModel tên là gì:
             }
             return entity;
         }
-        public async Task<List<Model>> Search(type? search1, type? search2, type? search3) => await _context.Models
-                .Include(item => item.SubModel)
-                .Where(item =>
-                (string.IsNullOrEmpty(search1) || item.search1.Contains(search1))
-                            && (string.IsNullOrEmpty(search2) || item.search2.Contains(search2))
-                            && (string.IsNullOrEmpty(search3) || item.search3.Contains(search3))
-                )
-                .ToListAsync();
-Kiểm tra search có bằng OData không? Không thì bỏ hàm search
+
 ------------------------------------------------Services----------------------------------------------
 Tạo các class [Model]Service và xóa nội dung bên trong
     public interface IModelService
@@ -251,9 +243,8 @@ Cho lên interface đủ 6 hàm, điều chỉnh Search giống repo
 Hàm phụ:
         public async Task<List<Model>> GetAllAsync() => await _modelRepository.GetAllAsync();
 
-        public async Task<Model> GetByIdAsync(type id) => await _modelRepository.GetByIdAsync(id);
-Cho lên interface đủ 2 hàm
-1 hàm all th
+Cho lên interface đủ 1 hàm
+
 ------------------------------------------------------API---------------------------------------------
 thêm vào appsettings.json:
 ,
@@ -392,10 +383,6 @@ Cho vào class:
         public ModelController(IModelService modelService) => _modelService = modelService;
 Thêm phân quyền, check yêu cầu của đề role nào được dùng:
         [Authorize(Roles = "1")]
-Thêm Search:
-        [HttpGet("search")]
-        [Authorize(Roles = "1,3,4")]
-        public async Task<IEnumerable<Model>> Search([FromQuery] string? fied1, [FromQuery] string? fied2, [FromQuery] string? fied3) => await _modelService.Search(fied1, fied2, fied3);
 
 ---------------------------------------Web App------------------------------------------
 Programs:
@@ -698,7 +685,7 @@ private async Task<List<SubModel>> GetSubModels()
 
                     #endregion
 
-                    using (var response = await httpClient.PutAsJsonAsync(APIEndPoint + "Model", model)) fix
+                    using (var response = await httpClient.PutAsJsonAsync(APIEndPoint + "Model/" + id, model)) fix
                     {
                         if (response.IsSuccessStatusCode)
                         {
@@ -859,13 +846,36 @@ Details, Index:
 
 -------------------------------Validation------------------------------------------------
 Value for Field includes a-z, A-Z, space, @, # and digit 0-9. Each word of the Fied must begin with the capital letter.:
-[RegularExpression(@"^[A-Z]*[a-zA-Z\s@#0-9]*")]
+[RegularExpression(@"^([A-Z][a-zA-Z0-9@#]*\s?)+$")]
 
 String Length:
     [StringLength(80, MinimumLength = 2)]
 
 Max min value:
-    [Range(0, double.MaxValue)]
+    [Range(0, double.MaxValue, ErrorMessage = "... must be greater than or equal to 0")]
 
-Require id:
+Require all:
     [Required]
+
+Custom Validation:
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    public class CurrentDateAttribute : ValidationAttribute
+    {
+        public CurrentDateAttribute()
+        {
+            ErrorMessage = "CreatedDate = current date.";
+        }
+
+        public override bool IsValid(object value)
+        {
+            if (value == null)
+                return true;
+
+            if (value is DateTime dateValue)
+            {
+                return dateValue.Date == DateTime.Today;
+            }
+
+            return false;
+        }
+    }

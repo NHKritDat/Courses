@@ -18,7 +18,7 @@ public partial class CosmeticInformation
 
     [Required]
     [StringLength(80, MinimumLength = 2)]
-    [RegularExpression(@"^[A-Z]*[a-zA-Z\s@#0-9]*")]
+    [RegularExpression(@"^([A-Z][a-zA-Z0-9@#]*\s?)+$")]
     public string CosmeticName { get; set; }
 
     [Required]

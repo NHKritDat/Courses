@@ -1,0 +1,6 @@
+@WP.APIServices_HostAddress = http://localhost:5030
+
+GET {{WP.APIServices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "WP.APIServices\\WP.APIServices.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "WP.MVCWebApp\\WP.MVCWebApp.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

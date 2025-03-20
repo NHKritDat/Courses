@@ -1,0 +1,87 @@
+﻿@model IEnumerable<WP.Repositories.Models.WatercolorsPainting>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form method="get" asp-action="Search">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" name="paintingAuthor" class="form-control" placeholder="Search by paintingAuthor" />
+        </div>
+        <div class="col-md-3">
+            <input type="number" name="publishYear" class="form-control" placeholder="Search by publishYear" />
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a asp-action="Index" class="btn btn-secondary">Reset</a>
+        </div>
+    </div>
+</form>
+
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PaintingName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaintingDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaintingAuthor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Style)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaintingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaintingDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaintingAuthor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Style.StyleName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PaintingId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PaintingId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PaintingId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
