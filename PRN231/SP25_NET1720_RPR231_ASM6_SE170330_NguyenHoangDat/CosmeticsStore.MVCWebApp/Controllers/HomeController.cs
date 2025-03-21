@@ -1,7 +1,7 @@
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using CosmeticsStore.MVCWebApp.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CosmeticsStore.MVCWebApp.Controllers;
 [Authorize]

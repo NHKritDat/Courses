@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CosmeticsStore.Repositories.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using CosmeticsStore.Repositories.DBContext;
-using CosmeticsStore.Repositories.Models;
-using Microsoft.AspNetCore.Authorization;
-using Azure;
 using Newtonsoft.Json;
-using System.Net.Http;
 
 namespace CosmeticsStore.MVCWebApp.Controllers
 {
@@ -237,7 +229,7 @@ namespace CosmeticsStore.MVCWebApp.Controllers
 
                     #endregion
 
-                    using (var response = await httpClient.PutAsJsonAsync(APIEndPoint + "CosmeticInformation/"+id, cosmeticInformation))
+                    using (var response = await httpClient.PutAsJsonAsync(APIEndPoint + "CosmeticInformation/" + id, cosmeticInformation))
                     {
                         if (response.IsSuccessStatusCode)
                         {

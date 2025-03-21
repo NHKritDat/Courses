@@ -1,11 +1,9 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using System.Data;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Mvc;
 using CosmeticsStore.MVCWebApp.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CosmeticsStore.MVCWebApp.Controllers
 {
@@ -30,7 +28,7 @@ namespace CosmeticsStore.MVCWebApp.Controllers
             {
                 using (var httpClient = new HttpClient())
                 {
-                    using (var response = await httpClient.PostAsJsonAsync(APIEndPoint + "SystemAccount/Login", login)) 
+                    using (var response = await httpClient.PostAsJsonAsync(APIEndPoint + "SystemAccount/Login", login))
                     {
                         if (response.IsSuccessStatusCode)
                         {
@@ -41,7 +39,7 @@ namespace CosmeticsStore.MVCWebApp.Controllers
 
                             if (jwtToken != null)
                             {
-                                var email = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value; 
+                                var email = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
                                 var role = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
 
                                 var claims = new List<Claim>
@@ -77,7 +75,7 @@ namespace CosmeticsStore.MVCWebApp.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-            Response.Cookies.Delete("Email"); 
+            Response.Cookies.Delete("Email");
             Response.Cookies.Delete("Role");
             Response.Cookies.Delete("TokenString");
 

@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using CosmeticsStore.Repositories.Models;
+﻿using CosmeticsStore.Repositories.Models;
 using CosmeticsStore.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +14,6 @@ namespace CosmeticsStore.APIServices.Controllers
         public CosmeticCategoryController(ICosmeticCategoryService cosmeticCategoryService) => _cosmeticCategoryService = cosmeticCategoryService;
         // GET: api/<CosmeticCategoryController>
         [HttpGet]
-        public async Task<IEnumerable<CosmeticCategory>> Get()=> await _cosmeticCategoryService.GetAllAsync();
+        public async Task<IEnumerable<CosmeticCategory>> Get() => await _cosmeticCategoryService.GetAllAsync();
     }
 }

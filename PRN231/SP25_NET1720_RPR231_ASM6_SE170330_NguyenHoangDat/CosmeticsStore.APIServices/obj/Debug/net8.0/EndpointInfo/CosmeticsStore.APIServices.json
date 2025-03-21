@@ -4879,7 +4879,7 @@
           "cosmeticName": {
             "maxLength": 80,
             "minLength": 2,
-            "pattern": "^[A-Z]*[a-zA-Z\\s@#0-9]*",
+            "pattern": "^([A-Z][a-zA-Z0-9@#]*\\s?)+$",
             "type": "string"
           },
           "skinType": {

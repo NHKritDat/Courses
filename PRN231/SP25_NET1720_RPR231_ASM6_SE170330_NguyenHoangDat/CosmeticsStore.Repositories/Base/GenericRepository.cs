@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CosmeticsStore.Repositories.DBContext;
+﻿using CosmeticsStore.Repositories.DBContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace CosmeticsStore.Repositories.Base
