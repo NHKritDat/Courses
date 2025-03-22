@@ -1,0 +1,18 @@
+build.gradle.kts (module):
+implementation 'androidx.viewpager2:viewpager2:1.0.0'
+implementation 'com.google.android.material:material:1.10.0'
+implementation("com.google.android.gms:play-services-maps:18.2.0")
+implementation("com.google.android.gms:play-services-location:21.1.0")
+
+res -> values -> strings:
+<string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCBD5zaeKTUlrHVpeYZlL_qO_X9xWa5XsU</string>
+
+folders:
+- fragments
+- entities
+- database
+- adapters
+- activities
+
+entities:
+- Getter Setter, Constructor rỗng, Constructor không id
