@@ -1,0 +1,85 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CosmeticsStore.MVCWebApp
+build_property.RootNamespace = CosmeticsStore.MVCWebApp
+build_property.ProjectDir = D:\Courses\PRN231\SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat\CosmeticsStore.MVCWebApp\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Courses\PRN231\SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat\CosmeticsStore.MVCWebApp
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/CosmeticInformations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zbWV0aWNJbmZvcm1hdGlvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/CosmeticInformations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zbWV0aWNJbmZvcm1hdGlvbnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/CosmeticInformations/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zbWV0aWNJbmZvcm1hdGlvbnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/CosmeticInformations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zbWV0aWNJbmZvcm1hdGlvbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/CosmeticInformations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zbWV0aWNJbmZvcm1hdGlvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/SystemAccount/Forbidden.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3lzdGVtQWNjb3VudFxGb3JiaWRkZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/SystemAccount/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3lzdGVtQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/PRN231/SP25_NET1720_RPR231_ASM6_SE170330_NguyenHoangDat/CosmeticsStore.MVCWebApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-hhsxcm4swc
