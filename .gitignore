@@ -1,0 +1,36 @@
+# Build Folders
+bin/
+obj/
+.vs/
+.vscode/
+**/node_modules/
+
+# User-Specific Files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+logs/
+*.log
+
+# Visual Studio Code
+.history/
+.idea/
+
+# Dependency Cache
+packages/
+*.pdb
+
+# Rider IDE
+.idea/
+.sln.iml
+
+# Environment Files
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json
+
+# Publish Output
+wwwroot/
