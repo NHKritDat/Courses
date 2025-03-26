@@ -1,0 +1,6 @@
+@Schedules.Microservices_HostAddress = http://localhost:5168
+
+GET {{Schedules.Microservices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

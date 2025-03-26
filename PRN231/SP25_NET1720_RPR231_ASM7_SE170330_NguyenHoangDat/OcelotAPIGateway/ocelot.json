@@ -1,0 +1,28 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/Schedules",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7272
+                }
+            ],
+            "UpstreamPathTemplate": "/gateway/Schedules",
+            "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/Users",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7158
+                }
+            ],
+            "UpstreamPathTemplate": "/gateway/Users",
+            "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+        }
+    ]
+}

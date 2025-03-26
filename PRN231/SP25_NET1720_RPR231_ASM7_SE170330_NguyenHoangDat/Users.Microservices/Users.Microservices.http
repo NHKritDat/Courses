@@ -1,0 +1,6 @@
+@Users.Microservices_HostAddress = http://localhost:5037
+
+GET {{Users.Microservices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
