@@ -19,17 +19,19 @@ namespace SCBS.Repositories.Base
 
         public async Task<List<T>> GetAllAsync()
         {
-            return await _context.Set<T>().ToListAsync();
+            return await _context.Set<T>().AsNoTracking().ToListAsync();
         }
 
         public async Task<int> CreateAsync(T entity)
         {
+            _context.Entry(entity).State = EntityState.Detached;
             _context.Add(entity);
             return await _context.SaveChangesAsync();
         }
 
         public async Task<int> UpdateAsync(T entity)
         {
+            _context.Entry(entity).State = EntityState.Detached;
             var tracker = _context.Attach(entity);
             tracker.State = EntityState.Modified;
             return await _context.SaveChangesAsync();
@@ -37,6 +39,7 @@ namespace SCBS.Repositories.Base
 
         public async Task<bool> RemoveAsync(T entity)
         {
+            _context.Entry(entity).State = EntityState.Detached;
             _context.Remove(entity);
             await _context.SaveChangesAsync();
             return true;

@@ -6381,11 +6381,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_FE\\MVCWebApp\\MVCWebApp.csproj",
+      "projectUniqueName": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_FE\\MVCWebApp\\MVCWebApp.csproj",
       "projectName": "MVCWebApp",
-      "projectPath": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_FE\\MVCWebApp\\MVCWebApp.csproj",
+      "projectPath": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_FE\\MVCWebApp\\MVCWebApp.csproj",
       "packagesPath": "C:\\Users\\dat01\\.nuget\\packages\\",
-      "outputPath": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_FE\\MVCWebApp\\obj\\",
+      "outputPath": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_FE\\MVCWebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

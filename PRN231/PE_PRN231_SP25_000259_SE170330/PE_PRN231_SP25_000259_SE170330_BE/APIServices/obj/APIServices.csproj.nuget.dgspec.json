@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\APIServices\\APIServices.csproj": {}
+    "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\APIServices\\APIServices.csproj": {}
   },
   "projects": {
-    "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\APIServices\\APIServices.csproj": {
+    "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\APIServices\\APIServices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\APIServices\\APIServices.csproj",
+        "projectUniqueName": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\APIServices\\APIServices.csproj",
         "projectName": "APIServices",
-        "projectPath": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\APIServices\\APIServices.csproj",
+        "projectPath": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\APIServices\\APIServices.csproj",
         "packagesPath": "C:\\Users\\dat01\\.nuget\\packages\\",
-        "outputPath": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\APIServices\\obj\\",
+        "outputPath": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\APIServices\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\Services.csproj": {
-                "projectPath": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\Services.csproj"
+              "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\Services.csproj": {
+                "projectPath": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\Services.csproj"
               }
             }
           }
@@ -90,14 +90,14 @@
         }
       }
     },
-    "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\Repositories.csproj": {
+    "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\Repositories.csproj",
+        "projectUniqueName": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\Repositories.csproj",
         "projectName": "Repositories",
-        "projectPath": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\Repositories.csproj",
+        "projectPath": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\Repositories.csproj",
         "packagesPath": "C:\\Users\\dat01\\.nuget\\packages\\",
-        "outputPath": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\obj\\",
+        "outputPath": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -179,14 +179,14 @@
         }
       }
     },
-    "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\Services.csproj": {
+    "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\Services.csproj",
+        "projectUniqueName": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\Services.csproj",
+        "projectPath": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\Services.csproj",
         "packagesPath": "C:\\Users\\dat01\\.nuget\\packages\\",
-        "outputPath": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\obj\\",
+        "outputPath": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -207,8 +207,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\Repositories.csproj": {
-                "projectPath": "D:\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\Repositories.csproj"
+              "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\Repositories.csproj": {
+                "projectPath": "D:\\Courses\\PRN231\\PE_PRN231_SP25_000259_SE170330\\PE_PRN231_SP25_000259_SE170330_BE\\Repositories\\Repositories.csproj"
               }
             }
           }

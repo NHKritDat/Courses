@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SCBS.GraphQLClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f7842e0eb5ca94ffa98175e522725be05dbb26e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a761f4b2c713a3e9892f8569469fd61ff1100b1")]
 [assembly: System.Reflection.AssemblyProductAttribute("SCBS.GraphQLClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SCBS.GraphQLClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

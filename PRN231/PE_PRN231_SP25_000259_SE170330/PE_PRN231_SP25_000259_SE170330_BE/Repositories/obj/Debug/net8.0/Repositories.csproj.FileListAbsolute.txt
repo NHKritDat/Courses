@@ -1,0 +1,15 @@
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\bin\Debug\net8.0\Repositories.deps.json
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\bin\Debug\net8.0\Repositories.runtimeconfig.json
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\bin\Debug\net8.0\Repositories.dll
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\bin\Debug\net8.0\Repositories.pdb
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\obj\Debug\net8.0\Repositories.csproj.AssemblyReference.cache
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\obj\Debug\net8.0\Repositories.GeneratedMSBuildEditorConfig.editorconfig
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\obj\Debug\net8.0\Repositories.AssemblyInfoInputs.cache
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\obj\Debug\net8.0\Repositories.AssemblyInfo.cs
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\obj\Debug\net8.0\Repositories.csproj.CoreCompileInputs.cache
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\obj\Debug\net8.0\Repositories.sourcelink.json
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\obj\Debug\net8.0\Repositories.dll
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\obj\Debug\net8.0\refint\Repositories.dll
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\obj\Debug\net8.0\Repositories.pdb
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\obj\Debug\net8.0\Repositories.genruntimeconfig.cache
+D:\Courses\PRN231\PE_PRN231_SP25_000259_SE170330\PE_PRN231_SP25_000259_SE170330_BE\Repositories\obj\Debug\net8.0\ref\Repositories.dll
