@@ -73,3 +73,26 @@ proguard-rules.pro
 # Miscellaneous
 .DS_Store
 Thumbs.db
+
+# .NET Specific
+**/project.lock.json
+**/global.json
+**/packages/
+**/obj/
+**/bin/
+**/out/
+**/.vs/
+**/app.publish/
+**/TestResults/
+
+# Resharper & Rider
+**/*.DotSettings.user
+**/*.sln.DotSettings
+
+# ASP.NET & Blazor
+wwwroot/
+**/appsettings*.json
+
+# Entity Framework
+migrations/
+**/*.db
