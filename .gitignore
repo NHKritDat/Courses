@@ -34,3 +34,42 @@ appsettings.Production.json
 
 # Publish Output
 wwwroot/
+
+# Android Studio
+.gradle/
+.local/
+.cxx/
+
+# IntelliJ/Android Studio
+.idea/
+*.iml
+*.iws
+
+# Build output
+/build/
+/captures/
+
+# Gradle Wrapper
+!gradle/wrapper/gradle-wrapper.jar
+
+# Keystore files
+*.jks
+*.keystore
+
+# Google Services
+google-services.json
+
+# Fastlane metadata
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+
+# Firebase Crashlytics
+crashlytics-build/
+
+# Proguard
+proguard-rules.pro
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
